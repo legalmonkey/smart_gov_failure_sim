@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-12T12:05:00Z",
+  "incident_level": "LEVEL_3_MAJOR_EMERGENCY",
+  "situation_summary": "Substation outage has cut primary power to Hiranandani General Hospital and Water Treatment Plant. Hospital backup fuel will be exhausted in 3.5 hours. JVLR road connector is waterlogged.",
+  "immediate_action_checklist": [
+    {
+      "priority": "CRITICAL",
+      "action": "Dispatch emergency mobile diesel genset to mock_hospital_01 before backup runs out (3.5 hours remaining)",
+      "responsible_agency": "Disaster Management Cell / MCGM Ward S",
+      "eta_hours": 1.2
+    },
+    {
+      "priority": "HIGH",
+      "action": "Divert hospital-bound emergency ambulances via mock_road_jct_03 to avoid waterlogging on mock_road_jct_01-02",
+      "responsible_agency": "Mumbai Traffic Police Powai Division",
+      "eta_hours": 0.2
+    },
+    {
+      "priority": "HIGH",
+      "action": "Deploy high-capacity dewatering pumps to mock_substation_01 transformer yard",
+      "responsible_agency": "Adani Electricity / MSEDCL Field Crew",
+      "eta_hours": 0.8
+    }
+  ],
+  "long_term_advice": "Prioritize underground feeder connection directly from generation plant to hospital as recommended by Track 4 optimization."
+}

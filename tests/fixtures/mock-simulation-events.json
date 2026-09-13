@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "scenario_id": "scenario_monsoon_substation_trip",
+  "events": [
+    {
+      "event_id": "evt_001",
+      "timestamp_hours": 0.0,
+      "event_type": "PRIMARY_FAILURE",
+      "target_type": "node",
+      "target_id": "mock_substation_01",
+      "from_state": "OPERATIONAL",
+      "to_state": "FAILED",
+      "cause": "Transformer yard flood inundation"
+    },
+    {
+      "event_id": "evt_002",
+      "timestamp_hours": 0.0,
+      "event_type": "LINE_OUTAGE",
+      "target_type": "edge",
+      "target_id": "mock_edge_power_sub_hosp",
+      "from_state": "OPERATIONAL",
+      "to_state": "FAILED",
+      "cause": "Upstream source loss from mock_substation_01"
+    },
+    {
+      "event_id": "evt_003",
+      "timestamp_hours": 0.1,
+      "event_type": "STATE_TRANSITION",
+      "target_type": "node",
+      "target_id": "mock_hospital_01",
+      "from_state": "OPERATIONAL",
+      "to_state": "BACKUP",
+      "cause": "Grid power loss; diesel genset started automatically"
+    },
+    {
+      "event_id": "evt_004",
+      "timestamp_hours": 0.5,
+      "event_type": "EDGE_DEGRADATION",
+      "target_type": "edge",
+      "target_id": "mock_edge_road_jct1_jct2",
+      "from_state": "OPERATIONAL",
+      "to_state": "DEGRADED",
+      "cause": "Waterlogging > 300mm on carriageway"
+    },
+    {
+      "event_id": "evt_005",
+      "timestamp_hours": 2.5,
+      "event_type": "STATE_TRANSITION",
+      "target_type": "node",
+      "target_id": "mock_res_zone_01",
+      "from_state": "DEGRADED",
+      "to_state": "CRITICAL",
+      "cause": "Extended power outage > 2 hours and water pumping slowdown"
+    }
+  ]
+}

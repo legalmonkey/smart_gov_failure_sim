@@ -1,0 +1,1157 @@
+{
+  "schema_version": "1.0",
+  "nodes": [
+    {
+      "id": "node_hosp_hiranandani",
+      "type": "hospital",
+      "name": "Dr. L. H. Hiranandani Hospital",
+      "osm_refs": [
+        "way/353139106"
+      ],
+      "location": {
+        "latitude": 19.120406,
+        "longitude": 72.916979
+      },
+      "attributes": {
+        "capacity": 148,
+        "load": 83,
+        "population_served": 19012,
+        "backup_duration_hours": 7.5,
+        "failure_threshold": 87,
+        "recovery_time_hours": 5.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/353139106",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_hosp_powai",
+      "type": "hospital",
+      "name": "Powai Hospital",
+      "osm_refs": [
+        "node/1855812194"
+      ],
+      "location": {
+        "latitude": 19.124088,
+        "longitude": 72.916451
+      },
+      "attributes": {
+        "capacity": 259,
+        "load": 102,
+        "population_served": 29349,
+        "backup_duration_hours": 8.5,
+        "failure_threshold": 85,
+        "recovery_time_hours": 3.3
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/1855812194",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_hosp_nihal",
+      "type": "hospital",
+      "name": "Nihal Nursing Home & Clinic",
+      "osm_refs": [
+        "node/6801919192"
+      ],
+      "location": {
+        "latitude": 19.125372,
+        "longitude": 72.919086
+      },
+      "attributes": {
+        "capacity": 179,
+        "load": 144,
+        "population_served": 29726,
+        "backup_duration_hours": 6.2,
+        "failure_threshold": 88,
+        "recovery_time_hours": 5.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/6801919192",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_hfs",
+      "type": "school",
+      "name": "Hiranandani Foundation School",
+      "osm_refs": [
+        "way/483187904"
+      ],
+      "location": {
+        "latitude": 19.117604,
+        "longitude": 72.907901
+      },
+      "attributes": {
+        "capacity": 1616,
+        "load": 829,
+        "population_served": 4305,
+        "backup_duration_hours": 2.9,
+        "failure_threshold": 78,
+        "recovery_time_hours": 4.4
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/483187904",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_smshetty",
+      "type": "school",
+      "name": "S.M. Shetty High School & College",
+      "osm_refs": [
+        "node/11697877354"
+      ],
+      "location": {
+        "latitude": 19.115227,
+        "longitude": 72.905497
+      },
+      "attributes": {
+        "capacity": 513,
+        "load": 497,
+        "population_served": 3807,
+        "backup_duration_hours": 3.4,
+        "failure_threshold": 80,
+        "recovery_time_hours": 2.8
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/11697877354",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_kv_powai",
+      "type": "school",
+      "name": "Kendriya Vidyalaya IIT Powai",
+      "osm_refs": [
+        "way/723512525"
+      ],
+      "location": {
+        "latitude": 19.128896,
+        "longitude": 72.918392
+      },
+      "attributes": {
+        "capacity": 940,
+        "load": 744,
+        "population_served": 3337,
+        "backup_duration_hours": 2.2,
+        "failure_threshold": 73,
+        "recovery_time_hours": 3.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/723512525",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_sjmsom",
+      "type": "school",
+      "name": "Shailesh J Mehta School of Management",
+      "osm_refs": [
+        "node/668494244"
+      ],
+      "location": {
+        "latitude": 19.131702,
+        "longitude": 72.915739
+      },
+      "attributes": {
+        "capacity": 1204,
+        "load": 1018,
+        "population_served": 4666,
+        "backup_duration_hours": 3.6,
+        "failure_threshold": 84,
+        "recovery_time_hours": 3.6
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/668494244",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_lake_powai",
+      "type": "water_facility",
+      "name": "Powai Lake Reservoir",
+      "osm_refs": [
+        "relation/8546709"
+      ],
+      "location": {
+        "latitude": 19.128139,
+        "longitude": 72.905898
+      },
+      "attributes": {
+        "capacity": 4550,
+        "load": 2522,
+        "population_served": 71178,
+        "backup_duration_hours": 10.3,
+        "failure_threshold": 90,
+        "recovery_time_hours": 9.7
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "relation/8546709",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_substation_powai",
+      "type": "substation",
+      "name": "Powai 33/11kV Substation",
+      "osm_refs": [
+        "way/920252504"
+      ],
+      "location": {
+        "latitude": 19.130621,
+        "longitude": 72.920281
+      },
+      "attributes": {
+        "capacity": 292,
+        "load": 199,
+        "population_served": 43087,
+        "backup_duration_hours": 4.3,
+        "failure_threshold": 95,
+        "recovery_time_hours": 4.9
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/920252504",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_bridge_gandhinagar",
+      "type": "bridge",
+      "name": "Gandhinagar Junction Flyover",
+      "osm_refs": [
+        "way/177566537"
+      ],
+      "location": {
+        "latitude": 19.125227,
+        "longitude": 72.924884
+      },
+      "attributes": {
+        "capacity": 3092,
+        "load": 1963,
+        "population_served": 25628,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 91,
+        "recovery_time_hours": 12.4
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/177566537",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_bridge_jvlr_adi",
+      "type": "bridge",
+      "name": "Adi Sankaracharya Marg Flyover",
+      "osm_refs": [
+        "way/1334158121"
+      ],
+      "location": {
+        "latitude": 19.120182,
+        "longitude": 72.900029
+      },
+      "attributes": {
+        "capacity": 3801,
+        "load": 3508,
+        "population_served": 29954,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 90,
+        "recovery_time_hours": 11.4
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/1334158121",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_junction_oxford_roundabout",
+      "type": "road_junction",
+      "name": "Oxford Roundabout",
+      "osm_refs": [
+        "way/151750351"
+      ],
+      "location": {
+        "latitude": 19.118144,
+        "longitude": 72.904801
+      },
+      "attributes": {
+        "capacity": 1746,
+        "load": 1518,
+        "population_served": 17199,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 85,
+        "recovery_time_hours": 2.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/151750351",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "power_station_vikhroli_feed",
+      "type": "power_station",
+      "name": "Vikhroli Receiving Feeder Station",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1135,
+        "longitude": 72.925
+      },
+      "attributes": {
+        "capacity": 850,
+        "load": 583,
+        "population_served": 75294,
+        "backup_duration_hours": 33.1,
+        "failure_threshold": 98,
+        "recovery_time_hours": 10.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Grid feeder assumption from Eastern Express / Vikhroli sub-transmission corridor"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "water_facility_powai_wtp",
+      "type": "water_facility",
+      "name": "Powai Lake Water Treatment Plant",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1255,
+        "longitude": 72.9055
+      },
+      "attributes": {
+        "capacity": 4328,
+        "load": 2429,
+        "population_served": 50010,
+        "backup_duration_hours": 14.6,
+        "failure_threshold": 92,
+        "recovery_time_hours": 7.9
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "MCGM Powai Lake emergency raw water intake and filtration plant"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "water_pump_hiranandani",
+      "type": "water_pump",
+      "name": "Hiranandani Booster Pumping Station",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1185,
+        "longitude": 72.915
+      },
+      "attributes": {
+        "capacity": 537,
+        "load": 313,
+        "population_served": 15456,
+        "backup_duration_hours": 7.7,
+        "failure_threshold": 85,
+        "recovery_time_hours": 3.6
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Municipal distribution booster pump serving elevated Hiranandani sectors"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "res_zone_hiranandani_gardens",
+      "type": "residential_zone",
+      "name": "Hiranandani Gardens Residential Sector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.119,
+        "longitude": 72.9135
+      },
+      "attributes": {
+        "capacity": 12179,
+        "load": 6441,
+        "population_served": 11517,
+        "backup_duration_hours": 1.3,
+        "failure_threshold": 69,
+        "recovery_time_hours": 3.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Centroid of Hiranandani Gardens residential complex building cluster"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "res_zone_powai_vihar",
+      "type": "residential_zone",
+      "name": "Powai Vihar Residential Complex",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1235,
+        "longitude": 72.9045
+      },
+      "attributes": {
+        "capacity": 13197,
+        "load": 7615,
+        "population_served": 8304,
+        "backup_duration_hours": 2.5,
+        "failure_threshold": 78,
+        "recovery_time_hours": 5.6
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Centroid of Powai Vihar complex residential cluster"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "res_zone_lake_homes",
+      "type": "residential_zone",
+      "name": "Lake Homes Residential Complex",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.122,
+        "longitude": 72.9015
+      },
+      "attributes": {
+        "capacity": 10543,
+        "load": 6165,
+        "population_served": 7593,
+        "backup_duration_hours": 3.0,
+        "failure_threshold": 69,
+        "recovery_time_hours": 4.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Centroid of Lake Homes residential towers"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "res_zone_iit_campus_south",
+      "type": "residential_zone",
+      "name": "IIT Bombay South Residential Quarters",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1295,
+        "longitude": 72.915
+      },
+      "attributes": {
+        "capacity": 5489,
+        "load": 3392,
+        "population_served": 5796,
+        "backup_duration_hours": 1.3,
+        "failure_threshold": 70,
+        "recovery_time_hours": 5.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Centroid of staff & faculty quarters south of main academic zone"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "res_zone_rambaug_slum_pocket",
+      "type": "residential_zone",
+      "name": "Rambaug / Powai Vihar Dense Urban Pocket",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.121,
+        "longitude": 72.903
+      },
+      "attributes": {
+        "capacity": 10916,
+        "load": 8085,
+        "population_served": 5040,
+        "backup_duration_hours": 1.8,
+        "failure_threshold": 79,
+        "recovery_time_hours": 4.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Centroid of high-density mixed settlement in Ward S"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_jvlr_gandhinagar",
+      "type": "road_junction",
+      "name": "JVLR - Gandhinagar Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1285,
+        "longitude": 72.923
+      },
+      "attributes": {
+        "capacity": 3188,
+        "load": 1933,
+        "population_served": 6188,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 83,
+        "recovery_time_hours": 2.4
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Intersection of JVLR and LBS Marg arterial link"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_jvlr_iit_main",
+      "type": "road_junction",
+      "name": "JVLR - IIT Main Gate Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.127,
+        "longitude": 72.9165
+      },
+      "attributes": {
+        "capacity": 2299,
+        "load": 1346,
+        "population_served": 16501,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 89,
+        "recovery_time_hours": 1.9
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Main ingress intersection from JVLR into IIT campus"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_jvlr_central_ave",
+      "type": "road_junction",
+      "name": "JVLR - Central Avenue Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.125,
+        "longitude": 72.911
+      },
+      "attributes": {
+        "capacity": 2129,
+        "load": 806,
+        "population_served": 17830,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 88,
+        "recovery_time_hours": 2.9
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Primary northern entry into Hiranandani Gardens from JVLR"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_central_orchard",
+      "type": "road_junction",
+      "name": "Central Ave - Orchard Ave Intersection",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1215,
+        "longitude": 72.9125
+      },
+      "attributes": {
+        "capacity": 2760,
+        "load": 1165,
+        "population_served": 14317,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 89,
+        "recovery_time_hours": 2.7
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Major internal junction in northern Hiranandani"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_central_main_st",
+      "type": "road_junction",
+      "name": "Central Ave - Main Street Intersection",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1175,
+        "longitude": 72.9145
+      },
+      "attributes": {
+        "capacity": 2239,
+        "load": 2047,
+        "population_served": 9258,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 85,
+        "recovery_time_hours": 2.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Central commerce and transit intersection in Hiranandani"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_hiranandani_hospital_gate",
+      "type": "road_junction",
+      "name": "Main Street - Hospital Access Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1165,
+        "longitude": 72.913
+      },
+      "attributes": {
+        "capacity": 2794,
+        "load": 1886,
+        "population_served": 6009,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 95,
+        "recovery_time_hours": 1.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Primary vehicle ingress junction to Dr. L. H. Hiranandani Hospital"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_powai_vihar_jvlr",
+      "type": "road_junction",
+      "name": "JVLR - Powai Vihar Road Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.124,
+        "longitude": 72.906
+      },
+      "attributes": {
+        "capacity": 3102,
+        "load": 1543,
+        "population_served": 11038,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 87,
+        "recovery_time_hours": 2.8
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Ingress intersection to Powai Vihar and lake western bank"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_cliff_ave_powai_vihar",
+      "type": "road_junction",
+      "name": "Cliff Avenue - Powai Vihar Road Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1215,
+        "longitude": 72.905
+      },
+      "attributes": {
+        "capacity": 3139,
+        "load": 961,
+        "population_served": 7403,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 82,
+        "recovery_time_hours": 3.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Internal distribution junction in Powai Vihar"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_lake_homes_entry",
+      "type": "road_junction",
+      "name": "Lake Boulevard - Lake Homes Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.121,
+        "longitude": 72.901
+      },
+      "attributes": {
+        "capacity": 2290,
+        "load": 1057,
+        "population_served": 8103,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 85,
+        "recovery_time_hours": 1.5
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Main access junction to Lake Homes residential towers"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_powai_dam_access",
+      "type": "road_junction",
+      "name": "JVLR - Powai Dam Access Point",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1265,
+        "longitude": 72.904
+      },
+      "attributes": {
+        "capacity": 2986,
+        "load": 2042,
+        "population_served": 12932,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 86,
+        "recovery_time_hours": 2.4
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Dam maintenance and spillway access point on JVLR"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_south_ave_ridge_st",
+      "type": "road_junction",
+      "name": "South Ave - Ridge Street Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.115,
+        "longitude": 72.9165
+      },
+      "attributes": {
+        "capacity": 2017,
+        "load": 1564,
+        "population_served": 13177,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 94,
+        "recovery_time_hours": 1.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Southern perimeter junction in Hiranandani"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_technology_st_orchard",
+      "type": "road_junction",
+      "name": "Technology Street - Orchard Ave Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.12,
+        "longitude": 72.916
+      },
+      "attributes": {
+        "capacity": 1660,
+        "load": 865,
+        "population_served": 11539,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 87,
+        "recovery_time_hours": 2.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Business park and IT corridor intersection"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_jvlr_east",
+      "type": "road_junction",
+      "name": "JVLR East Sector Link",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1278,
+        "longitude": 72.92
+      },
+      "attributes": {
+        "capacity": 1214,
+        "load": 836,
+        "population_served": 17597,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 87,
+        "recovery_time_hours": 1.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "JVLR arterial midpoint segment linking IIT to Gandhinagar"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_jvlr_west",
+      "type": "road_junction",
+      "name": "JVLR West Sector Link",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1255,
+        "longitude": 72.9085
+      },
+      "attributes": {
+        "capacity": 1264,
+        "load": 1240,
+        "population_served": 11413,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 87,
+        "recovery_time_hours": 1.6
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "JVLR arterial midpoint segment along Powai Lake shoreline"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_central_ave_north",
+      "type": "road_junction",
+      "name": "Central Avenue North Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.123,
+        "longitude": 72.9118
+      },
+      "attributes": {
+        "capacity": 2194,
+        "load": 1238,
+        "population_served": 14834,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 95,
+        "recovery_time_hours": 1.5
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Central Avenue boulevard arterial midpoint"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_central_ave_south",
+      "type": "road_junction",
+      "name": "Central Avenue South Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1195,
+        "longitude": 72.9135
+      },
+      "attributes": {
+        "capacity": 2168,
+        "load": 1633,
+        "population_served": 9119,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 93,
+        "recovery_time_hours": 1.7
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Central Avenue commercial corridor midpoint"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_main_street_west",
+      "type": "road_junction",
+      "name": "Main Street West Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.117,
+        "longitude": 72.9138
+      },
+      "attributes": {
+        "capacity": 2041,
+        "load": 1756,
+        "population_served": 17945,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 83,
+        "recovery_time_hours": 1.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Main Street retail spine connector"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_orchard_ave_east",
+      "type": "road_junction",
+      "name": "Orchard Avenue East Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1208,
+        "longitude": 72.9142
+      },
+      "attributes": {
+        "capacity": 2691,
+        "load": 1494,
+        "population_served": 7790,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 86,
+        "recovery_time_hours": 2.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Orchard Avenue link towards Galleria shopping center"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_lake_blvd_central",
+      "type": "road_junction",
+      "name": "Lake Boulevard Central Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1225,
+        "longitude": 72.9035
+      },
+      "attributes": {
+        "capacity": 1487,
+        "load": 1232,
+        "population_served": 9006,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 87,
+        "recovery_time_hours": 2.7
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Lake Boulevard connection between Powai Vihar and Lake Homes"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_south_ave_west",
+      "type": "road_junction",
+      "name": "South Avenue West Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1145,
+        "longitude": 72.915
+      },
+      "attributes": {
+        "capacity": 1354,
+        "load": 1253,
+        "population_served": 15016,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 80,
+        "recovery_time_hours": 2.9
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "South Avenue southern egress connector"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_ridge_street_north",
+      "type": "road_junction",
+      "name": "Ridge Street North Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.118,
+        "longitude": 72.9175
+      },
+      "attributes": {
+        "capacity": 3097,
+        "load": 2343,
+        "population_served": 9872,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 95,
+        "recovery_time_hours": 2.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Ridge Street residential transit connector"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_iit_inner_ring",
+      "type": "road_junction",
+      "name": "IIT South Ring Road Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1285,
+        "longitude": 72.9155
+      },
+      "attributes": {
+        "capacity": 2970,
+        "load": 1621,
+        "population_served": 6960,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 80,
+        "recovery_time_hours": 3.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Campus internal loop connection to faculty housing"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_powai_road_link",
+      "type": "road_junction",
+      "name": "Powai Road - Saki Vihar Feeder Link",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1215,
+        "longitude": 72.8995
+      },
+      "attributes": {
+        "capacity": 1743,
+        "load": 1602,
+        "population_served": 13454,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 95,
+        "recovery_time_hours": 1.3
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Southwest connection toward Saki Vihar and western suburbs"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "em_route_hiranandani_hospital",
+      "type": "emergency_access",
+      "name": "Hiranandani Hospital Emergency Ambulance Corridor",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1162,
+        "longitude": 72.9132
+      },
+      "attributes": {
+        "capacity": 903,
+        "load": 472,
+        "population_served": 9958,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 81,
+        "recovery_time_hours": 3.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Dedicated ambulance bay and emergency trauma access lane"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "em_route_powai_hospital",
+      "type": "emergency_access",
+      "name": "Powai Hospital Emergency Vehicle Corridor",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1238,
+        "longitude": 72.9058
+      },
+      "attributes": {
+        "capacity": 658,
+        "load": 275,
+        "population_served": 18571,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 85,
+        "recovery_time_hours": 1.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Ambulance ingress from JVLR and Powai Vihar Road"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "em_route_powai_dam_spillway",
+      "type": "emergency_access",
+      "name": "Powai Dam Spillway Emergency Flood Relief Access",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1262,
+        "longitude": 72.9042
+      },
+      "attributes": {
+        "capacity": 1120,
+        "load": 332,
+        "population_served": 12044,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 82,
+        "recovery_time_hours": 3.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Disaster management flood monitoring vehicle access route"
+      },
+      "data_status": "SIMULATED"
+    }
+  ]
+}

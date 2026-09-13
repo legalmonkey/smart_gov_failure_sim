@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "population": [
+    {
+      "id": "population_zone_01",
+      "name": "Hiranandani Gardens Residential Sector",
+      "population": 9800,
+      "geometry_ref": "res_zone_hiranandani_gardens",
+      "vulnerability": {
+        "general": 0.42,
+        "emergency_dependent": 0.28
+      },
+      "source": {
+        "type": "public_dataset",
+        "provider": "Census of India & Municipal Corporation of Greater Mumbai (MCGM) Ward S Demographics",
+        "retrieved_at": "2026-03-01T00:00:00Z",
+        "basis": "MCGM Ward S Census Projections & GIS Demographic Mapping"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "population_zone_02",
+      "name": "Powai Vihar Residential Complex",
+      "population": 6500,
+      "geometry_ref": "res_zone_powai_vihar",
+      "vulnerability": {
+        "general": 0.48,
+        "emergency_dependent": 0.32
+      },
+      "source": {
+        "type": "public_dataset",
+        "provider": "Census of India & Municipal Corporation of Greater Mumbai (MCGM) Ward S Demographics",
+        "retrieved_at": "2026-03-01T00:00:00Z",
+        "basis": "MCGM Ward S Census Projections & GIS Demographic Mapping"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "population_zone_03",
+      "name": "Lake Homes Residential Complex",
+      "population": 5200,
+      "geometry_ref": "res_zone_lake_homes",
+      "vulnerability": {
+        "general": 0.4,
+        "emergency_dependent": 0.25
+      },
+      "source": {
+        "type": "public_dataset",
+        "provider": "Census of India & Municipal Corporation of Greater Mumbai (MCGM) Ward S Demographics",
+        "retrieved_at": "2026-03-01T00:00:00Z",
+        "basis": "MCGM Ward S Census Projections & GIS Demographic Mapping"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "population_zone_04",
+      "name": "IIT Bombay South Residential Quarters",
+      "population": 4100,
+      "geometry_ref": "res_zone_iit_campus_south",
+      "vulnerability": {
+        "general": 0.35,
+        "emergency_dependent": 0.18
+      },
+      "source": {
+        "type": "public_dataset",
+        "provider": "Census of India & Municipal Corporation of Greater Mumbai (MCGM) Ward S Demographics",
+        "retrieved_at": "2026-03-01T00:00:00Z",
+        "basis": "MCGM Ward S Census Projections & GIS Demographic Mapping"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "population_zone_05",
+      "name": "Rambaug / Powai Vihar Dense Urban Pocket",
+      "population": 7300,
+      "geometry_ref": "res_zone_rambaug_slum_pocket",
+      "vulnerability": {
+        "general": 0.72,
+        "emergency_dependent": 0.45
+      },
+      "source": {
+        "type": "public_dataset",
+        "provider": "Census of India & Municipal Corporation of Greater Mumbai (MCGM) Ward S Demographics",
+        "retrieved_at": "2026-03-01T00:00:00Z",
+        "basis": "MCGM Ward S Census Projections & GIS Demographic Mapping"
+      },
+      "data_status": "DERIVED"
+    }
+  ]
+}

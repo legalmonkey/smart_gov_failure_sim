@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "population": [
+    {
+      "id": "mock_population_zone_01",
+      "name": "Mock Residential Community Sector",
+      "population": 6000,
+      "geometry_ref": "mock_res_zone_01",
+      "vulnerability": {
+        "general": 0.45,
+        "emergency_dependent": 0.25
+      },
+      "source": {
+        "type": "public_dataset",
+        "provider": "Mock Demographic Source",
+        "basis": "Mock population profile"
+      }
+    }
+  ]
+}

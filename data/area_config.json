@@ -1,0 +1,1126 @@
+{
+  "schema_version": "1.0",
+  "study_area": {
+    "name": "Powai-Hiranandani",
+    "country": "India",
+    "region": "Maharashtra",
+    "city": "Mumbai",
+    "subdivision": "Ward S (Bhandup / Powai)",
+    "bbox": {
+      "south": 19.1120,
+      "west": 72.8980,
+      "north": 19.1360,
+      "east": 72.9260
+    }
+  },
+  "osm_source": {
+    "primary_endpoint": "https://api.openstreetmap.org/api/0.6/map",
+    "cache_path": "data/raw_osm.xml",
+    "user_agent": "CascadingEffectSim-Track1/1.0 (contact: research@powai-sim.local)"
+  },
+  "random_seed": 42,
+  "node_type_profiles": {
+    "hospital": {
+      "capacity_range": [120, 280],
+      "load_range": [80, 210],
+      "backup_duration_hours_range": [6.0, 12.0],
+      "failure_threshold_range": [85, 95],
+      "recovery_time_hours_range": [3.0, 6.0],
+      "population_served_range": [10000, 30000]
+    },
+    "school": {
+      "capacity_range": [500, 1800],
+      "load_range": [400, 1400],
+      "backup_duration_hours_range": [2.0, 4.0],
+      "failure_threshold_range": [70, 85],
+      "recovery_time_hours_range": [2.0, 5.0],
+      "population_served_range": [2500, 7000]
+    },
+    "power_station": {
+      "capacity_range": [600, 1200],
+      "load_range": [500, 950],
+      "backup_duration_hours_range": [24.0, 48.0],
+      "failure_threshold_range": [90, 98],
+      "recovery_time_hours_range": [8.0, 18.0],
+      "population_served_range": [45000, 85000]
+    },
+    "substation": {
+      "capacity_range": [200, 400],
+      "load_range": [150, 320],
+      "backup_duration_hours_range": [4.0, 8.0],
+      "failure_threshold_range": [85, 95],
+      "recovery_time_hours_range": [4.0, 8.0],
+      "population_served_range": [20000, 45000]
+    },
+    "water_facility": {
+      "capacity_range": [3000, 6000],
+      "load_range": [2200, 4800],
+      "backup_duration_hours_range": [8.0, 16.0],
+      "failure_threshold_range": [80, 92],
+      "recovery_time_hours_range": [6.0, 12.0],
+      "population_served_range": [35000, 75000]
+    },
+    "water_pump": {
+      "capacity_range": [400, 800],
+      "load_range": [280, 620],
+      "backup_duration_hours_range": [4.0, 8.0],
+      "failure_threshold_range": [75, 90],
+      "recovery_time_hours_range": [3.0, 6.0],
+      "population_served_range": [12000, 28000]
+    },
+    "residential_zone": {
+      "capacity_range": [4000, 14000],
+      "load_range": [3200, 11000],
+      "backup_duration_hours_range": [1.0, 3.0],
+      "failure_threshold_range": [65, 80],
+      "recovery_time_hours_range": [2.0, 6.0],
+      "population_served_range": [4000, 14000]
+    },
+    "road_junction": {
+      "capacity_range": [1200, 3200],
+      "load_range": [800, 2600],
+      "backup_duration_hours_range": [0.0, 0.0],
+      "failure_threshold_range": [80, 95],
+      "recovery_time_hours_range": [1.0, 3.0],
+      "population_served_range": [6000, 18000]
+    },
+    "bridge": {
+      "capacity_range": [2500, 4500],
+      "load_range": [1800, 3800],
+      "backup_duration_hours_range": [0.0, 0.0],
+      "failure_threshold_range": [85, 95],
+      "recovery_time_hours_range": [8.0, 24.0],
+      "population_served_range": [18000, 40000]
+    },
+    "emergency_access": {
+      "capacity_range": [600, 1600],
+      "load_range": [250, 900],
+      "backup_duration_hours_range": [0.0, 0.0],
+      "failure_threshold_range": [80, 95],
+      "recovery_time_hours_range": [1.0, 4.0],
+      "population_served_range": [9000, 22000]
+    }
+  },
+  "edge_type_defaults": {
+    "power_dependency": {
+      "directed": true,
+      "capacity_range": [120, 280],
+      "load_ratio_range": [0.65, 0.85],
+      "dependency_strength_range": [0.85, 1.0],
+      "failure_probability_range": [0.02, 0.07]
+    },
+    "water_dependency": {
+      "directed": true,
+      "capacity_range": [160, 320],
+      "load_ratio_range": [0.60, 0.80],
+      "dependency_strength_range": [0.75, 0.95],
+      "failure_probability_range": [0.03, 0.08]
+    },
+    "road_connection": {
+      "directed": false,
+      "capacity_range": [800, 2400],
+      "load_ratio_range": [0.50, 0.80],
+      "dependency_strength_range": [0.50, 0.80],
+      "failure_probability_range": [0.01, 0.04]
+    },
+    "emergency_route": {
+      "directed": false,
+      "capacity_range": [500, 1400],
+      "load_ratio_range": [0.30, 0.60],
+      "dependency_strength_range": [0.80, 0.98],
+      "failure_probability_range": [0.02, 0.05]
+    },
+    "service_dependency": {
+      "directed": true,
+      "capacity_range": [100, 200],
+      "load_ratio_range": [0.40, 0.70],
+      "dependency_strength_range": [0.70, 0.90],
+      "failure_probability_range": [0.02, 0.06]
+    }
+  },
+  "infrastructure_nodes": [
+    {
+      "id": "node_hosp_hiranandani",
+      "type": "hospital",
+      "name": "Dr. L. H. Hiranandani Hospital",
+      "osm_ref": "way/353139106",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_hosp_powai",
+      "type": "hospital",
+      "name": "Powai Hospital",
+      "osm_ref": "node/1855812194",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_hosp_nihal",
+      "type": "hospital",
+      "name": "Nihal Nursing Home & Clinic",
+      "osm_ref": "node/6801919192",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_hfs",
+      "type": "school",
+      "name": "Hiranandani Foundation School",
+      "osm_ref": "way/483187904",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_smshetty",
+      "type": "school",
+      "name": "S.M. Shetty High School & College",
+      "osm_ref": "node/11697877354",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_kv_powai",
+      "type": "school",
+      "name": "Kendriya Vidyalaya IIT Powai",
+      "osm_ref": "way/723512525",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_sjmsom",
+      "type": "school",
+      "name": "Shailesh J Mehta School of Management",
+      "osm_ref": "node/668494244",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_lake_powai",
+      "type": "water_facility",
+      "name": "Powai Lake Reservoir",
+      "osm_ref": "relation/8546709",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_substation_powai",
+      "type": "substation",
+      "name": "Powai 33/11kV Substation",
+      "osm_ref": "way/920252504",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_bridge_gandhinagar",
+      "type": "bridge",
+      "name": "Gandhinagar Junction Flyover",
+      "osm_ref": "way/177566537",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_bridge_jvlr_adi",
+      "type": "bridge",
+      "name": "Adi Sankaracharya Marg Flyover",
+      "osm_ref": "way/1334158121",
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_junction_oxford_roundabout",
+      "type": "road_junction",
+      "name": "Oxford Roundabout",
+      "osm_ref": "way/151750351",
+      "data_status": "REAL"
+    },
+    {
+      "id": "power_station_vikhroli_feed",
+      "type": "power_station",
+      "name": "Vikhroli Receiving Feeder Station",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1135,
+        "longitude": 72.9250
+      },
+      "data_status": "SIMULATED",
+      "source_basis": "Grid feeder assumption from Eastern Express / Vikhroli sub-transmission corridor"
+    },
+    {
+      "id": "water_facility_powai_wtp",
+      "type": "water_facility",
+      "name": "Powai Lake Water Treatment Plant",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1255,
+        "longitude": 72.9055
+      },
+      "data_status": "SIMULATED",
+      "source_basis": "MCGM Powai Lake emergency raw water intake and filtration plant"
+    },
+    {
+      "id": "water_pump_hiranandani",
+      "type": "water_pump",
+      "name": "Hiranandani Booster Pumping Station",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1185,
+        "longitude": 72.9150
+      },
+      "data_status": "SIMULATED",
+      "source_basis": "Municipal distribution booster pump serving elevated Hiranandani sectors"
+    },
+    {
+      "id": "res_zone_hiranandani_gardens",
+      "type": "residential_zone",
+      "name": "Hiranandani Gardens Residential Sector",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1190,
+        "longitude": 72.9135
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Centroid of Hiranandani Gardens residential complex building cluster"
+    },
+    {
+      "id": "res_zone_powai_vihar",
+      "type": "residential_zone",
+      "name": "Powai Vihar Residential Complex",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1235,
+        "longitude": 72.9045
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Centroid of Powai Vihar complex residential cluster"
+    },
+    {
+      "id": "res_zone_lake_homes",
+      "type": "residential_zone",
+      "name": "Lake Homes Residential Complex",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1220,
+        "longitude": 72.9015
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Centroid of Lake Homes residential towers"
+    },
+    {
+      "id": "res_zone_iit_campus_south",
+      "type": "residential_zone",
+      "name": "IIT Bombay South Residential Quarters",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1295,
+        "longitude": 72.9150
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Centroid of staff & faculty quarters south of main academic zone"
+    },
+    {
+      "id": "res_zone_rambaug_slum_pocket",
+      "type": "residential_zone",
+      "name": "Rambaug / Powai Vihar Dense Urban Pocket",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1210,
+        "longitude": 72.9030
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Centroid of high-density mixed settlement in Ward S"
+    },
+    {
+      "id": "jct_jvlr_gandhinagar",
+      "type": "road_junction",
+      "name": "JVLR - Gandhinagar Junction",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1285,
+        "longitude": 72.9230
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Intersection of JVLR and LBS Marg arterial link"
+    },
+    {
+      "id": "jct_jvlr_iit_main",
+      "type": "road_junction",
+      "name": "JVLR - IIT Main Gate Junction",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1270,
+        "longitude": 72.9165
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Main ingress intersection from JVLR into IIT campus"
+    },
+    {
+      "id": "jct_jvlr_central_ave",
+      "type": "road_junction",
+      "name": "JVLR - Central Avenue Junction",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1250,
+        "longitude": 72.9110
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Primary northern entry into Hiranandani Gardens from JVLR"
+    },
+    {
+      "id": "jct_central_orchard",
+      "type": "road_junction",
+      "name": "Central Ave - Orchard Ave Intersection",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1215,
+        "longitude": 72.9125
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Major internal junction in northern Hiranandani"
+    },
+    {
+      "id": "jct_central_main_st",
+      "type": "road_junction",
+      "name": "Central Ave - Main Street Intersection",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1175,
+        "longitude": 72.9145
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Central commerce and transit intersection in Hiranandani"
+    },
+    {
+      "id": "jct_hiranandani_hospital_gate",
+      "type": "road_junction",
+      "name": "Main Street - Hospital Access Junction",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1165,
+        "longitude": 72.9130
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Primary vehicle ingress junction to Dr. L. H. Hiranandani Hospital"
+    },
+    {
+      "id": "jct_powai_vihar_jvlr",
+      "type": "road_junction",
+      "name": "JVLR - Powai Vihar Road Junction",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1240,
+        "longitude": 72.9060
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Ingress intersection to Powai Vihar and lake western bank"
+    },
+    {
+      "id": "jct_cliff_ave_powai_vihar",
+      "type": "road_junction",
+      "name": "Cliff Avenue - Powai Vihar Road Junction",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1215,
+        "longitude": 72.9050
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Internal distribution junction in Powai Vihar"
+    },
+    {
+      "id": "jct_lake_homes_entry",
+      "type": "road_junction",
+      "name": "Lake Boulevard - Lake Homes Junction",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1210,
+        "longitude": 72.9010
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Main access junction to Lake Homes residential towers"
+    },
+    {
+      "id": "jct_powai_dam_access",
+      "type": "road_junction",
+      "name": "JVLR - Powai Dam Access Point",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1265,
+        "longitude": 72.9040
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Dam maintenance and spillway access point on JVLR"
+    },
+    {
+      "id": "jct_south_ave_ridge_st",
+      "type": "road_junction",
+      "name": "South Ave - Ridge Street Junction",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1150,
+        "longitude": 72.9165
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Southern perimeter junction in Hiranandani"
+    },
+    {
+      "id": "jct_technology_st_orchard",
+      "type": "road_junction",
+      "name": "Technology Street - Orchard Ave Junction",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1200,
+        "longitude": 72.9160
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Business park and IT corridor intersection"
+    },
+    {
+      "id": "corridor_jvlr_east",
+      "type": "road_junction",
+      "name": "JVLR East Sector Link",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1278,
+        "longitude": 72.9200
+      },
+      "data_status": "DERIVED",
+      "source_basis": "JVLR arterial midpoint segment linking IIT to Gandhinagar"
+    },
+    {
+      "id": "corridor_jvlr_west",
+      "type": "road_junction",
+      "name": "JVLR West Sector Link",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1255,
+        "longitude": 72.9085
+      },
+      "data_status": "DERIVED",
+      "source_basis": "JVLR arterial midpoint segment along Powai Lake shoreline"
+    },
+    {
+      "id": "corridor_central_ave_north",
+      "type": "road_junction",
+      "name": "Central Avenue North Connector",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1230,
+        "longitude": 72.9118
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Central Avenue boulevard arterial midpoint"
+    },
+    {
+      "id": "corridor_central_ave_south",
+      "type": "road_junction",
+      "name": "Central Avenue South Connector",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1195,
+        "longitude": 72.9135
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Central Avenue commercial corridor midpoint"
+    },
+    {
+      "id": "corridor_main_street_west",
+      "type": "road_junction",
+      "name": "Main Street West Connector",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1170,
+        "longitude": 72.9138
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Main Street retail spine connector"
+    },
+    {
+      "id": "corridor_orchard_ave_east",
+      "type": "road_junction",
+      "name": "Orchard Avenue East Connector",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1208,
+        "longitude": 72.9142
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Orchard Avenue link towards Galleria shopping center"
+    },
+    {
+      "id": "corridor_lake_blvd_central",
+      "type": "road_junction",
+      "name": "Lake Boulevard Central Connector",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1225,
+        "longitude": 72.9035
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Lake Boulevard connection between Powai Vihar and Lake Homes"
+    },
+    {
+      "id": "corridor_south_ave_west",
+      "type": "road_junction",
+      "name": "South Avenue West Connector",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1145,
+        "longitude": 72.9150
+      },
+      "data_status": "DERIVED",
+      "source_basis": "South Avenue southern egress connector"
+    },
+    {
+      "id": "corridor_ridge_street_north",
+      "type": "road_junction",
+      "name": "Ridge Street North Connector",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1180,
+        "longitude": 72.9175
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Ridge Street residential transit connector"
+    },
+    {
+      "id": "corridor_iit_inner_ring",
+      "type": "road_junction",
+      "name": "IIT South Ring Road Connector",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1285,
+        "longitude": 72.9155
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Campus internal loop connection to faculty housing"
+    },
+    {
+      "id": "corridor_powai_road_link",
+      "type": "road_junction",
+      "name": "Powai Road - Saki Vihar Feeder Link",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1215,
+        "longitude": 72.8995
+      },
+      "data_status": "DERIVED",
+      "source_basis": "Southwest connection toward Saki Vihar and western suburbs"
+    },
+    {
+      "id": "em_route_hiranandani_hospital",
+      "type": "emergency_access",
+      "name": "Hiranandani Hospital Emergency Ambulance Corridor",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1162,
+        "longitude": 72.9132
+      },
+      "data_status": "SIMULATED",
+      "source_basis": "Dedicated ambulance bay and emergency trauma access lane"
+    },
+    {
+      "id": "em_route_powai_hospital",
+      "type": "emergency_access",
+      "name": "Powai Hospital Emergency Vehicle Corridor",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1238,
+        "longitude": 72.9058
+      },
+      "data_status": "SIMULATED",
+      "source_basis": "Ambulance ingress from JVLR and Powai Vihar Road"
+    },
+    {
+      "id": "em_route_powai_dam_spillway",
+      "type": "emergency_access",
+      "name": "Powai Dam Spillway Emergency Flood Relief Access",
+      "osm_ref": null,
+      "location": {
+        "latitude": 19.1262,
+        "longitude": 72.9042
+      },
+      "data_status": "SIMULATED",
+      "source_basis": "Disaster management flood monitoring vehicle access route"
+    }
+  ],
+  "topology_edges": [
+    {
+      "id": "edge_power_grid_feeder",
+      "from": "power_station_vikhroli_feed",
+      "to": "node_substation_powai",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_hosp_hiranandani",
+      "from": "node_substation_powai",
+      "to": "node_hosp_hiranandani",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_hosp_powai",
+      "from": "node_substation_powai",
+      "to": "node_hosp_powai",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_hosp_nihal",
+      "from": "node_substation_powai",
+      "to": "node_hosp_nihal",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_school_hfs",
+      "from": "node_substation_powai",
+      "to": "node_school_hfs",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_school_smshetty",
+      "from": "node_substation_powai",
+      "to": "node_school_smshetty",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_school_kv",
+      "from": "node_substation_powai",
+      "to": "node_school_kv_powai",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_school_sjmsom",
+      "from": "node_substation_powai",
+      "to": "node_school_sjmsom",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_wtp",
+      "from": "node_substation_powai",
+      "to": "water_facility_powai_wtp",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_pump_hiranandani",
+      "from": "node_substation_powai",
+      "to": "water_pump_hiranandani",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_res_hiranandani",
+      "from": "node_substation_powai",
+      "to": "res_zone_hiranandani_gardens",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_res_powai_vihar",
+      "from": "node_substation_powai",
+      "to": "res_zone_powai_vihar",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_res_lake_homes",
+      "from": "node_substation_powai",
+      "to": "res_zone_lake_homes",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_res_iit",
+      "from": "node_substation_powai",
+      "to": "res_zone_iit_campus_south",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_res_rambaug",
+      "from": "node_substation_powai",
+      "to": "res_zone_rambaug_slum_pocket",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_jct_central_ave",
+      "from": "node_substation_powai",
+      "to": "jct_jvlr_central_ave",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_power_sub_jct_gandhinagar",
+      "from": "node_substation_powai",
+      "to": "jct_jvlr_gandhinagar",
+      "type": "power_dependency"
+    },
+    {
+      "id": "edge_water_lake_to_wtp",
+      "from": "node_lake_powai",
+      "to": "water_facility_powai_wtp",
+      "type": "water_dependency"
+    },
+    {
+      "id": "edge_water_wtp_to_booster",
+      "from": "water_facility_powai_wtp",
+      "to": "water_pump_hiranandani",
+      "type": "water_dependency"
+    },
+    {
+      "id": "edge_water_wtp_to_powai_hosp",
+      "from": "water_facility_powai_wtp",
+      "to": "node_hosp_powai",
+      "type": "water_dependency"
+    },
+    {
+      "id": "edge_water_wtp_to_res_vihar",
+      "from": "water_facility_powai_wtp",
+      "to": "res_zone_powai_vihar",
+      "type": "water_dependency"
+    },
+    {
+      "id": "edge_water_wtp_to_res_lake_homes",
+      "from": "water_facility_powai_wtp",
+      "to": "res_zone_lake_homes",
+      "type": "water_dependency"
+    },
+    {
+      "id": "edge_water_pump_to_hosp_hiranandani",
+      "from": "water_pump_hiranandani",
+      "to": "node_hosp_hiranandani",
+      "type": "water_dependency"
+    },
+    {
+      "id": "edge_water_pump_to_school_hfs",
+      "from": "water_pump_hiranandani",
+      "to": "node_school_hfs",
+      "type": "water_dependency"
+    },
+    {
+      "id": "edge_water_pump_to_res_hiranandani",
+      "from": "water_pump_hiranandani",
+      "to": "res_zone_hiranandani_gardens",
+      "type": "water_dependency"
+    },
+    {
+      "id": "edge_water_pump_to_res_rambaug",
+      "from": "water_pump_hiranandani",
+      "to": "res_zone_rambaug_slum_pocket",
+      "type": "water_dependency"
+    },
+    {
+      "id": "edge_road_jvlr_gandhinagar_bridge",
+      "from": "jct_jvlr_gandhinagar",
+      "to": "node_bridge_gandhinagar",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_bridge_gandhinagar_corridor_east",
+      "from": "node_bridge_gandhinagar",
+      "to": "corridor_jvlr_east",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_east_jvlr_iit",
+      "from": "corridor_jvlr_east",
+      "to": "jct_jvlr_iit_main",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_jvlr_iit_to_bridge_adi",
+      "from": "jct_jvlr_iit_main",
+      "to": "node_bridge_jvlr_adi",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_bridge_adi_to_central_ave",
+      "from": "node_bridge_jvlr_adi",
+      "to": "jct_jvlr_central_ave",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_central_ave_to_corridor_west",
+      "from": "jct_jvlr_central_ave",
+      "to": "corridor_jvlr_west",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_west_to_powai_vihar",
+      "from": "corridor_jvlr_west",
+      "to": "jct_powai_vihar_jvlr",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_powai_vihar_to_dam",
+      "from": "jct_powai_vihar_jvlr",
+      "to": "jct_powai_dam_access",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_central_ave_to_corridor_north",
+      "from": "jct_jvlr_central_ave",
+      "to": "corridor_central_ave_north",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_north_to_orchard",
+      "from": "corridor_central_ave_north",
+      "to": "jct_central_orchard",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_orchard_to_corridor_south",
+      "from": "jct_central_orchard",
+      "to": "corridor_central_ave_south",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_south_to_main_st",
+      "from": "corridor_central_ave_south",
+      "to": "jct_central_main_st",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_main_st_to_corridor_west",
+      "from": "jct_central_main_st",
+      "to": "corridor_main_street_west",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_west_to_hospital_gate",
+      "from": "corridor_main_street_west",
+      "to": "jct_hiranandani_hospital_gate",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_hospital_gate_to_oxford",
+      "from": "jct_hiranandani_hospital_gate",
+      "to": "node_junction_oxford_roundabout",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_oxford_to_corridor_south_ave",
+      "from": "node_junction_oxford_roundabout",
+      "to": "corridor_south_ave_west",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_south_ave_to_ridge",
+      "from": "corridor_south_ave_west",
+      "to": "jct_south_ave_ridge_st",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_ridge_to_corridor_ridge_north",
+      "from": "jct_south_ave_ridge_st",
+      "to": "corridor_ridge_street_north",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_ridge_north_to_tech",
+      "from": "corridor_ridge_street_north",
+      "to": "jct_technology_st_orchard",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_tech_to_corridor_orchard_east",
+      "from": "jct_technology_st_orchard",
+      "to": "corridor_orchard_ave_east",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_orchard_east_to_central_orchard",
+      "from": "corridor_orchard_ave_east",
+      "to": "jct_central_orchard",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_powai_vihar_to_cliff",
+      "from": "jct_powai_vihar_jvlr",
+      "to": "jct_cliff_ave_powai_vihar",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_cliff_to_corridor_lake_blvd",
+      "from": "jct_cliff_ave_powai_vihar",
+      "to": "corridor_lake_blvd_central",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_lake_blvd_to_lake_homes",
+      "from": "corridor_lake_blvd_central",
+      "to": "jct_lake_homes_entry",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_lake_homes_to_powai_road",
+      "from": "jct_lake_homes_entry",
+      "to": "corridor_powai_road_link",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_jvlr_iit_to_corridor_iit_ring",
+      "from": "jct_jvlr_iit_main",
+      "to": "corridor_iit_inner_ring",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_iit_ring_to_sjmsom",
+      "from": "corridor_iit_inner_ring",
+      "to": "node_school_sjmsom",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_corridor_iit_ring_to_kv",
+      "from": "corridor_iit_inner_ring",
+      "to": "node_school_kv_powai",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_orchard_to_hfs",
+      "from": "jct_central_orchard",
+      "to": "node_school_hfs",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_cliff_to_smshetty",
+      "from": "jct_cliff_ave_powai_vihar",
+      "to": "node_school_smshetty",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_powai_vihar_to_powai_hosp",
+      "from": "jct_powai_vihar_jvlr",
+      "to": "node_hosp_powai",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_hospital_gate_to_hiranandani_hosp",
+      "from": "jct_hiranandani_hospital_gate",
+      "to": "node_hosp_hiranandani",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_main_st_to_nihal",
+      "from": "jct_central_main_st",
+      "to": "node_hosp_nihal",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_road_dam_access_to_lake",
+      "from": "jct_powai_dam_access",
+      "to": "node_lake_powai",
+      "type": "road_connection"
+    },
+    {
+      "id": "edge_em_corridor_hospital_to_em_node",
+      "from": "jct_hiranandani_hospital_gate",
+      "to": "em_route_hiranandani_hospital",
+      "type": "emergency_route"
+    },
+    {
+      "id": "edge_em_node_to_hiranandani_hosp",
+      "from": "em_route_hiranandani_hospital",
+      "to": "node_hosp_hiranandani",
+      "type": "emergency_route"
+    },
+    {
+      "id": "edge_em_corridor_powai_hosp_to_em_node",
+      "from": "jct_powai_vihar_jvlr",
+      "to": "em_route_powai_hospital",
+      "type": "emergency_route"
+    },
+    {
+      "id": "edge_em_node_to_powai_hosp",
+      "from": "em_route_powai_hospital",
+      "to": "node_hosp_powai",
+      "type": "emergency_route"
+    },
+    {
+      "id": "edge_em_corridor_dam_to_em_node",
+      "from": "jct_powai_dam_access",
+      "to": "em_route_powai_dam_spillway",
+      "type": "emergency_route"
+    },
+    {
+      "id": "edge_em_node_to_lake_dam",
+      "from": "em_route_powai_dam_spillway",
+      "to": "node_lake_powai",
+      "type": "emergency_route"
+    },
+    {
+      "id": "edge_service_hosp_hiranandani_res",
+      "from": "node_hosp_hiranandani",
+      "to": "res_zone_hiranandani_gardens",
+      "type": "service_dependency"
+    },
+    {
+      "id": "edge_service_hosp_powai_res_vihar",
+      "from": "node_hosp_powai",
+      "to": "res_zone_powai_vihar",
+      "type": "service_dependency"
+    },
+    {
+      "id": "edge_service_hosp_powai_res_lake_homes",
+      "from": "node_hosp_powai",
+      "to": "res_zone_lake_homes",
+      "type": "service_dependency"
+    },
+    {
+      "id": "edge_service_hosp_nihal_res_rambaug",
+      "from": "node_hosp_nihal",
+      "to": "res_zone_rambaug_slum_pocket",
+      "type": "service_dependency"
+    },
+    {
+      "id": "edge_service_school_hfs_res_hiranandani",
+      "from": "node_school_hfs",
+      "to": "res_zone_hiranandani_gardens",
+      "type": "service_dependency"
+    },
+    {
+      "id": "edge_service_school_smshetty_res_vihar",
+      "from": "node_school_smshetty",
+      "to": "res_zone_powai_vihar",
+      "type": "service_dependency"
+    },
+    {
+      "id": "edge_service_school_kv_res_iit",
+      "from": "node_school_kv_powai",
+      "to": "res_zone_iit_campus_south",
+      "type": "service_dependency"
+    }
+  ],
+  "population_demographics": {
+    "data_source_name": "Census of India & Municipal Corporation of Greater Mumbai (MCGM) Ward S Demographics",
+    "retrieved_at": "2026-03-01T00:00:00Z",
+    "zones": [
+      {
+        "zone_node_id": "res_zone_hiranandani_gardens",
+        "name": "Hiranandani Gardens Residential Sector",
+        "population": 9800,
+        "vulnerability": {
+          "general": 0.42,
+          "emergency_dependent": 0.28
+        }
+      },
+      {
+        "zone_node_id": "res_zone_powai_vihar",
+        "name": "Powai Vihar Residential Complex",
+        "population": 6500,
+        "vulnerability": {
+          "general": 0.48,
+          "emergency_dependent": 0.32
+        }
+      },
+      {
+        "zone_node_id": "res_zone_lake_homes",
+        "name": "Lake Homes Residential Complex",
+        "population": 5200,
+        "vulnerability": {
+          "general": 0.40,
+          "emergency_dependent": 0.25
+        }
+      },
+      {
+        "zone_node_id": "res_zone_iit_campus_south",
+        "name": "IIT Bombay South Residential Quarters",
+        "population": 4100,
+        "vulnerability": {
+          "general": 0.35,
+          "emergency_dependent": 0.18
+        }
+      },
+      {
+        "zone_node_id": "res_zone_rambaug_slum_pocket",
+        "name": "Rambaug / Powai Vihar Dense Urban Pocket",
+        "population": 7300,
+        "vulnerability": {
+          "general": 0.72,
+          "emergency_dependent": 0.45
+        }
+      }
+    ]
+  }
+}

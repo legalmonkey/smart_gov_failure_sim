@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "scenario_id": "scenario_monsoon_substation_trip",
+  "name": "Monsoon Inundation & Substation Tripping Scenario",
+  "description": "Heavy localized monsoon downpour triggers transformer flooding at primary substation with subsequent arterial road waterlogging.",
+  "duration_hours": 12.0,
+  "time_step_hours": 0.1,
+  "initial_events": [
+    {
+      "time_hours": 0.0,
+      "target_type": "node",
+      "target_id": "mock_substation_01",
+      "event_type": "FAILURE",
+      "trigger_reason": "Transformer inundation / flash flood short circuit",
+      "immediate_state": "FAILED"
+    },
+    {
+      "time_hours": 0.5,
+      "target_type": "edge",
+      "target_id": "mock_edge_road_jct1_jct2",
+      "event_type": "DEGRADATION",
+      "trigger_reason": "Stormwater accumulation > 40cm waterlogging",
+      "immediate_state": "DEGRADED"
+    }
+  ],
+  "environmental_conditions": {
+    "rainfall_intensity_mm_per_hr": 68.5,
+    "wind_speed_kmh": 42.0,
+    "ambient_temperature_c": 28.5
+  }
+}

@@ -1,0 +1,2549 @@
+{
+  "schema_version": "1.0",
+  "network_id": "powai_hiranandani",
+  "name": "Powai-Hiranandani Infrastructure Network",
+  "coordinate_reference_system": "EPSG:4326",
+  "nodes": [
+    {
+      "id": "node_hosp_hiranandani",
+      "type": "hospital",
+      "name": "Dr. L. H. Hiranandani Hospital",
+      "osm_refs": [
+        "way/353139106"
+      ],
+      "location": {
+        "latitude": 19.120406,
+        "longitude": 72.916979
+      },
+      "attributes": {
+        "capacity": 148,
+        "load": 83,
+        "population_served": 19012,
+        "backup_duration_hours": 7.5,
+        "failure_threshold": 87,
+        "recovery_time_hours": 5.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/353139106",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_hosp_powai",
+      "type": "hospital",
+      "name": "Powai Hospital",
+      "osm_refs": [
+        "node/1855812194"
+      ],
+      "location": {
+        "latitude": 19.124088,
+        "longitude": 72.916451
+      },
+      "attributes": {
+        "capacity": 259,
+        "load": 102,
+        "population_served": 29349,
+        "backup_duration_hours": 8.5,
+        "failure_threshold": 85,
+        "recovery_time_hours": 3.3
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/1855812194",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_hosp_nihal",
+      "type": "hospital",
+      "name": "Nihal Nursing Home & Clinic",
+      "osm_refs": [
+        "node/6801919192"
+      ],
+      "location": {
+        "latitude": 19.125372,
+        "longitude": 72.919086
+      },
+      "attributes": {
+        "capacity": 179,
+        "load": 144,
+        "population_served": 29726,
+        "backup_duration_hours": 6.2,
+        "failure_threshold": 88,
+        "recovery_time_hours": 5.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/6801919192",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_hfs",
+      "type": "school",
+      "name": "Hiranandani Foundation School",
+      "osm_refs": [
+        "way/483187904"
+      ],
+      "location": {
+        "latitude": 19.117604,
+        "longitude": 72.907901
+      },
+      "attributes": {
+        "capacity": 1616,
+        "load": 829,
+        "population_served": 4305,
+        "backup_duration_hours": 2.9,
+        "failure_threshold": 78,
+        "recovery_time_hours": 4.4
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/483187904",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_smshetty",
+      "type": "school",
+      "name": "S.M. Shetty High School & College",
+      "osm_refs": [
+        "node/11697877354"
+      ],
+      "location": {
+        "latitude": 19.115227,
+        "longitude": 72.905497
+      },
+      "attributes": {
+        "capacity": 513,
+        "load": 497,
+        "population_served": 3807,
+        "backup_duration_hours": 3.4,
+        "failure_threshold": 80,
+        "recovery_time_hours": 2.8
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/11697877354",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_kv_powai",
+      "type": "school",
+      "name": "Kendriya Vidyalaya IIT Powai",
+      "osm_refs": [
+        "way/723512525"
+      ],
+      "location": {
+        "latitude": 19.128896,
+        "longitude": 72.918392
+      },
+      "attributes": {
+        "capacity": 940,
+        "load": 744,
+        "population_served": 3337,
+        "backup_duration_hours": 2.2,
+        "failure_threshold": 73,
+        "recovery_time_hours": 3.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/723512525",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_school_sjmsom",
+      "type": "school",
+      "name": "Shailesh J Mehta School of Management",
+      "osm_refs": [
+        "node/668494244"
+      ],
+      "location": {
+        "latitude": 19.131702,
+        "longitude": 72.915739
+      },
+      "attributes": {
+        "capacity": 1204,
+        "load": 1018,
+        "population_served": 4666,
+        "backup_duration_hours": 3.6,
+        "failure_threshold": 84,
+        "recovery_time_hours": 3.6
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/668494244",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_lake_powai",
+      "type": "water_facility",
+      "name": "Powai Lake Reservoir",
+      "osm_refs": [
+        "relation/8546709"
+      ],
+      "location": {
+        "latitude": 19.128139,
+        "longitude": 72.905898
+      },
+      "attributes": {
+        "capacity": 4550,
+        "load": 2522,
+        "population_served": 71178,
+        "backup_duration_hours": 10.3,
+        "failure_threshold": 90,
+        "recovery_time_hours": 9.7
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "relation/8546709",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_substation_powai",
+      "type": "substation",
+      "name": "Powai 33/11kV Substation",
+      "osm_refs": [
+        "way/920252504"
+      ],
+      "location": {
+        "latitude": 19.130621,
+        "longitude": 72.920281
+      },
+      "attributes": {
+        "capacity": 292,
+        "load": 199,
+        "population_served": 43087,
+        "backup_duration_hours": 4.3,
+        "failure_threshold": 95,
+        "recovery_time_hours": 4.9
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/920252504",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_bridge_gandhinagar",
+      "type": "bridge",
+      "name": "Gandhinagar Junction Flyover",
+      "osm_refs": [
+        "way/177566537"
+      ],
+      "location": {
+        "latitude": 19.125227,
+        "longitude": 72.924884
+      },
+      "attributes": {
+        "capacity": 3092,
+        "load": 1963,
+        "population_served": 25628,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 91,
+        "recovery_time_hours": 12.4
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/177566537",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_bridge_jvlr_adi",
+      "type": "bridge",
+      "name": "Adi Sankaracharya Marg Flyover",
+      "osm_refs": [
+        "way/1334158121"
+      ],
+      "location": {
+        "latitude": 19.120182,
+        "longitude": 72.900029
+      },
+      "attributes": {
+        "capacity": 3801,
+        "load": 3508,
+        "population_served": 29954,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 90,
+        "recovery_time_hours": 11.4
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/1334158121",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "node_junction_oxford_roundabout",
+      "type": "road_junction",
+      "name": "Oxford Roundabout",
+      "osm_refs": [
+        "way/151750351"
+      ],
+      "location": {
+        "latitude": 19.118144,
+        "longitude": 72.904801
+      },
+      "attributes": {
+        "capacity": 1746,
+        "load": 1518,
+        "population_served": 17199,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 85,
+        "recovery_time_hours": 2.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/151750351",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "power_station_vikhroli_feed",
+      "type": "power_station",
+      "name": "Vikhroli Receiving Feeder Station",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1135,
+        "longitude": 72.925
+      },
+      "attributes": {
+        "capacity": 850,
+        "load": 583,
+        "population_served": 75294,
+        "backup_duration_hours": 33.1,
+        "failure_threshold": 98,
+        "recovery_time_hours": 10.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Grid feeder assumption from Eastern Express / Vikhroli sub-transmission corridor"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "water_facility_powai_wtp",
+      "type": "water_facility",
+      "name": "Powai Lake Water Treatment Plant",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1255,
+        "longitude": 72.9055
+      },
+      "attributes": {
+        "capacity": 4328,
+        "load": 2429,
+        "population_served": 50010,
+        "backup_duration_hours": 14.6,
+        "failure_threshold": 92,
+        "recovery_time_hours": 7.9
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "MCGM Powai Lake emergency raw water intake and filtration plant"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "water_pump_hiranandani",
+      "type": "water_pump",
+      "name": "Hiranandani Booster Pumping Station",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1185,
+        "longitude": 72.915
+      },
+      "attributes": {
+        "capacity": 537,
+        "load": 313,
+        "population_served": 15456,
+        "backup_duration_hours": 7.7,
+        "failure_threshold": 85,
+        "recovery_time_hours": 3.6
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Municipal distribution booster pump serving elevated Hiranandani sectors"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "res_zone_hiranandani_gardens",
+      "type": "residential_zone",
+      "name": "Hiranandani Gardens Residential Sector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.119,
+        "longitude": 72.9135
+      },
+      "attributes": {
+        "capacity": 12179,
+        "load": 6441,
+        "population_served": 11517,
+        "backup_duration_hours": 1.3,
+        "failure_threshold": 69,
+        "recovery_time_hours": 3.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Centroid of Hiranandani Gardens residential complex building cluster"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "res_zone_powai_vihar",
+      "type": "residential_zone",
+      "name": "Powai Vihar Residential Complex",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1235,
+        "longitude": 72.9045
+      },
+      "attributes": {
+        "capacity": 13197,
+        "load": 7615,
+        "population_served": 8304,
+        "backup_duration_hours": 2.5,
+        "failure_threshold": 78,
+        "recovery_time_hours": 5.6
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Centroid of Powai Vihar complex residential cluster"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "res_zone_lake_homes",
+      "type": "residential_zone",
+      "name": "Lake Homes Residential Complex",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.122,
+        "longitude": 72.9015
+      },
+      "attributes": {
+        "capacity": 10543,
+        "load": 6165,
+        "population_served": 7593,
+        "backup_duration_hours": 3.0,
+        "failure_threshold": 69,
+        "recovery_time_hours": 4.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Centroid of Lake Homes residential towers"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "res_zone_iit_campus_south",
+      "type": "residential_zone",
+      "name": "IIT Bombay South Residential Quarters",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1295,
+        "longitude": 72.915
+      },
+      "attributes": {
+        "capacity": 5489,
+        "load": 3392,
+        "population_served": 5796,
+        "backup_duration_hours": 1.3,
+        "failure_threshold": 70,
+        "recovery_time_hours": 5.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Centroid of staff & faculty quarters south of main academic zone"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "res_zone_rambaug_slum_pocket",
+      "type": "residential_zone",
+      "name": "Rambaug / Powai Vihar Dense Urban Pocket",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.121,
+        "longitude": 72.903
+      },
+      "attributes": {
+        "capacity": 10916,
+        "load": 8085,
+        "population_served": 5040,
+        "backup_duration_hours": 1.8,
+        "failure_threshold": 79,
+        "recovery_time_hours": 4.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Centroid of high-density mixed settlement in Ward S"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_jvlr_gandhinagar",
+      "type": "road_junction",
+      "name": "JVLR - Gandhinagar Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1285,
+        "longitude": 72.923
+      },
+      "attributes": {
+        "capacity": 3188,
+        "load": 1933,
+        "population_served": 6188,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 83,
+        "recovery_time_hours": 2.4
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Intersection of JVLR and LBS Marg arterial link"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_jvlr_iit_main",
+      "type": "road_junction",
+      "name": "JVLR - IIT Main Gate Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.127,
+        "longitude": 72.9165
+      },
+      "attributes": {
+        "capacity": 2299,
+        "load": 1346,
+        "population_served": 16501,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 89,
+        "recovery_time_hours": 1.9
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Main ingress intersection from JVLR into IIT campus"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_jvlr_central_ave",
+      "type": "road_junction",
+      "name": "JVLR - Central Avenue Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.125,
+        "longitude": 72.911
+      },
+      "attributes": {
+        "capacity": 2129,
+        "load": 806,
+        "population_served": 17830,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 88,
+        "recovery_time_hours": 2.9
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Primary northern entry into Hiranandani Gardens from JVLR"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_central_orchard",
+      "type": "road_junction",
+      "name": "Central Ave - Orchard Ave Intersection",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1215,
+        "longitude": 72.9125
+      },
+      "attributes": {
+        "capacity": 2760,
+        "load": 1165,
+        "population_served": 14317,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 89,
+        "recovery_time_hours": 2.7
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Major internal junction in northern Hiranandani"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_central_main_st",
+      "type": "road_junction",
+      "name": "Central Ave - Main Street Intersection",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1175,
+        "longitude": 72.9145
+      },
+      "attributes": {
+        "capacity": 2239,
+        "load": 2047,
+        "population_served": 9258,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 85,
+        "recovery_time_hours": 2.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Central commerce and transit intersection in Hiranandani"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_hiranandani_hospital_gate",
+      "type": "road_junction",
+      "name": "Main Street - Hospital Access Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1165,
+        "longitude": 72.913
+      },
+      "attributes": {
+        "capacity": 2794,
+        "load": 1886,
+        "population_served": 6009,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 95,
+        "recovery_time_hours": 1.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Primary vehicle ingress junction to Dr. L. H. Hiranandani Hospital"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_powai_vihar_jvlr",
+      "type": "road_junction",
+      "name": "JVLR - Powai Vihar Road Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.124,
+        "longitude": 72.906
+      },
+      "attributes": {
+        "capacity": 3102,
+        "load": 1543,
+        "population_served": 11038,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 87,
+        "recovery_time_hours": 2.8
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Ingress intersection to Powai Vihar and lake western bank"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_cliff_ave_powai_vihar",
+      "type": "road_junction",
+      "name": "Cliff Avenue - Powai Vihar Road Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1215,
+        "longitude": 72.905
+      },
+      "attributes": {
+        "capacity": 3139,
+        "load": 961,
+        "population_served": 7403,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 82,
+        "recovery_time_hours": 3.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Internal distribution junction in Powai Vihar"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_lake_homes_entry",
+      "type": "road_junction",
+      "name": "Lake Boulevard - Lake Homes Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.121,
+        "longitude": 72.901
+      },
+      "attributes": {
+        "capacity": 2290,
+        "load": 1057,
+        "population_served": 8103,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 85,
+        "recovery_time_hours": 1.5
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Main access junction to Lake Homes residential towers"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_powai_dam_access",
+      "type": "road_junction",
+      "name": "JVLR - Powai Dam Access Point",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1265,
+        "longitude": 72.904
+      },
+      "attributes": {
+        "capacity": 2986,
+        "load": 2042,
+        "population_served": 12932,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 86,
+        "recovery_time_hours": 2.4
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Dam maintenance and spillway access point on JVLR"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_south_ave_ridge_st",
+      "type": "road_junction",
+      "name": "South Ave - Ridge Street Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.115,
+        "longitude": 72.9165
+      },
+      "attributes": {
+        "capacity": 2017,
+        "load": 1564,
+        "population_served": 13177,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 94,
+        "recovery_time_hours": 1.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Southern perimeter junction in Hiranandani"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "jct_technology_st_orchard",
+      "type": "road_junction",
+      "name": "Technology Street - Orchard Ave Junction",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.12,
+        "longitude": 72.916
+      },
+      "attributes": {
+        "capacity": 1660,
+        "load": 865,
+        "population_served": 11539,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 87,
+        "recovery_time_hours": 2.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Business park and IT corridor intersection"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_jvlr_east",
+      "type": "road_junction",
+      "name": "JVLR East Sector Link",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1278,
+        "longitude": 72.92
+      },
+      "attributes": {
+        "capacity": 1214,
+        "load": 836,
+        "population_served": 17597,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 87,
+        "recovery_time_hours": 1.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "JVLR arterial midpoint segment linking IIT to Gandhinagar"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_jvlr_west",
+      "type": "road_junction",
+      "name": "JVLR West Sector Link",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1255,
+        "longitude": 72.9085
+      },
+      "attributes": {
+        "capacity": 1264,
+        "load": 1240,
+        "population_served": 11413,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 87,
+        "recovery_time_hours": 1.6
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "JVLR arterial midpoint segment along Powai Lake shoreline"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_central_ave_north",
+      "type": "road_junction",
+      "name": "Central Avenue North Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.123,
+        "longitude": 72.9118
+      },
+      "attributes": {
+        "capacity": 2194,
+        "load": 1238,
+        "population_served": 14834,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 95,
+        "recovery_time_hours": 1.5
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Central Avenue boulevard arterial midpoint"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_central_ave_south",
+      "type": "road_junction",
+      "name": "Central Avenue South Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1195,
+        "longitude": 72.9135
+      },
+      "attributes": {
+        "capacity": 2168,
+        "load": 1633,
+        "population_served": 9119,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 93,
+        "recovery_time_hours": 1.7
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Central Avenue commercial corridor midpoint"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_main_street_west",
+      "type": "road_junction",
+      "name": "Main Street West Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.117,
+        "longitude": 72.9138
+      },
+      "attributes": {
+        "capacity": 2041,
+        "load": 1756,
+        "population_served": 17945,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 83,
+        "recovery_time_hours": 1.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Main Street retail spine connector"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_orchard_ave_east",
+      "type": "road_junction",
+      "name": "Orchard Avenue East Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1208,
+        "longitude": 72.9142
+      },
+      "attributes": {
+        "capacity": 2691,
+        "load": 1494,
+        "population_served": 7790,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 86,
+        "recovery_time_hours": 2.1
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Orchard Avenue link towards Galleria shopping center"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_lake_blvd_central",
+      "type": "road_junction",
+      "name": "Lake Boulevard Central Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1225,
+        "longitude": 72.9035
+      },
+      "attributes": {
+        "capacity": 1487,
+        "load": 1232,
+        "population_served": 9006,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 87,
+        "recovery_time_hours": 2.7
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Lake Boulevard connection between Powai Vihar and Lake Homes"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_south_ave_west",
+      "type": "road_junction",
+      "name": "South Avenue West Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1145,
+        "longitude": 72.915
+      },
+      "attributes": {
+        "capacity": 1354,
+        "load": 1253,
+        "population_served": 15016,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 80,
+        "recovery_time_hours": 2.9
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "South Avenue southern egress connector"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_ridge_street_north",
+      "type": "road_junction",
+      "name": "Ridge Street North Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.118,
+        "longitude": 72.9175
+      },
+      "attributes": {
+        "capacity": 3097,
+        "load": 2343,
+        "population_served": 9872,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 95,
+        "recovery_time_hours": 2.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Ridge Street residential transit connector"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_iit_inner_ring",
+      "type": "road_junction",
+      "name": "IIT South Ring Road Connector",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1285,
+        "longitude": 72.9155
+      },
+      "attributes": {
+        "capacity": 2970,
+        "load": 1621,
+        "population_served": 6960,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 80,
+        "recovery_time_hours": 3.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Campus internal loop connection to faculty housing"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "corridor_powai_road_link",
+      "type": "road_junction",
+      "name": "Powai Road - Saki Vihar Feeder Link",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1215,
+        "longitude": 72.8995
+      },
+      "attributes": {
+        "capacity": 1743,
+        "load": 1602,
+        "population_served": 13454,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 95,
+        "recovery_time_hours": 1.3
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Southwest connection toward Saki Vihar and western suburbs"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "em_route_hiranandani_hospital",
+      "type": "emergency_access",
+      "name": "Hiranandani Hospital Emergency Ambulance Corridor",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1162,
+        "longitude": 72.9132
+      },
+      "attributes": {
+        "capacity": 903,
+        "load": 472,
+        "population_served": 9958,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 81,
+        "recovery_time_hours": 3.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Dedicated ambulance bay and emergency trauma access lane"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "em_route_powai_hospital",
+      "type": "emergency_access",
+      "name": "Powai Hospital Emergency Vehicle Corridor",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1238,
+        "longitude": 72.9058
+      },
+      "attributes": {
+        "capacity": 658,
+        "load": 275,
+        "population_served": 18571,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 85,
+        "recovery_time_hours": 1.2
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Ambulance ingress from JVLR and Powai Vihar Road"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "em_route_powai_dam_spillway",
+      "type": "emergency_access",
+      "name": "Powai Dam Spillway Emergency Flood Relief Access",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.1262,
+        "longitude": 72.9042
+      },
+      "attributes": {
+        "capacity": 1120,
+        "load": 332,
+        "population_served": 12044,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 82,
+        "recovery_time_hours": 3.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Disaster management flood monitoring vehicle access route"
+      },
+      "data_status": "SIMULATED"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_power_grid_feeder",
+      "from": "power_station_vikhroli_feed",
+      "to": "node_substation_powai",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 180,
+        "load": 132,
+        "dependency_strength": 0.99,
+        "failure_probability": 0.048
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_hosp_hiranandani",
+      "from": "node_substation_powai",
+      "to": "node_hosp_hiranandani",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 268,
+        "load": 206,
+        "dependency_strength": 0.94,
+        "failure_probability": 0.041
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_hosp_powai",
+      "from": "node_substation_powai",
+      "to": "node_hosp_powai",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 269,
+        "load": 205,
+        "dependency_strength": 0.9,
+        "failure_probability": 0.033
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_hosp_nihal",
+      "from": "node_substation_powai",
+      "to": "node_hosp_nihal",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 200,
+        "load": 140,
+        "dependency_strength": 0.91,
+        "failure_probability": 0.054
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_school_hfs",
+      "from": "node_substation_powai",
+      "to": "node_school_hfs",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 196,
+        "load": 145,
+        "dependency_strength": 0.99,
+        "failure_probability": 0.067
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_school_smshetty",
+      "from": "node_substation_powai",
+      "to": "node_school_smshetty",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 122,
+        "load": 90,
+        "dependency_strength": 1.0,
+        "failure_probability": 0.07
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_school_kv",
+      "from": "node_substation_powai",
+      "to": "node_school_kv_powai",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 138,
+        "load": 105,
+        "dependency_strength": 0.93,
+        "failure_probability": 0.027
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_school_sjmsom",
+      "from": "node_substation_powai",
+      "to": "node_school_sjmsom",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 209,
+        "load": 173,
+        "dependency_strength": 0.98,
+        "failure_probability": 0.038
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_wtp",
+      "from": "node_substation_powai",
+      "to": "water_facility_powai_wtp",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 160,
+        "load": 118,
+        "dependency_strength": 0.93,
+        "failure_probability": 0.035
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_pump_hiranandani",
+      "from": "node_substation_powai",
+      "to": "water_pump_hiranandani",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 255,
+        "load": 166,
+        "dependency_strength": 0.97,
+        "failure_probability": 0.035
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_res_hiranandani",
+      "from": "node_substation_powai",
+      "to": "res_zone_hiranandani_gardens",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 146,
+        "load": 122,
+        "dependency_strength": 0.87,
+        "failure_probability": 0.026
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_res_powai_vihar",
+      "from": "node_substation_powai",
+      "to": "res_zone_powai_vihar",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 147,
+        "load": 117,
+        "dependency_strength": 0.87,
+        "failure_probability": 0.034
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_res_lake_homes",
+      "from": "node_substation_powai",
+      "to": "res_zone_lake_homes",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 173,
+        "load": 137,
+        "dependency_strength": 0.88,
+        "failure_probability": 0.052
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_res_iit",
+      "from": "node_substation_powai",
+      "to": "res_zone_iit_campus_south",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 187,
+        "load": 140,
+        "dependency_strength": 0.89,
+        "failure_probability": 0.065
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_res_rambaug",
+      "from": "node_substation_powai",
+      "to": "res_zone_rambaug_slum_pocket",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 133,
+        "load": 89,
+        "dependency_strength": 0.91,
+        "failure_probability": 0.034
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_jct_central_ave",
+      "from": "node_substation_powai",
+      "to": "jct_jvlr_central_ave",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 120,
+        "load": 86,
+        "dependency_strength": 0.87,
+        "failure_probability": 0.069
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_power_sub_jct_gandhinagar",
+      "from": "node_substation_powai",
+      "to": "jct_jvlr_gandhinagar",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 161,
+        "load": 129,
+        "dependency_strength": 0.93,
+        "failure_probability": 0.041
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_water_lake_to_wtp",
+      "from": "node_lake_powai",
+      "to": "water_facility_powai_wtp",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 162,
+        "load": 101,
+        "dependency_strength": 0.94,
+        "failure_probability": 0.065
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_water_wtp_to_booster",
+      "from": "water_facility_powai_wtp",
+      "to": "water_pump_hiranandani",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 198,
+        "load": 140,
+        "dependency_strength": 0.92,
+        "failure_probability": 0.059
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_water_wtp_to_powai_hosp",
+      "from": "water_facility_powai_wtp",
+      "to": "node_hosp_powai",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 197,
+        "load": 135,
+        "dependency_strength": 0.76,
+        "failure_probability": 0.048
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_water_wtp_to_res_vihar",
+      "from": "water_facility_powai_wtp",
+      "to": "res_zone_powai_vihar",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 170,
+        "load": 133,
+        "dependency_strength": 0.79,
+        "failure_probability": 0.042
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_water_wtp_to_res_lake_homes",
+      "from": "water_facility_powai_wtp",
+      "to": "res_zone_lake_homes",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 186,
+        "load": 125,
+        "dependency_strength": 0.86,
+        "failure_probability": 0.074
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_water_pump_to_hosp_hiranandani",
+      "from": "water_pump_hiranandani",
+      "to": "node_hosp_hiranandani",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 318,
+        "load": 238,
+        "dependency_strength": 0.94,
+        "failure_probability": 0.042
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_water_pump_to_school_hfs",
+      "from": "water_pump_hiranandani",
+      "to": "node_school_hfs",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 201,
+        "load": 160,
+        "dependency_strength": 0.91,
+        "failure_probability": 0.074
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_water_pump_to_res_hiranandani",
+      "from": "water_pump_hiranandani",
+      "to": "res_zone_hiranandani_gardens",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 166,
+        "load": 106,
+        "dependency_strength": 0.93,
+        "failure_probability": 0.069
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_water_pump_to_res_rambaug",
+      "from": "water_pump_hiranandani",
+      "to": "res_zone_rambaug_slum_pocket",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 265,
+        "load": 202,
+        "dependency_strength": 0.92,
+        "failure_probability": 0.071
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_road_jvlr_gandhinagar_bridge",
+      "from": "jct_jvlr_gandhinagar",
+      "to": "node_bridge_gandhinagar",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1346,
+        "load": 737,
+        "dependency_strength": 0.71,
+        "failure_probability": 0.021
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_bridge_gandhinagar_corridor_east",
+      "from": "node_bridge_gandhinagar",
+      "to": "corridor_jvlr_east",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 879,
+        "load": 666,
+        "dependency_strength": 0.57,
+        "failure_probability": 0.034
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_east_jvlr_iit",
+      "from": "corridor_jvlr_east",
+      "to": "jct_jvlr_iit_main",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1742,
+        "load": 1054,
+        "dependency_strength": 0.75,
+        "failure_probability": 0.036
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_jvlr_iit_to_bridge_adi",
+      "from": "jct_jvlr_iit_main",
+      "to": "node_bridge_jvlr_adi",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1256,
+        "load": 637,
+        "dependency_strength": 0.56,
+        "failure_probability": 0.02
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_bridge_adi_to_central_ave",
+      "from": "node_bridge_jvlr_adi",
+      "to": "jct_jvlr_central_ave",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 942,
+        "load": 744,
+        "dependency_strength": 0.58,
+        "failure_probability": 0.029
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_central_ave_to_corridor_west",
+      "from": "jct_jvlr_central_ave",
+      "to": "corridor_jvlr_west",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1618,
+        "load": 1139,
+        "dependency_strength": 0.75,
+        "failure_probability": 0.02
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_west_to_powai_vihar",
+      "from": "corridor_jvlr_west",
+      "to": "jct_powai_vihar_jvlr",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 856,
+        "load": 458,
+        "dependency_strength": 0.79,
+        "failure_probability": 0.015
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_powai_vihar_to_dam",
+      "from": "jct_powai_vihar_jvlr",
+      "to": "jct_powai_dam_access",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1343,
+        "load": 687,
+        "dependency_strength": 0.68,
+        "failure_probability": 0.02
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_central_ave_to_corridor_north",
+      "from": "jct_jvlr_central_ave",
+      "to": "corridor_central_ave_north",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1442,
+        "load": 910,
+        "dependency_strength": 0.8,
+        "failure_probability": 0.013
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_north_to_orchard",
+      "from": "corridor_central_ave_north",
+      "to": "jct_central_orchard",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1980,
+        "load": 1103,
+        "dependency_strength": 0.51,
+        "failure_probability": 0.023
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_orchard_to_corridor_south",
+      "from": "jct_central_orchard",
+      "to": "corridor_central_ave_south",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1864,
+        "load": 1450,
+        "dependency_strength": 0.66,
+        "failure_probability": 0.032
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_south_to_main_st",
+      "from": "corridor_central_ave_south",
+      "to": "jct_central_main_st",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 2319,
+        "load": 1672,
+        "dependency_strength": 0.56,
+        "failure_probability": 0.023
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_main_st_to_corridor_west",
+      "from": "jct_central_main_st",
+      "to": "corridor_main_street_west",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 2160,
+        "load": 1677,
+        "dependency_strength": 0.69,
+        "failure_probability": 0.03
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_west_to_hospital_gate",
+      "from": "corridor_main_street_west",
+      "to": "jct_hiranandani_hospital_gate",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1055,
+        "load": 755,
+        "dependency_strength": 0.59,
+        "failure_probability": 0.019
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_hospital_gate_to_oxford",
+      "from": "jct_hiranandani_hospital_gate",
+      "to": "node_junction_oxford_roundabout",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1636,
+        "load": 978,
+        "dependency_strength": 0.71,
+        "failure_probability": 0.027
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_oxford_to_corridor_south_ave",
+      "from": "node_junction_oxford_roundabout",
+      "to": "corridor_south_ave_west",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1192,
+        "load": 746,
+        "dependency_strength": 0.78,
+        "failure_probability": 0.03
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_south_ave_to_ridge",
+      "from": "corridor_south_ave_west",
+      "to": "jct_south_ave_ridge_st",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1156,
+        "load": 791,
+        "dependency_strength": 0.59,
+        "failure_probability": 0.026
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_ridge_to_corridor_ridge_north",
+      "from": "jct_south_ave_ridge_st",
+      "to": "corridor_ridge_street_north",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 800,
+        "load": 473,
+        "dependency_strength": 0.56,
+        "failure_probability": 0.034
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_ridge_north_to_tech",
+      "from": "corridor_ridge_street_north",
+      "to": "jct_technology_st_orchard",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 2042,
+        "load": 1422,
+        "dependency_strength": 0.64,
+        "failure_probability": 0.023
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_tech_to_corridor_orchard_east",
+      "from": "jct_technology_st_orchard",
+      "to": "corridor_orchard_ave_east",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1237,
+        "load": 808,
+        "dependency_strength": 0.74,
+        "failure_probability": 0.039
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_orchard_east_to_central_orchard",
+      "from": "corridor_orchard_ave_east",
+      "to": "jct_central_orchard",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 2307,
+        "load": 1271,
+        "dependency_strength": 0.53,
+        "failure_probability": 0.025
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_powai_vihar_to_cliff",
+      "from": "jct_powai_vihar_jvlr",
+      "to": "jct_cliff_ave_powai_vihar",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 2096,
+        "load": 1437,
+        "dependency_strength": 0.53,
+        "failure_probability": 0.039
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_cliff_to_corridor_lake_blvd",
+      "from": "jct_cliff_ave_powai_vihar",
+      "to": "corridor_lake_blvd_central",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1281,
+        "load": 899,
+        "dependency_strength": 0.57,
+        "failure_probability": 0.016
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_lake_blvd_to_lake_homes",
+      "from": "corridor_lake_blvd_central",
+      "to": "jct_lake_homes_entry",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 850,
+        "load": 437,
+        "dependency_strength": 0.8,
+        "failure_probability": 0.028
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_lake_homes_to_powai_road",
+      "from": "jct_lake_homes_entry",
+      "to": "corridor_powai_road_link",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 2373,
+        "load": 1238,
+        "dependency_strength": 0.62,
+        "failure_probability": 0.029
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_jvlr_iit_to_corridor_iit_ring",
+      "from": "jct_jvlr_iit_main",
+      "to": "corridor_iit_inner_ring",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1198,
+        "load": 857,
+        "dependency_strength": 0.62,
+        "failure_probability": 0.022
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_iit_ring_to_sjmsom",
+      "from": "corridor_iit_inner_ring",
+      "to": "node_school_sjmsom",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1102,
+        "load": 768,
+        "dependency_strength": 0.5,
+        "failure_probability": 0.033
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_corridor_iit_ring_to_kv",
+      "from": "corridor_iit_inner_ring",
+      "to": "node_school_kv_powai",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 2377,
+        "load": 1820,
+        "dependency_strength": 0.73,
+        "failure_probability": 0.017
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_orchard_to_hfs",
+      "from": "jct_central_orchard",
+      "to": "node_school_hfs",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 2225,
+        "load": 1458,
+        "dependency_strength": 0.52,
+        "failure_probability": 0.017
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_cliff_to_smshetty",
+      "from": "jct_cliff_ave_powai_vihar",
+      "to": "node_school_smshetty",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1048,
+        "load": 668,
+        "dependency_strength": 0.74,
+        "failure_probability": 0.03
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_powai_vihar_to_powai_hosp",
+      "from": "jct_powai_vihar_jvlr",
+      "to": "node_hosp_powai",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1944,
+        "load": 1319,
+        "dependency_strength": 0.79,
+        "failure_probability": 0.037
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_hospital_gate_to_hiranandani_hosp",
+      "from": "jct_hiranandani_hospital_gate",
+      "to": "node_hosp_hiranandani",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 2054,
+        "load": 1529,
+        "dependency_strength": 0.77,
+        "failure_probability": 0.023
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_main_st_to_nihal",
+      "from": "jct_central_main_st",
+      "to": "node_hosp_nihal",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1922,
+        "load": 1218,
+        "dependency_strength": 0.55,
+        "failure_probability": 0.036
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_road_dam_access_to_lake",
+      "from": "jct_powai_dam_access",
+      "to": "node_lake_powai",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1721,
+        "load": 994,
+        "dependency_strength": 0.57,
+        "failure_probability": 0.029
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_em_corridor_hospital_to_em_node",
+      "from": "jct_hiranandani_hospital_gate",
+      "to": "em_route_hiranandani_hospital",
+      "type": "emergency_route",
+      "directed": false,
+      "attributes": {
+        "capacity": 1284,
+        "load": 685,
+        "dependency_strength": 0.89,
+        "failure_probability": 0.027
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_em_node_to_hiranandani_hosp",
+      "from": "em_route_hiranandani_hospital",
+      "to": "node_hosp_hiranandani",
+      "type": "emergency_route",
+      "directed": false,
+      "attributes": {
+        "capacity": 950,
+        "load": 307,
+        "dependency_strength": 0.85,
+        "failure_probability": 0.028
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_em_corridor_powai_hosp_to_em_node",
+      "from": "jct_powai_vihar_jvlr",
+      "to": "em_route_powai_hospital",
+      "type": "emergency_route",
+      "directed": false,
+      "attributes": {
+        "capacity": 827,
+        "load": 470,
+        "dependency_strength": 0.81,
+        "failure_probability": 0.025
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_em_node_to_powai_hosp",
+      "from": "em_route_powai_hospital",
+      "to": "node_hosp_powai",
+      "type": "emergency_route",
+      "directed": false,
+      "attributes": {
+        "capacity": 892,
+        "load": 453,
+        "dependency_strength": 0.93,
+        "failure_probability": 0.022
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_em_corridor_dam_to_em_node",
+      "from": "jct_powai_dam_access",
+      "to": "em_route_powai_dam_spillway",
+      "type": "emergency_route",
+      "directed": false,
+      "attributes": {
+        "capacity": 917,
+        "load": 366,
+        "dependency_strength": 0.88,
+        "failure_probability": 0.022
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_em_node_to_lake_dam",
+      "from": "em_route_powai_dam_spillway",
+      "to": "node_lake_powai",
+      "type": "emergency_route",
+      "directed": false,
+      "attributes": {
+        "capacity": 1352,
+        "load": 576,
+        "dependency_strength": 0.96,
+        "failure_probability": 0.038
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "edge_service_hosp_hiranandani_res",
+      "from": "node_hosp_hiranandani",
+      "to": "res_zone_hiranandani_gardens",
+      "type": "service_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 189,
+        "load": 77,
+        "dependency_strength": 0.88,
+        "failure_probability": 0.043
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_service_hosp_powai_res_vihar",
+      "from": "node_hosp_powai",
+      "to": "res_zone_powai_vihar",
+      "type": "service_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 161,
+        "load": 65,
+        "dependency_strength": 0.77,
+        "failure_probability": 0.05
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_service_hosp_powai_res_lake_homes",
+      "from": "node_hosp_powai",
+      "to": "res_zone_lake_homes",
+      "type": "service_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 153,
+        "load": 86,
+        "dependency_strength": 0.85,
+        "failure_probability": 0.052
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_service_hosp_nihal_res_rambaug",
+      "from": "node_hosp_nihal",
+      "to": "res_zone_rambaug_slum_pocket",
+      "type": "service_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 128,
+        "load": 70,
+        "dependency_strength": 0.75,
+        "failure_probability": 0.039
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_service_school_hfs_res_hiranandani",
+      "from": "node_school_hfs",
+      "to": "res_zone_hiranandani_gardens",
+      "type": "service_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 149,
+        "load": 75,
+        "dependency_strength": 0.84,
+        "failure_probability": 0.036
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_service_school_smshetty_res_vihar",
+      "from": "node_school_smshetty",
+      "to": "res_zone_powai_vihar",
+      "type": "service_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 121,
+        "load": 79,
+        "dependency_strength": 0.88,
+        "failure_probability": 0.059
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "edge_service_school_kv_res_iit",
+      "from": "node_school_kv_powai",
+      "to": "res_zone_iit_campus_south",
+      "type": "service_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 168,
+        "load": 69,
+        "dependency_strength": 0.78,
+        "failure_probability": 0.043
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "Physical adjacency and municipal infrastructure dependency model"
+      },
+      "data_status": "SIMULATED"
+    }
+  ]
+}

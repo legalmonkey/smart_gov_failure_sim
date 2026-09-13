@@ -1,0 +1,487 @@
+{
+  "schema_version": "1.0",
+  "network_id": "mock_network",
+  "name": "Mock Prototype Infrastructure Network",
+  "coordinate_reference_system": "EPSG:4326",
+  "nodes": [
+    {
+      "id": "mock_power_station_01",
+      "type": "power_station",
+      "name": "Mock Generation Feeder Plant",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.115000,
+        "longitude": 72.925000
+      },
+      "attributes": {
+        "capacity": 800,
+        "load": 620,
+        "population_served": 50000,
+        "backup_duration_hours": 36.0,
+        "failure_threshold": 95,
+        "recovery_time_hours": 12.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_fixture_default"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "mock_substation_01",
+      "type": "substation",
+      "name": "Mock 33kV Substation",
+      "osm_refs": [],
+      "location": {
+        "latitude": 19.121000,
+        "longitude": 72.918000
+      },
+      "attributes": {
+        "capacity": 300,
+        "load": 220,
+        "population_served": 25000,
+        "backup_duration_hours": 6.0,
+        "failure_threshold": 90,
+        "recovery_time_hours": 6.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_fixture_default"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "mock_hospital_01",
+      "type": "hospital",
+      "name": "Mock General Hospital",
+      "osm_refs": ["node/1001"],
+      "location": {
+        "latitude": 19.120000,
+        "longitude": 72.910000
+      },
+      "attributes": {
+        "capacity": 150,
+        "load": 110,
+        "population_served": 18000,
+        "backup_duration_hours": 8.0,
+        "failure_threshold": 90,
+        "recovery_time_hours": 4.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/1001",
+        "retrieved_at": "2026-01-01T00:00:00Z"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "mock_school_01",
+      "type": "school",
+      "name": "Mock Community School",
+      "osm_refs": ["node/1002"],
+      "location": {
+        "latitude": 19.122000,
+        "longitude": 72.912000
+      },
+      "attributes": {
+        "capacity": 800,
+        "load": 650,
+        "population_served": 3500,
+        "backup_duration_hours": 3.0,
+        "failure_threshold": 80,
+        "recovery_time_hours": 3.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/1002",
+        "retrieved_at": "2026-01-01T00:00:00Z"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "mock_water_facility_01",
+      "type": "water_facility",
+      "name": "Mock Water Reservoir & WTP",
+      "osm_refs": ["node/1003"],
+      "location": {
+        "latitude": 19.125000,
+        "longitude": 72.905000
+      },
+      "attributes": {
+        "capacity": 4000,
+        "load": 3100,
+        "population_served": 45000,
+        "backup_duration_hours": 12.0,
+        "failure_threshold": 85,
+        "recovery_time_hours": 8.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/1003",
+        "retrieved_at": "2026-01-01T00:00:00Z"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "mock_road_jct_01",
+      "type": "road_junction",
+      "name": "Mock Highway Junction A",
+      "osm_refs": ["way/2001"],
+      "location": {
+        "latitude": 19.120000,
+        "longitude": 72.900000
+      },
+      "attributes": {
+        "capacity": 2000,
+        "load": 1400,
+        "population_served": 12000,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 90,
+        "recovery_time_hours": 2.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/2001",
+        "retrieved_at": "2026-01-01T00:00:00Z"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "mock_road_jct_02",
+      "type": "road_junction",
+      "name": "Mock Central Junction B",
+      "osm_refs": ["way/2002"],
+      "location": {
+        "latitude": 19.120000,
+        "longitude": 72.910000
+      },
+      "attributes": {
+        "capacity": 1800,
+        "load": 1200,
+        "population_served": 10000,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 90,
+        "recovery_time_hours": 2.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/2002",
+        "retrieved_at": "2026-01-01T00:00:00Z"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "mock_road_jct_03",
+      "type": "road_junction",
+      "name": "Mock East Avenue Junction C",
+      "osm_refs": ["way/2003"],
+      "location": {
+        "latitude": 19.120000,
+        "longitude": 72.915000
+      },
+      "attributes": {
+        "capacity": 1600,
+        "load": 1100,
+        "population_served": 9000,
+        "backup_duration_hours": 0.0,
+        "failure_threshold": 90,
+        "recovery_time_hours": 2.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/2003",
+        "retrieved_at": "2026-01-01T00:00:00Z"
+      },
+      "data_status": "REAL"
+    },
+    {
+      "id": "mock_res_zone_01",
+      "type": "residential_zone",
+      "name": "Mock Residential Community Sector",
+      "osm_refs": ["way/2004"],
+      "location": {
+        "latitude": 19.120000,
+        "longitude": 72.912000
+      },
+      "attributes": {
+        "capacity": 6000,
+        "load": 4800,
+        "population_served": 6000,
+        "backup_duration_hours": 2.0,
+        "failure_threshold": 75,
+        "recovery_time_hours": 4.0
+      },
+      "status": "OPERATIONAL",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/2004",
+        "retrieved_at": "2026-01-01T00:00:00Z"
+      },
+      "data_status": "REAL"
+    }
+  ],
+  "edges": [
+    {
+      "id": "mock_edge_power_gen_sub",
+      "from": "mock_power_station_01",
+      "to": "mock_substation_01",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 250,
+        "load": 180,
+        "dependency_strength": 1.0,
+        "failure_probability": 0.03
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_grid_distribution"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "mock_edge_power_sub_hosp",
+      "from": "mock_substation_01",
+      "to": "mock_hospital_01",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 150,
+        "load": 110,
+        "dependency_strength": 0.95,
+        "failure_probability": 0.04
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_grid_distribution"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "mock_edge_power_sub_school",
+      "from": "mock_substation_01",
+      "to": "mock_school_01",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 100,
+        "load": 70,
+        "dependency_strength": 0.85,
+        "failure_probability": 0.04
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_grid_distribution"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "mock_edge_power_sub_wtp",
+      "from": "mock_substation_01",
+      "to": "mock_water_facility_01",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 180,
+        "load": 130,
+        "dependency_strength": 0.95,
+        "failure_probability": 0.04
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_grid_distribution"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "mock_edge_power_sub_res",
+      "from": "mock_substation_01",
+      "to": "mock_res_zone_01",
+      "type": "power_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 200,
+        "load": 150,
+        "dependency_strength": 0.90,
+        "failure_probability": 0.04
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_grid_distribution"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "mock_edge_water_wtp_hosp",
+      "from": "mock_water_facility_01",
+      "to": "mock_hospital_01",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 200,
+        "load": 140,
+        "dependency_strength": 0.90,
+        "failure_probability": 0.03
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_water_pipeline"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "mock_edge_water_wtp_res",
+      "from": "mock_water_facility_01",
+      "to": "mock_res_zone_01",
+      "type": "water_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 250,
+        "load": 190,
+        "dependency_strength": 0.88,
+        "failure_probability": 0.03
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_water_pipeline"
+      },
+      "data_status": "SIMULATED"
+    },
+    {
+      "id": "mock_edge_road_jct1_jct2",
+      "from": "mock_road_jct_01",
+      "to": "mock_road_jct_02",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1500,
+        "load": 950,
+        "dependency_strength": 0.60,
+        "failure_probability": 0.02
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "mock_physical_connectivity"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "mock_edge_road_jct2_jct3",
+      "from": "mock_road_jct_02",
+      "to": "mock_road_jct_03",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1400,
+        "load": 900,
+        "dependency_strength": 0.60,
+        "failure_probability": 0.02
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "mock_physical_connectivity"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "mock_edge_road_jct2_hosp",
+      "from": "mock_road_jct_02",
+      "to": "mock_hospital_01",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1000,
+        "load": 600,
+        "dependency_strength": 0.75,
+        "failure_probability": 0.02
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "mock_physical_connectivity"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "mock_edge_road_jct3_school",
+      "from": "mock_road_jct_03",
+      "to": "mock_school_01",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 900,
+        "load": 550,
+        "dependency_strength": 0.70,
+        "failure_probability": 0.02
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "mock_physical_connectivity"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "mock_edge_road_jct2_res",
+      "from": "mock_road_jct_02",
+      "to": "mock_res_zone_01",
+      "type": "road_connection",
+      "directed": false,
+      "attributes": {
+        "capacity": 1100,
+        "load": 700,
+        "dependency_strength": 0.70,
+        "failure_probability": 0.02
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "derived",
+        "basis": "mock_physical_connectivity"
+      },
+      "data_status": "DERIVED"
+    },
+    {
+      "id": "mock_edge_service_hosp_res",
+      "from": "mock_hospital_01",
+      "to": "mock_res_zone_01",
+      "type": "service_dependency",
+      "directed": true,
+      "attributes": {
+        "capacity": 120,
+        "load": 80,
+        "dependency_strength": 0.85,
+        "failure_probability": 0.03
+      },
+      "state": "OPERATIONAL",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_service_catchment"
+      },
+      "data_status": "SIMULATED"
+    }
+  ]
+}

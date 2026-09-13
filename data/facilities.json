@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "facilities": [
+    {
+      "id": "facility_01_node_hosp_hiranandani",
+      "asset_id": "node_hosp_hiranandani",
+      "facility_type": "hospital",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/353139106",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      }
+    },
+    {
+      "id": "facility_02_node_hosp_powai",
+      "asset_id": "node_hosp_powai",
+      "facility_type": "hospital",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/1855812194",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      }
+    },
+    {
+      "id": "facility_03_node_hosp_nihal",
+      "asset_id": "node_hosp_nihal",
+      "facility_type": "hospital",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/6801919192",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      }
+    },
+    {
+      "id": "facility_04_node_school_hfs",
+      "asset_id": "node_school_hfs",
+      "facility_type": "school",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/483187904",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      }
+    },
+    {
+      "id": "facility_05_node_school_smshetty",
+      "asset_id": "node_school_smshetty",
+      "facility_type": "school",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/11697877354",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      }
+    },
+    {
+      "id": "facility_06_node_school_kv_powai",
+      "asset_id": "node_school_kv_powai",
+      "facility_type": "school",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/723512525",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      }
+    },
+    {
+      "id": "facility_07_node_school_sjmsom",
+      "asset_id": "node_school_sjmsom",
+      "facility_type": "school",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/668494244",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      }
+    },
+    {
+      "id": "facility_08_node_lake_powai",
+      "asset_id": "node_lake_powai",
+      "facility_type": "water_facility",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "relation/8546709",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      }
+    },
+    {
+      "id": "facility_09_node_substation_powai",
+      "asset_id": "node_substation_powai",
+      "facility_type": "substation",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "way/920252504",
+        "retrieved_at": "2026-09-12T10:36:49.693600+00:00"
+      }
+    },
+    {
+      "id": "facility_10_power_station_vikhroli_feed",
+      "asset_id": "power_station_vikhroli_feed",
+      "facility_type": "power_station",
+      "source": {
+        "type": "simulated",
+        "basis": "Grid feeder assumption from Eastern Express / Vikhroli sub-transmission corridor"
+      }
+    },
+    {
+      "id": "facility_11_water_facility_powai_wtp",
+      "asset_id": "water_facility_powai_wtp",
+      "facility_type": "water_facility",
+      "source": {
+        "type": "simulated",
+        "basis": "MCGM Powai Lake emergency raw water intake and filtration plant"
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "facilities": [
+    {
+      "id": "mock_facility_01",
+      "asset_id": "mock_hospital_01",
+      "facility_type": "hospital",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/1001"
+      }
+    },
+    {
+      "id": "mock_facility_02",
+      "asset_id": "mock_school_01",
+      "facility_type": "school",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/1002"
+      }
+    },
+    {
+      "id": "mock_facility_03",
+      "asset_id": "mock_water_facility_01",
+      "facility_type": "water_facility",
+      "source": {
+        "type": "osm",
+        "provider": "OpenStreetMap",
+        "reference": "node/1003"
+      }
+    },
+    {
+      "id": "mock_facility_04",
+      "asset_id": "mock_substation_01",
+      "facility_type": "substation",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_fixture"
+      }
+    },
+    {
+      "id": "mock_facility_05",
+      "asset_id": "mock_power_station_01",
+      "facility_type": "power_station",
+      "source": {
+        "type": "simulated",
+        "basis": "mock_fixture"
+      }
+    }
+  ]
+}

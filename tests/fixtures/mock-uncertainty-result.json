@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "scenario_id": "scenario_monsoon_substation_trip",
+  "monte_carlo_runs": 1000,
+  "metrics": {
+    "hospital_generator_depletion_probability": 0.42,
+    "water_outage_probability": 0.68,
+    "cascade_duration_hours": {
+      "mean": 5.4,
+      "p50": 5.1,
+      "p90": 8.2,
+      "p95": 9.5
+    },
+    "affected_population": {
+      "mean": 10500,
+      "p10": 4000,
+      "p50": 11000,
+      "p90": 14200
+    }
+  },
+  "node_failure_probabilities": {
+    "mock_substation_01": 1.0,
+    "mock_water_facility_01": 0.72,
+    "mock_hospital_01": 0.38,
+    "mock_school_01": 0.85,
+    "mock_res_zone_01": 0.91
+  }
+}

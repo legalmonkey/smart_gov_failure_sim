@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "scenario_id": "scenario_monsoon_substation_trip",
+  "evaluation_time_hours": 2.5,
+  "summary": {
+    "total_population_affected": 12000,
+    "percentage_population_affected": 80.0,
+    "critical_service_outages": {
+      "hospital_risk_level": "HIGH",
+      "schools_affected": 1,
+      "water_treatment_disrupted": true
+    },
+    "direct_vs_cascading": {
+      "direct_affected_population": 4000,
+      "cascading_affected_population": 8000
+    }
+  },
+  "zone_impacts": [
+    {
+      "zone_id": "mock_res_zone_01",
+      "population": 15000,
+      "affected_count": 12000,
+      "vulnerability_weighted_impact": 6120.0,
+      "deprivations": [
+        "power_outage",
+        "reduced_water_pressure",
+        "emergency_access_slowdown"
+      ]
+    }
+  ]
+}

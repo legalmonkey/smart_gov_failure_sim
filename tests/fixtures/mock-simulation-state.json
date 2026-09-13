@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "scenario_id": "scenario_monsoon_substation_trip",
+  "current_time_hours": 2.5,
+  "nodes": {
+    "mock_power_station_01": {
+      "state": "OPERATIONAL",
+      "load": 580,
+      "capacity": 800,
+      "backup_remaining_hours": 36.0
+    },
+    "mock_substation_01": {
+      "state": "FAILED",
+      "load": 0,
+      "capacity": 300,
+      "backup_remaining_hours": 0.0,
+      "failed_at_hour": 0.0
+    },
+    "mock_hospital_01": {
+      "state": "BACKUP",
+      "load": 200,
+      "capacity": 250,
+      "backup_remaining_hours": 3.5,
+      "entered_backup_hour": 0.0
+    },
+    "mock_school_01": {
+      "state": "DEGRADED",
+      "load": 40,
+      "capacity": 100,
+      "backup_remaining_hours": 0.0
+    },
+    "mock_water_facility_01": {
+      "state": "BACKUP",
+      "load": 180,
+      "capacity": 220,
+      "backup_remaining_hours": 2.5
+    },
+    "mock_road_jct_01": {
+      "state": "OPERATIONAL",
+      "load": 45,
+      "capacity": 100
+    },
+    "mock_road_jct_02": {
+      "state": "DEGRADED",
+      "load": 85,
+      "capacity": 100
+    },
+    "mock_road_jct_03": {
+      "state": "OPERATIONAL",
+      "load": 30,
+      "capacity": 100
+    },
+    "mock_res_zone_01": {
+      "state": "CRITICAL",
+      "load": 160,
+      "capacity": 200,
+      "affected_population": 12000
+    }
+  },
+  "edges": {
+    "mock_edge_power_gen_sub": {
+      "state": "FAILED"
+    },
+    "mock_edge_power_sub_hosp": {
+      "state": "FAILED"
+    },
+    "mock_edge_power_sub_school": {
+      "state": "FAILED"
+    },
+    "mock_edge_power_sub_wtp": {
+      "state": "FAILED"
+    },
+    "mock_edge_power_sub_res": {
+      "state": "FAILED"
+    },
+    "mock_edge_water_wtp_hosp": {
+      "state": "OPERATIONAL"
+    },
+    "mock_edge_water_wtp_res": {
+      "state": "DEGRADED"
+    },
+    "mock_edge_road_jct1_jct2": {
+      "state": "DEGRADED"
+    },
+    "mock_edge_road_jct2_jct3": {
+      "state": "OPERATIONAL"
+    },
+    "mock_edge_road_jct2_hosp": {
+      "state": "OPERATIONAL"
+    },
+    "mock_edge_road_jct3_school": {
+      "state": "OPERATIONAL"
+    },
+    "mock_edge_road_jct2_res": {
+      "state": "OPERATIONAL"
+    },
+    "mock_edge_service_hosp_res": {
+      "state": "DEGRADED"
+    }
+  }
+}

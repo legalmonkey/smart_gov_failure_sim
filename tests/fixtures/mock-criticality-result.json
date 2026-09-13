@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "evaluated_at": "2026-09-12T12:00:00Z",
+  "method": "Cascade Damage Potential & Betweenness Centrality",
+  "rankings": [
+    {
+      "rank": 1,
+      "node_id": "mock_substation_01",
+      "criticality_score": 0.96,
+      "cascade_reach": 8,
+      "population_at_risk": 15000,
+      "primary_vulnerability": "Single point of failure for all downstream public health and water systems"
+    },
+    {
+      "rank": 2,
+      "node_id": "mock_water_facility_01",
+      "criticality_score": 0.78,
+      "cascade_reach": 2,
+      "population_at_risk": 15000,
+      "primary_vulnerability": "Dependent on power; directly cuts off water supply to hospital and residential zone"
+    },
+    {
+      "rank": 3,
+      "node_id": "mock_road_jct_02",
+      "criticality_score": 0.71,
+      "cascade_reach": 4,
+      "population_at_risk": 15000,
+      "primary_vulnerability": "Arterial junction bottleneck for emergency access to hospital"
+    }
+  ]
+}

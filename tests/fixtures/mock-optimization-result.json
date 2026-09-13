@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "optimization_objective": "Minimize human vulnerability-weighted cascade impact under budget constraint",
+  "budget_inr_lakhs": 250.0,
+  "recommendations": [
+    {
+      "rank": 1,
+      "action_type": "DEPLOY_BACKUP_GENSET",
+      "target_node_id": "mock_water_facility_01",
+      "cost_inr_lakhs": 45.0,
+      "impact_reduction_percent": 34.5,
+      "details": "Install 250 kVA elevated diesel generator at water treatment plant to prevent loss of potable water during grid outages."
+    },
+    {
+      "rank": 2,
+      "action_type": "CREATE_REDUNDANT_FEEDER",
+      "from_node_id": "mock_power_station_01",
+      "to_node_id": "mock_hospital_01",
+      "cost_inr_lakhs": 120.0,
+      "impact_reduction_percent": 41.2,
+      "details": "Install underground express 11kV feeder directly bypassing the flood-prone substation."
+    },
+    {
+      "rank": 3,
+      "action_type": "ROAD_DRAINAGE_HARDENING",
+      "target_edge_id": "mock_edge_road_jct1_jct2",
+      "cost_inr_lakhs": 65.0,
+      "impact_reduction_percent": 18.0,
+      "details": "Culvert widening and stormwater pump installation at junction 1-2 bottleneck."
+    }
+  ],
+  "expected_overall_impact_reduction_percent": 68.2
+}

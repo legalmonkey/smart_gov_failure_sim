@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "preprocessing_version": "1.0.0",
+  "generated_at": "2026-09-12T10:38:03.780278+00:00",
+  "study_area": {
+    "name": "Powai-Hiranandani",
+    "country": "India",
+    "region": "Maharashtra",
+    "city": "Mumbai",
+    "subdivision": "Ward S (Bhandup / Powai)",
+    "bbox": {
+      "south": 19.112,
+      "west": 72.898,
+      "north": 19.136,
+      "east": 72.926
+    }
+  },
+  "datasets": [
+    {
+      "name": "OpenStreetMap",
+      "provider": "OpenStreetMap Contributors",
+      "retrieval_method": "OSM API 0.6 /map endpoint query",
+      "endpoint": "https://api.openstreetmap.org/api/0.6/map",
+      "license": "ODbL (Open Database License)",
+      "data_types": [
+        "roads",
+        "bridges",
+        "water_bodies",
+        "hospitals",
+        "schools",
+        "substations"
+      ]
+    },
+    {
+      "name": "MCGM & Census of India Ward S Demographics",
+      "provider": "Municipal Corporation of Greater Mumbai / Census 2011 & Ward Projections",
+      "data_types": [
+        "residential_zone_population",
+        "vulnerability_index"
+      ]
+    },
+    {
+      "name": "Engineered Infrastructure Dependency Model",
+      "provider": "Powai-Hiranandani Cascading Failure Prototype",
+      "data_types": [
+        "power_dependencies",
+        "water_dependencies",
+        "operational_attributes"
+      ]
+    }
+  ],
+  "provenance_summary": {
+    "nodes": {
+      "total": 46,
+      "REAL": 12,
+      "SIMULATED": 6,
+      "DERIVED": 28
+    },
+    "edges": {
+      "total": 73,
+      "REAL": 0,
+      "SIMULATED": 33,
+      "DERIVED": 40
+    },
+    "osm_features_extracted": 1328
+  },
+  "operational_parameters_policy": {
+    "status": "All numerical operational parameters (capacity, load, backup_duration_hours, recovery_time_hours, failure_threshold) are SIMULATED based on engineering standards and deterministic seeds. They MUST NOT be treated as live sensor measurements."
+  }
+}

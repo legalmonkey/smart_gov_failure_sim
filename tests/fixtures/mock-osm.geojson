@@ -1,0 +1,154 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "node/1001",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [72.910000, 19.120000]
+      },
+      "properties": {
+        "osm_id": "node/1001",
+        "osm_type": "node",
+        "feature_type": "hospital",
+        "name": "Mock General Hospital",
+        "source": "OpenStreetMap",
+        "provider": "OpenStreetMap",
+        "retrieved_at": "2026-01-01T00:00:00Z",
+        "tags": { "amenity": "hospital", "name": "Mock General Hospital" }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1002",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [72.912000, 19.122000]
+      },
+      "properties": {
+        "osm_id": "node/1002",
+        "osm_type": "node",
+        "feature_type": "school",
+        "name": "Mock Community School",
+        "source": "OpenStreetMap",
+        "provider": "OpenStreetMap",
+        "retrieved_at": "2026-01-01T00:00:00Z",
+        "tags": { "amenity": "school", "name": "Mock Community School" }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "node/1003",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [72.905000, 19.125000]
+      },
+      "properties": {
+        "osm_id": "node/1003",
+        "osm_type": "node",
+        "feature_type": "water_body",
+        "name": "Mock Water Body",
+        "source": "OpenStreetMap",
+        "provider": "OpenStreetMap",
+        "retrieved_at": "2026-01-01T00:00:00Z",
+        "tags": { "natural": "water", "name": "Mock Water Body" }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/2001",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [72.900000, 19.120000],
+          [72.910000, 19.120000]
+        ]
+      },
+      "properties": {
+        "osm_id": "way/2001",
+        "osm_type": "way",
+        "feature_type": "road",
+        "name": "Mock Main Highway",
+        "source": "OpenStreetMap",
+        "provider": "OpenStreetMap",
+        "retrieved_at": "2026-01-01T00:00:00Z",
+        "tags": { "highway": "primary", "name": "Mock Main Highway" }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/2002",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [72.910000, 19.120000],
+          [72.915000, 19.120000]
+        ]
+      },
+      "properties": {
+        "osm_id": "way/2002",
+        "osm_type": "way",
+        "feature_type": "road",
+        "name": "Mock Central Avenue",
+        "source": "OpenStreetMap",
+        "provider": "OpenStreetMap",
+        "retrieved_at": "2026-01-01T00:00:00Z",
+        "tags": { "highway": "secondary", "name": "Mock Central Avenue" }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/2003",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [72.910000, 19.120000],
+          [72.910000, 19.125000]
+        ]
+      },
+      "properties": {
+        "osm_id": "way/2003",
+        "osm_type": "way",
+        "feature_type": "road",
+        "name": "Mock Hospital Road",
+        "source": "OpenStreetMap",
+        "provider": "OpenStreetMap",
+        "retrieved_at": "2026-01-01T00:00:00Z",
+        "tags": { "highway": "tertiary", "name": "Mock Hospital Road" }
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/2004",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [72.911000, 19.119000],
+            [72.913000, 19.119000],
+            [72.913000, 19.121000],
+            [72.911000, 19.121000],
+            [72.911000, 19.119000]
+          ]
+        ]
+      },
+      "properties": {
+        "osm_id": "way/2004",
+        "osm_type": "way",
+        "feature_type": "residential",
+        "name": "Mock Residential Zone",
+        "source": "OpenStreetMap",
+        "provider": "OpenStreetMap",
+        "retrieved_at": "2026-01-01T00:00:00Z",
+        "tags": { "landuse": "residential", "name": "Mock Residential Zone" }
+      }
+    }
+  ]
+}
