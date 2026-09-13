@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "nodes": [
+    {
+      "id": "power_station_01",
+      "type": "power_station",
+      "name": "IIT Bombay Power Generation Substation",
+      "capacity": 650,
+      "load": 480,
+      "population_served": 85000,
+      "backup_duration": 0,
+      "failure_threshold": 95,
+      "recovery_time": 12,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "substation_01",
+      "type": "substation",
+      "name": "Powai Central 220kV Substation",
+      "capacity": 350,
+      "load": 240,
+      "population_served": 60000,
+      "backup_duration": 2,
+      "failure_threshold": 90,
+      "recovery_time": 8,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "hospital_01",
+      "type": "hospital",
+      "name": "Dr L H Hiranandani Hospital",
+      "capacity": 150,
+      "load": 95,
+      "population_served": 25000,
+      "backup_duration": 6,
+      "failure_threshold": 90,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "population_hiranandani_01",
+      "type": "residential",
+      "name": "Hiranandani Gardens Residential Zone",
+      "capacity": 50000,
+      "load": 32000,
+      "population_served": 45000,
+      "backup_duration": 0,
+      "failure_threshold": 95,
+      "recovery_time": 6,
+      "status": "OPERATIONAL"
+    }
+  ],
+  "edges": [
+    {
+      "id": "power_connection_00",
+      "from": "power_station_01",
+      "to": "substation_01",
+      "type": "power_dependency",
+      "capacity": 500,
+      "load": 380,
+      "dependency_strength": 1.0,
+      "failure_probability": 0.03,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_connection_01",
+      "from": "substation_01",
+      "to": "hospital_01",
+      "type": "power_dependency",
+      "capacity": 200,
+      "load": 120,
+      "dependency_strength": 1.0,
+      "failure_probability": 0.05,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "service_connection_01",
+      "from": "hospital_01",
+      "to": "population_hiranandani_01",
+      "type": "service_dependency",
+      "capacity": 150,
+      "load": 95,
+      "dependency_strength": 1.0,
+      "failure_probability": 0.02,
+      "state": "OPERATIONAL"
+    }
+  ]
+}

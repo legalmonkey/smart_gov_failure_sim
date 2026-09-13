@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "time_step_hours": 0.1,
+  "states": [
+    "OPERATIONAL",
+    "DEGRADED",
+    "BACKUP",
+    "CRITICAL",
+    "FAILED",
+    "RECOVERING"
+  ],
+  "default_monte_carlo_iterations": 1000,
+  "overload_threshold_multiplier": 1.05,
+  "degradation_to_critical_hours": 2.0,
+  "critical_to_failed_hours": 4.0,
+  "repair_delay_hours": 4.0
+}
