@@ -1,0 +1,50 @@
+{
+  "scenario_id": "scenario_01",
+  "user_plan": {
+    "impact": 0.48,
+    "impact_reduction": 0.24,
+    "total_cost": 700000,
+    "selected_interventions": [
+      {
+        "intervention_id": "alternate_emergency_route",
+        "target_asset_id": "road_central_ave_01",
+        "cost": 700000
+      }
+    ]
+  },
+  "optimal_plan": {
+    "impact": 0.28,
+    "impact_reduction": 0.44,
+    "total_cost": 1600000,
+    "selected_interventions": [
+      {
+        "intervention_id": "redundant_power_line",
+        "target_asset_id": "substation_01",
+        "cost": 800000
+      },
+      {
+        "intervention_id": "backup_generator",
+        "target_asset_id": "hospital_01",
+        "cost": 500000
+      },
+      {
+        "intervention_id": "water_storage_buffer",
+        "target_asset_id": "water_pump_01",
+        "cost": 300000
+      }
+    ]
+  },
+  "missed_critical_assets": [
+    "substation_01",
+    "hospital_01"
+  ],
+  "missed_critical_edges": [
+    "power_connection_00",
+    "power_connection_01"
+  ],
+  "priority_reasons": [
+    "Powai Central Substation is a single point of failure that cascades directly to the Hospital and Water Pumping Station.",
+    "Dr L H Hiranandani Hospital backup battery/diesel only lasts 6 hours before complete ICU disruption.",
+    "Road slipway intervention improved ambulance traffic flow but left the power grid cascade untouched."
+  ]
+}

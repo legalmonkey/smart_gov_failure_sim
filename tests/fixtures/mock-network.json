@@ -1,0 +1,801 @@
+{
+  "schema_version": "1.0",
+  "nodes": [
+    {
+      "id": "power_station_01",
+      "type": "power_station",
+      "name": "IIT Bombay Power Generation Substation",
+      "osm_id": "way/900101",
+      "location": {
+        "latitude": 19.1265,
+        "longitude": 72.918
+      },
+      "capacity": 650,
+      "load": 480,
+      "population_served": 85000,
+      "backup_duration": 0,
+      "failure_threshold": 95,
+      "recovery_time": 12,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "substation_01",
+      "type": "substation",
+      "name": "Powai Central 220kV Substation",
+      "osm_id": "way/900102",
+      "location": {
+        "latitude": 19.1225,
+        "longitude": 72.9125
+      },
+      "capacity": 350,
+      "load": 240,
+      "population_served": 60000,
+      "backup_duration": 2,
+      "failure_threshold": 90,
+      "recovery_time": 8,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "hospital_01",
+      "type": "hospital",
+      "name": "Dr L H Hiranandani Hospital",
+      "osm_id": "way/353139106",
+      "location": {
+        "latitude": 19.1204,
+        "longitude": 72.917
+      },
+      "capacity": 150,
+      "load": 95,
+      "population_served": 25000,
+      "backup_duration": 6,
+      "failure_threshold": 90,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "water_pump_01",
+      "type": "water_pump",
+      "name": "Powai Lake Water Pumping & Treatment Works",
+      "osm_id": "node/123457",
+      "location": {
+        "latitude": 19.1235,
+        "longitude": 72.9045
+      },
+      "capacity": 450,
+      "load": 310,
+      "population_served": 75000,
+      "backup_duration": 3,
+      "failure_threshold": 85,
+      "recovery_time": 6,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "school_01",
+      "type": "school",
+      "name": "Hiranandani Foundation School (ICSE)",
+      "osm_id": "way/353173681",
+      "location": {
+        "latitude": 19.118,
+        "longitude": 72.9076
+      },
+      "capacity": 100,
+      "load": 65,
+      "population_served": 4500,
+      "backup_duration": 2,
+      "failure_threshold": 80,
+      "recovery_time": 3,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "population_hiranandani_01",
+      "type": "population",
+      "name": "Hiranandani Gardens Central Residential Zone",
+      "osm_id": "relation/900201",
+      "location": {
+        "latitude": 19.119,
+        "longitude": 72.912
+      },
+      "capacity": 60000,
+      "load": 45000,
+      "population_served": 45000,
+      "backup_duration": 1,
+      "failure_threshold": 90,
+      "recovery_time": 5,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "road_jvlr_01",
+      "type": "road",
+      "name": "JVLR East-West Infrastructure Corridor",
+      "osm_id": "way/500101",
+      "location": {
+        "latitude": 19.1245,
+        "longitude": 72.91
+      },
+      "capacity": 2500,
+      "load": 1800,
+      "population_served": 35000,
+      "backup_duration": 0,
+      "failure_threshold": 90,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "road_central_ave_01",
+      "type": "road",
+      "name": "Central Avenue Commercial Spine",
+      "osm_id": "way/500102",
+      "location": {
+        "latitude": 19.1195,
+        "longitude": 72.909
+      },
+      "capacity": 1600,
+      "load": 1100,
+      "population_served": 28000,
+      "backup_duration": 0,
+      "failure_threshold": 90,
+      "recovery_time": 3,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "kensington_sez_01",
+      "type": "substation",
+      "name": "Kensington Business Park SEZ (IT & Tech Hub)",
+      "osm_id": "way/900301",
+      "location": {
+        "latitude": 19.1074,
+        "longitude": 72.8978
+      },
+      "capacity": 220,
+      "load": 175,
+      "population_served": 22000,
+      "backup_duration": 4,
+      "failure_threshold": 85,
+      "recovery_time": 6,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "galleria_complex_01",
+      "type": "population",
+      "name": "Galleria Commercial Mall & Retail Center",
+      "osm_id": "way/900302",
+      "location": {
+        "latitude": 19.107,
+        "longitude": 72.8972
+      },
+      "capacity": 180,
+      "load": 130,
+      "population_served": 18000,
+      "backup_duration": 3,
+      "failure_threshold": 80,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "sm_shetty_institute_01",
+      "type": "school",
+      "name": "S.M. Shetty High School & Management College",
+      "osm_id": "node/11697877354",
+      "location": {
+        "latitude": 19.1215,
+        "longitude": 72.9035
+      },
+      "capacity": 110,
+      "load": 75,
+      "population_served": 5500,
+      "backup_duration": 2,
+      "failure_threshold": 85,
+      "recovery_time": 3,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "panchvati_residence_01",
+      "type": "population",
+      "name": "Panchvati Residential High-Rise Complex",
+      "osm_id": "way/900303",
+      "location": {
+        "latitude": 19.1156,
+        "longitude": 72.9031
+      },
+      "capacity": 28000,
+      "load": 21000,
+      "population_served": 21000,
+      "backup_duration": 2,
+      "failure_threshold": 85,
+      "recovery_time": 5,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "substation_west_01",
+      "type": "substation",
+      "name": "Lake Homes & Chandivali 110kV Substation",
+      "osm_id": "way/900304",
+      "location": {
+        "latitude": 19.1165,
+        "longitude": 72.8985
+      },
+      "capacity": 280,
+      "load": 205,
+      "population_served": 38000,
+      "backup_duration": 3,
+      "failure_threshold": 90,
+      "recovery_time": 7,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "heritage_tower_01",
+      "type": "population",
+      "name": "Heritage Residential Landmark Tower",
+      "osm_id": "way/900305",
+      "location": {
+        "latitude": 19.1079,
+        "longitude": 72.8977
+      },
+      "capacity": 15000,
+      "load": 12000,
+      "population_served": 12000,
+      "backup_duration": 2,
+      "failure_threshold": 85,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "nitie_campus_01",
+      "type": "school",
+      "name": "IIM Mumbai / NITIE Academic Complex",
+      "osm_id": "node/222338978",
+      "location": {
+        "latitude": 19.1347,
+        "longitude": 72.8976
+      },
+      "capacity": 140,
+      "load": 95,
+      "population_served": 6200,
+      "backup_duration": 4,
+      "failure_threshold": 85,
+      "recovery_time": 5,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "westin_powai_01",
+      "type": "hospital",
+      "name": "The Westin Mumbai Powai Lake Convention Center",
+      "osm_id": "way/900401",
+      "location": {
+        "latitude": 19.1348,
+        "longitude": 72.9015
+      },
+      "capacity": 160,
+      "load": 110,
+      "population_served": 14000,
+      "backup_duration": 5,
+      "failure_threshold": 90,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "hotel_13_complex_01",
+      "type": "population",
+      "name": "North Powai Lakeside Residential Towers",
+      "osm_id": "way/52511749",
+      "location": {
+        "latitude": 19.1343,
+        "longitude": 72.9052
+      },
+      "capacity": 22000,
+      "load": 16500,
+      "population_served": 16500,
+      "backup_duration": 2,
+      "failure_threshold": 85,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "iit_main_building_01",
+      "type": "school",
+      "name": "Nandan Nilekani IIT Bombay Main Academic Complex",
+      "osm_id": "way/52511388",
+      "location": {
+        "latitude": 19.1332,
+        "longitude": 72.9153
+      },
+      "capacity": 240,
+      "load": 180,
+      "population_served": 18000,
+      "backup_duration": 5,
+      "failure_threshold": 90,
+      "recovery_time": 6,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "iit_hospital_01",
+      "type": "hospital",
+      "name": "IIT Bombay Medical Hospital",
+      "osm_id": "way/723323008",
+      "location": {
+        "latitude": 19.1275,
+        "longitude": 72.9139
+      },
+      "capacity": 90,
+      "load": 58,
+      "population_served": 12000,
+      "backup_duration": 6,
+      "failure_threshold": 92,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "iit_cse_center_01",
+      "type": "substation",
+      "name": "KReSIT Computer Science & Supercomputer Centre",
+      "osm_id": "way/52511387",
+      "location": {
+        "latitude": 19.1308,
+        "longitude": 72.9158
+      },
+      "capacity": 180,
+      "load": 145,
+      "population_served": 9500,
+      "backup_duration": 4,
+      "failure_threshold": 88,
+      "recovery_time": 5,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "kv_iit_school_01",
+      "type": "school",
+      "name": "Kendriya Vidyalaya IIT Powai",
+      "osm_id": "way/723512525",
+      "location": {
+        "latitude": 19.1249,
+        "longitude": 72.9132
+      },
+      "capacity": 75,
+      "load": 48,
+      "population_served": 3200,
+      "backup_duration": 2,
+      "failure_threshold": 80,
+      "recovery_time": 3,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "crisil_house_01",
+      "type": "population",
+      "name": "Crisil House Financial Intelligence Center",
+      "osm_id": "way/900501",
+      "location": {
+        "latitude": 19.1169,
+        "longitude": 72.9108
+      },
+      "capacity": 190,
+      "load": 140,
+      "population_served": 11000,
+      "backup_duration": 4,
+      "failure_threshold": 88,
+      "recovery_time": 5,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "mtnl_exchange_01",
+      "type": "substation",
+      "name": "MTNL Powai Central Telecom & Optical Fiber Exchange",
+      "osm_id": "way/900502",
+      "location": {
+        "latitude": 19.1188,
+        "longitude": 72.9149
+      },
+      "capacity": 200,
+      "load": 155,
+      "population_served": 42000,
+      "backup_duration": 5,
+      "failure_threshold": 90,
+      "recovery_time": 6,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "bayer_headquarters_01",
+      "type": "population",
+      "name": "Bayer Life Sciences Regional Headquarters",
+      "osm_id": "way/900503",
+      "location": {
+        "latitude": 19.119,
+        "longitude": 72.9123
+      },
+      "capacity": 150,
+      "load": 105,
+      "population_served": 7800,
+      "backup_duration": 3,
+      "failure_threshold": 85,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "somerset_tower_01",
+      "type": "population",
+      "name": "Somerset Tower Neoclassical Landmark",
+      "osm_id": "way/900504",
+      "location": {
+        "latitude": 19.1186,
+        "longitude": 72.917
+      },
+      "capacity": 18000,
+      "load": 14000,
+      "population_served": 14000,
+      "backup_duration": 2,
+      "failure_threshold": 85,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    },
+    {
+      "id": "nirali_healthcare_01",
+      "type": "hospital",
+      "name": "Nirali A M Naik Health-Care Facility",
+      "osm_id": "node/959572919",
+      "location": {
+        "latitude": 19.1169,
+        "longitude": 72.9195
+      },
+      "capacity": 120,
+      "load": 78,
+      "population_served": 18000,
+      "backup_duration": 5,
+      "failure_threshold": 90,
+      "recovery_time": 4,
+      "status": "OPERATIONAL"
+    }
+  ],
+  "edges": [
+    {
+      "id": "power_connection_00",
+      "from": "power_station_01",
+      "to": "substation_01",
+      "type": "power_dependency",
+      "capacity": 500,
+      "load": 380,
+      "dependency_strength": 1,
+      "failure_probability": 0.03,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_connection_01",
+      "from": "substation_01",
+      "to": "hospital_01",
+      "type": "power_dependency",
+      "capacity": 100,
+      "load": 75,
+      "dependency_strength": 1,
+      "failure_probability": 0.05,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_connection_02",
+      "from": "substation_01",
+      "to": "water_pump_01",
+      "type": "power_dependency",
+      "capacity": 120,
+      "load": 85,
+      "dependency_strength": 0.9,
+      "failure_probability": 0.08,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "water_connection_01",
+      "from": "water_pump_01",
+      "to": "hospital_01",
+      "type": "water_dependency",
+      "capacity": 80,
+      "load": 60,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.04,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "water_connection_02",
+      "from": "water_pump_01",
+      "to": "population_hiranandani_01",
+      "type": "water_dependency",
+      "capacity": 200,
+      "load": 150,
+      "dependency_strength": 0.95,
+      "failure_probability": 0.06,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "road_connection_01",
+      "from": "road_jvlr_01",
+      "to": "road_central_ave_01",
+      "type": "road_connection",
+      "capacity": 1500,
+      "load": 1100,
+      "dependency_strength": 0.8,
+      "failure_probability": 0.02,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "emergency_route_01",
+      "from": "road_central_ave_01",
+      "to": "hospital_01",
+      "type": "emergency_route",
+      "capacity": 500,
+      "load": 200,
+      "dependency_strength": 0.95,
+      "failure_probability": 0.01,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_west_01",
+      "from": "substation_01",
+      "to": "substation_west_01",
+      "type": "power_dependency",
+      "capacity": 250,
+      "load": 180,
+      "dependency_strength": 0.95,
+      "failure_probability": 0.04,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_west_kensington",
+      "from": "substation_west_01",
+      "to": "kensington_sez_01",
+      "type": "power_dependency",
+      "capacity": 120,
+      "load": 95,
+      "dependency_strength": 0.9,
+      "failure_probability": 0.05,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_west_galleria",
+      "from": "substation_west_01",
+      "to": "galleria_complex_01",
+      "type": "power_dependency",
+      "capacity": 90,
+      "load": 65,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.06,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_west_panchvati",
+      "from": "substation_west_01",
+      "to": "panchvati_residence_01",
+      "type": "power_dependency",
+      "capacity": 100,
+      "load": 75,
+      "dependency_strength": 0.9,
+      "failure_probability": 0.05,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_west_shetty",
+      "from": "substation_west_01",
+      "to": "sm_shetty_institute_01",
+      "type": "power_dependency",
+      "capacity": 60,
+      "load": 40,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.05,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_west_heritage",
+      "from": "substation_west_01",
+      "to": "heritage_tower_01",
+      "type": "power_dependency",
+      "capacity": 80,
+      "load": 55,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.05,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_nw_westin",
+      "from": "substation_01",
+      "to": "westin_powai_01",
+      "type": "power_dependency",
+      "capacity": 90,
+      "load": 65,
+      "dependency_strength": 0.9,
+      "failure_probability": 0.04,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "water_nw_westin",
+      "from": "water_pump_01",
+      "to": "westin_powai_01",
+      "type": "water_dependency",
+      "capacity": 70,
+      "load": 50,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.04,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_nw_nitie",
+      "from": "power_station_01",
+      "to": "nitie_campus_01",
+      "type": "power_dependency",
+      "capacity": 85,
+      "load": 60,
+      "dependency_strength": 0.9,
+      "failure_probability": 0.04,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "water_nw_nitie",
+      "from": "water_pump_01",
+      "to": "nitie_campus_01",
+      "type": "water_dependency",
+      "capacity": 60,
+      "load": 45,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.05,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "water_west_panchvati",
+      "from": "water_pump_01",
+      "to": "panchvati_residence_01",
+      "type": "water_dependency",
+      "capacity": 110,
+      "load": 80,
+      "dependency_strength": 0.9,
+      "failure_probability": 0.05,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_iit_main",
+      "from": "power_station_01",
+      "to": "iit_main_building_01",
+      "type": "power_dependency",
+      "capacity": 160,
+      "load": 125,
+      "dependency_strength": 0.95,
+      "failure_probability": 0.03,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_iit_hospital",
+      "from": "power_station_01",
+      "to": "iit_hospital_01",
+      "type": "power_dependency",
+      "capacity": 80,
+      "load": 55,
+      "dependency_strength": 1,
+      "failure_probability": 0.03,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "water_iit_hospital",
+      "from": "water_pump_01",
+      "to": "iit_hospital_01",
+      "type": "water_dependency",
+      "capacity": 50,
+      "load": 35,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.04,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_iit_cse",
+      "from": "power_station_01",
+      "to": "iit_cse_center_01",
+      "type": "power_dependency",
+      "capacity": 130,
+      "load": 105,
+      "dependency_strength": 0.95,
+      "failure_probability": 0.03,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_iit_kv",
+      "from": "power_station_01",
+      "to": "kv_iit_school_01",
+      "type": "power_dependency",
+      "capacity": 50,
+      "load": 32,
+      "dependency_strength": 0.8,
+      "failure_probability": 0.05,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_se_mtnl",
+      "from": "substation_01",
+      "to": "mtnl_exchange_01",
+      "type": "power_dependency",
+      "capacity": 120,
+      "load": 90,
+      "dependency_strength": 0.95,
+      "failure_probability": 0.03,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_se_crisil",
+      "from": "substation_01",
+      "to": "crisil_house_01",
+      "type": "power_dependency",
+      "capacity": 100,
+      "load": 75,
+      "dependency_strength": 0.9,
+      "failure_probability": 0.04,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_se_bayer",
+      "from": "substation_01",
+      "to": "bayer_headquarters_01",
+      "type": "power_dependency",
+      "capacity": 85,
+      "load": 60,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.04,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_se_somerset",
+      "from": "substation_01",
+      "to": "somerset_tower_01",
+      "type": "power_dependency",
+      "capacity": 95,
+      "load": 70,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.05,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "power_se_nirali",
+      "from": "substation_01",
+      "to": "nirali_healthcare_01",
+      "type": "power_dependency",
+      "capacity": 85,
+      "load": 60,
+      "dependency_strength": 1,
+      "failure_probability": 0.03,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "water_se_nirali",
+      "from": "water_pump_01",
+      "to": "nirali_healthcare_01",
+      "type": "water_dependency",
+      "capacity": 60,
+      "load": 45,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.04,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "emergency_route_iit",
+      "from": "road_jvlr_01",
+      "to": "iit_hospital_01",
+      "type": "emergency_route",
+      "capacity": 400,
+      "load": 150,
+      "dependency_strength": 0.9,
+      "failure_probability": 0.02,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "emergency_route_west",
+      "from": "road_central_ave_01",
+      "to": "panchvati_residence_01",
+      "type": "emergency_route",
+      "capacity": 450,
+      "load": 180,
+      "dependency_strength": 0.85,
+      "failure_probability": 0.02,
+      "state": "OPERATIONAL"
+    },
+    {
+      "id": "emergency_route_nirali",
+      "from": "road_central_ave_01",
+      "to": "nirali_healthcare_01",
+      "type": "emergency_route",
+      "capacity": 350,
+      "load": 140,
+      "dependency_strength": 0.9,
+      "failure_probability": 0.02,
+      "state": "OPERATIONAL"
+    }
+  ]
+}

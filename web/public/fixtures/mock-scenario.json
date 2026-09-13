@@ -1,0 +1,12 @@
+{
+  "id": "scenario_01",
+  "name": "Powai Grid Trip & Arterial Disruption",
+  "failures": [
+    "power_station_01",
+    "road_jvlr_01"
+  ],
+  "interventions": [],
+  "budget": 2000000,
+  "duration": 24,
+  "random_seed": 42
+}

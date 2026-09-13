@@ -1,0 +1,25 @@
+{
+  "scenario_id": "scenario_01",
+  "budget": 2000000,
+  "selected_interventions": [
+    {
+      "intervention_id": "redundant_power_line",
+      "target_asset_id": "substation_01",
+      "cost": 800000
+    },
+    {
+      "intervention_id": "backup_generator",
+      "target_asset_id": "hospital_01",
+      "cost": 500000
+    },
+    {
+      "intervention_id": "water_storage_buffer",
+      "target_asset_id": "water_pump_01",
+      "cost": 300000
+    }
+  ],
+  "total_cost": 1600000,
+  "baseline_impact": 0.72,
+  "optimized_impact": 0.28,
+  "impact_reduction": 0.44
+}

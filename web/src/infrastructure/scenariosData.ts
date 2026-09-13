@@ -1,0 +1,68 @@
+﻿import type { Scenario } from '../types/scenario';
+
+export const PRESET_SCENARIOS: Scenario[] = [
+  {
+    id: 'scenario_01',
+    name: 'Powai Grid Trip & Arterial Disruption',
+    category: 'grid',
+    description:
+      'Main generation trip at IIT Bombay Power Station coupled with JVLR arterial blockage. High risk of electrical cascade into Powai Central Substation and critical power loss at Dr L H Hiranandani Hospital.',
+    failures: ['power_station_01', 'road_jvlr_01'],
+    interventions: [],
+    budget: 2000000,
+    duration: 24,
+    random_seed: 42,
+    impactScore: 0.72,
+    populationAffected: 18200,
+    hospitalDisruptions: 2,
+    emergencyDelayMinutes: 22,
+  },
+  {
+    id: 'scenario_02',
+    name: 'Monsoon Lake Overflow & Pumping Inundation',
+    category: 'flood',
+    description:
+      'High-intensity monsoon cloudburst causes Powai Lake overflow. Lake Perimeter Road is submerged and the primary water pumping station shorts out, cutting off potable water distribution to 40,000+ residents.',
+    failures: ['road_lake_01', 'water_pump_01'],
+    interventions: [],
+    budget: 1500000,
+    duration: 24,
+    random_seed: 108,
+    impactScore: 0.64,
+    populationAffected: 43500,
+    hospitalDisruptions: 1,
+    emergencyDelayMinutes: 18,
+  },
+  {
+    id: 'scenario_03',
+    name: 'Healthcare Emergency Corridor Severance',
+    category: 'transport',
+    description:
+      'Central Avenue Hiranandani structural road collapse blocks the primary ambulance access corridor to Dr L H Hiranandani Hospital, simultaneously with a 220kV substation trip.',
+    failures: ['road_hiranandani_01', 'substation_01'],
+    interventions: [],
+    budget: 1800000,
+    duration: 24,
+    random_seed: 256,
+    impactScore: 0.58,
+    populationAffected: 16500,
+    hospitalDisruptions: 1,
+    emergencyDelayMinutes: 28,
+  },
+  {
+    id: 'scenario_04',
+    name: 'Multi-Sector Cascading Blackout',
+    category: 'multi-sector',
+    description:
+      'Catastrophic simultaneous failure of IIT Bombay generation, Powai Central Substation, and municipal water pumping station. Extreme multi-network breakdown across both residential and healthcare sectors.',
+    failures: ['power_station_01', 'substation_01', 'water_pump_01'],
+    interventions: [],
+    budget: 2500000,
+    duration: 24,
+    random_seed: 512,
+    impactScore: 0.88,
+    populationAffected: 58000,
+    hospitalDisruptions: 2,
+    emergencyDelayMinutes: 34,
+  },
+];

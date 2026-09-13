@@ -1,0 +1,60 @@
+{
+  "scenario_id": "scenario_01",
+  "time": 4.5,
+  "assets": {
+    "power_station_01": {
+      "state": "FAILED",
+      "load": 0
+    },
+    "substation_01": {
+      "state": "FAILED",
+      "load": 0
+    },
+    "hospital_01": {
+      "state": "BACKUP",
+      "load": 78
+    },
+    "water_pump_01": {
+      "state": "DEGRADED",
+      "load": 140
+    },
+    "school_01": {
+      "state": "DEGRADED",
+      "load": 30
+    },
+    "population_hiranandani_01": {
+      "state": "DEGRADED",
+      "load": 22000
+    },
+    "road_jvlr_01": {
+      "state": "FAILED",
+      "load": 0
+    },
+    "road_central_ave_01": {
+      "state": "CRITICAL",
+      "load": 1150
+    }
+  },
+  "failed_nodes": [
+    "power_station_01",
+    "substation_01",
+    "road_jvlr_01"
+  ],
+  "degraded_nodes": [
+    "water_pump_01",
+    "school_01",
+    "population_hiranandani_01"
+  ],
+  "backup_nodes": [
+    "hospital_01"
+  ],
+  "critical_nodes": [
+    "road_central_ave_01"
+  ],
+  "affected_edges": [
+    "power_connection_00",
+    "power_connection_01",
+    "power_connection_02",
+    "road_connection_01"
+  ]
+}

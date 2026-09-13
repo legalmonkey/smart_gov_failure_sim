@@ -1,0 +1,68 @@
+[
+  {
+    "id": "backup_generator",
+    "name": "Heavy-Duty Diesel Generator",
+    "target_types": [
+      "hospital",
+      "water_pump"
+    ],
+    "cost": 500000,
+    "effects": {
+      "backup_duration_hours": 6
+    },
+    "constraints": []
+  },
+  {
+    "id": "redundant_power_line",
+    "name": "Redundant Underground Power Feeder",
+    "target_types": [
+      "hospital",
+      "substation"
+    ],
+    "cost": 800000,
+    "effects": {
+      "dependency_redundancy": 1.0,
+      "failure_probability_reduction": 0.8
+    },
+    "constraints": []
+  },
+  {
+    "id": "water_storage_buffer",
+    "name": "Emergency Potable Water Tank Buffer",
+    "target_types": [
+      "water_pump",
+      "hospital"
+    ],
+    "cost": 300000,
+    "effects": {
+      "backup_duration_hours": 8
+    },
+    "constraints": []
+  },
+  {
+    "id": "alternate_emergency_route",
+    "name": "Reinforced Emergency Access Slipway",
+    "target_types": [
+      "road"
+    ],
+    "cost": 700000,
+    "effects": {
+      "capacity_increase": 800,
+      "failure_probability_reduction": 0.6
+    },
+    "constraints": []
+  },
+  {
+    "id": "reinforced_bridge",
+    "name": "Reinforced Bridge & Culvert Structure",
+    "target_types": [
+      "road"
+    ],
+    "cost": 600000,
+    "effects": {
+      "failure_probability_reduction": 0.9,
+      "capacity_increase": 500
+    },
+    "constraints": []
+  }
+]

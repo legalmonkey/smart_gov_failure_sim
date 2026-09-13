@@ -1,0 +1,97 @@
+{
+  "scenario_id": "scenario_01",
+  "nodes": [
+    {
+      "asset_id": "substation_01",
+      "criticality_score": 0.91,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.91
+    },
+    {
+      "asset_id": "power_station_01",
+      "criticality_score": 0.88,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.88
+    },
+    {
+      "asset_id": "hospital_01",
+      "criticality_score": 0.82,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.82
+    },
+    {
+      "asset_id": "water_pump_01",
+      "criticality_score": 0.74,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.74
+    },
+    {
+      "asset_id": "road_jvlr_01",
+      "criticality_score": 0.65,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.65
+    },
+    {
+      "asset_id": "road_central_ave_01",
+      "criticality_score": 0.58,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.58
+    },
+    {
+      "asset_id": "school_01",
+      "criticality_score": 0.35,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.35
+    },
+    {
+      "asset_id": "population_hiranandani_01",
+      "criticality_score": 0.45,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.45
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "power_connection_01",
+      "criticality_score": 0.87,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.87
+    },
+    {
+      "edge_id": "power_connection_00",
+      "criticality_score": 0.85,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.85
+    },
+    {
+      "edge_id": "water_connection_01",
+      "criticality_score": 0.72,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.72
+    },
+    {
+      "edge_id": "emergency_route_01",
+      "criticality_score": 0.69,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.69
+    },
+    {
+      "edge_id": "power_connection_02",
+      "criticality_score": 0.61,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.61
+    },
+    {
+      "edge_id": "water_connection_02",
+      "criticality_score": 0.55,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.55
+    },
+    {
+      "edge_id": "road_connection_01",
+      "criticality_score": 0.48,
+      "baseline_impact": 0.31,
+      "removal_impact": 0.48
+    }
+  ]
+}

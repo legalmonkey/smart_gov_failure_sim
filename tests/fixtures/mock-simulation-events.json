@@ -1,0 +1,74 @@
+[
+  {
+    "time": 0.0,
+    "event": "asset_failed",
+    "asset_id": "power_station_01",
+    "cause": "generator_trip"
+  },
+  {
+    "time": 0.5,
+    "event": "edge_failed",
+    "edge_id": "power_connection_00",
+    "cause": "power_transmission_loss"
+  },
+  {
+    "time": 1.0,
+    "event": "asset_failed",
+    "asset_id": "substation_01",
+    "cause": "upstream_power_failure"
+  },
+  {
+    "time": 1.5,
+    "event": "edge_failed",
+    "edge_id": "power_connection_01",
+    "cause": "substation_grid_loss"
+  },
+  {
+    "time": 2.0,
+    "event": "asset_backup",
+    "asset_id": "hospital_01",
+    "cause": "main_power_lost_generator_engaged"
+  },
+  {
+    "time": 2.2,
+    "event": "asset_failed",
+    "asset_id": "road_jvlr_01",
+    "cause": "traffic_gridlock_obstruction"
+  },
+  {
+    "time": 2.8,
+    "event": "asset_critical",
+    "asset_id": "road_central_ave_01",
+    "cause": "diverted_traffic_overflow"
+  },
+  {
+    "time": 3.2,
+    "event": "asset_degraded",
+    "asset_id": "water_pump_01",
+    "cause": "voltage_drop"
+  },
+  {
+    "time": 4.5,
+    "event": "asset_degraded",
+    "asset_id": "population_hiranandani_01",
+    "cause": "water_pressure_reduction"
+  },
+  {
+    "time": 6.1,
+    "event": "asset_failed",
+    "asset_id": "hospital_01",
+    "cause": "backup_exhausted"
+  },
+  {
+    "time": 8.0,
+    "event": "asset_recovering",
+    "asset_id": "road_jvlr_01",
+    "cause": "emergency_clearing_crew"
+  },
+  {
+    "time": 12.0,
+    "event": "asset_recovered",
+    "asset_id": "road_jvlr_01",
+    "cause": "traffic_restored"
+  }
+]
