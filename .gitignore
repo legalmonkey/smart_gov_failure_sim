@@ -1,1 +1,20 @@
+# Dependencies & builds
+node_modules/
+dist/
 .vercel
+.netlify
+
+# Python environment & caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+env/
+
+# Documents & temporary plans
+*.pdf
+*Implementation_Guide*
