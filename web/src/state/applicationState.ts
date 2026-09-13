@@ -1,14 +1,21 @@
-import type { Network } from '../types/asset';
+import type { Network, InfrastructureState } from '../types/asset';
 import type { Scenario } from '../types/scenario';
 import type { SimulationEvent, SimulationAssetStatus } from '../types/simulation';
 import type { ImpactResult, UncertaintyResult } from '../types/impact';
 import type { CriticalityResult } from '../types/criticality';
 import type { Intervention, InterventionRequest } from '../types/intervention';
-import type { OptimizationResult } from '../types/optimization';
+import type { OptimizationResult, SelectedIntervention } from '../types/optimization';
 import type { AdvisorResult } from '../types/advisor';
 import type { GeoJsonFeatureCollection } from '../geo/geojsonTypes';
+import type { HazardDefinition, DisasterScenario, HazardPreviewSummary } from '../types/hazard';
+import { calculateAssetExposure, calculateHazardPreview } from '../hazards/hazardEngine';
 import { simulationClient } from '../api/simulationClient';
 import { PRESET_SCENARIOS } from '../infrastructure/scenariosData';
+import { ImpactEngine, type SimStateInput } from '../impact/impactEngine';
+import { CriticalityEngine } from '../criticality/criticalityEngine';
+import { OptimizerEngine } from '../optimization/optimizerEngine';
+import { AdvisorEngine } from '../advisor/advisorEngine';
+import { CascadeEngine } from '../simulation/cascadeEngine';
 
 export type AppTabMode = 'explore' | 'failures' | 'interventions' | 'compare' | 'advisor';
 
@@ -18,6 +25,10 @@ export interface ApplicationState {
   selectedAssetId: string | null;
   hoveredAssetId: string | null;
   activeScenario: Scenario | null;
+  activeHazard: HazardDefinition | null;
+  activeDisasterScenario: DisasterScenario | null;
+  hazardPreview: HazardPreviewSummary | null;
+  hazardOverlayVisible: boolean;
   scenariosList: Scenario[];
   simulationTime: number; // in simulation hours (0 - 24)
   isPlaying: boolean;
@@ -47,6 +58,7 @@ export interface ApplicationState {
   showCascadePanel: boolean;
   showMapIndex: boolean;
   showSimulationBar: boolean;
+  showMapControls: boolean;
 }
 
 type StateListener = (state: ApplicationState) => void;
@@ -58,6 +70,10 @@ class StateStore {
     selectedAssetId: null,
     hoveredAssetId: null,
     activeScenario: null,
+    activeHazard: null,
+    activeDisasterScenario: null,
+    hazardPreview: null,
+    hazardOverlayVisible: true,
     scenariosList: PRESET_SCENARIOS,
     simulationTime: 0,
     isPlaying: false,
@@ -83,10 +99,11 @@ class StateStore {
     hoverScreenPos: null,
     isSetBudgetOpen: false,
     isSummaryOpen: false,
-    showOverviewPanel: true,
-    showCascadePanel: true,
+    showOverviewPanel: false,
+    showCascadePanel: false,
     showMapIndex: false,
     showSimulationBar: true,
+    showMapControls: true,
   };
 
   private listeners: Set<StateListener> = new Set();
@@ -108,7 +125,7 @@ class StateStore {
 
   public async initialize(): Promise<void> {
     try {
-      const [network, geoJson, _events, _initState, _impact, _uncertainty, criticality, opt, adv, catalog] =
+      const [network, geoJson, _events, _initState, _impact, _uncertainty, _criticality, opt, adv, catalog] =
         await Promise.all([
           simulationClient.getNetwork(),
           simulationClient.getGeoJson(),
@@ -128,15 +145,47 @@ class StateStore {
         initialStates[n.id] = { state: 'OPERATIONAL', load: n.load ?? 0 };
       });
 
+      // Dynamically compute baseline impact metrics for all preset scenarios using Track 3
+      const dynamicallyCalculatedPresets = PRESET_SCENARIOS.map((sc) => {
+        const dummyStates: Record<string, SimulationAssetStatus> = {};
+        network.nodes.forEach((n) => {
+          dummyStates[n.id] = { state: sc.failures.includes(n.id) ? 'FAILED' : 'OPERATIONAL', load: n.load ?? 0 };
+        });
+        const simInput: SimStateInput = {
+          scenario_id: sc.id,
+          time: 0,
+          assets: dummyStates,
+          failed_nodes: [...sc.failures],
+          degraded_nodes: [],
+          backup_nodes: [],
+          critical_nodes: [],
+          affected_edges: [],
+        };
+        const calc = ImpactEngine.calculateHumanImpact(simInput, network, sc.id, sc.duration || 24);
+        return {
+          ...sc,
+          impactScore: calc.impact_score,
+          populationAffected: calc.population_affected,
+          hospitalDisruptions: calc.hospital_disruptions,
+          emergencyDelayMinutes: calc.emergency_response_delay_minutes,
+        };
+      });
+
+      // Dynamically compute baseline systemic criticality using Track 4 graph removal-impact simulation
+      const dynamicCriticality = CriticalityEngine.calculateCriticality(network, 'scenario_01');
+
       this.state = {
         ...this.state,
         network,
         geoJson,
         selectedAssetId: null,
-        showOverviewPanel: true,
-        showCascadePanel: true,
+        showOverviewPanel: false,
+        showCascadePanel: false,
+        showMapIndex: false,
         showSimulationBar: true,
-        showCriticality: false,
+        showMapControls: true,
+        showCriticality: true,
+        hazardOverlayVisible: true,
         events: [], // Clean baseline: zero events until failure triggered or scenario loaded
         assetStates: initialStates,
         failedNodes: [],
@@ -147,13 +196,15 @@ class StateStore {
         simulationTime: 0,
         impact: null, // Strictly calculated dynamically from network graph
         uncertainty: null,
-        criticality,
+        criticality: dynamicCriticality,
         optimization: opt,
         advisor: adv,
         interventionsCatalog: catalog,
         activeScenario: null, // No scenario pre-selected at launch
+        scenariosList: dynamicallyCalculatedPresets,
       };
 
+      this.recalculateOptimizationAndAdvice();
       this.notify();
     } catch (err) {
       console.error('Failed to initialize application state:', err);
@@ -250,6 +301,12 @@ class StateStore {
     this.notify();
   }
 
+  public toggleMapControls(show?: boolean): void {
+    const next = show !== undefined ? show : !this.state.showMapControls;
+    this.state = { ...this.state, showMapControls: next };
+    this.notify();
+  }
+
   public setBudget(total: number): void {
     const clamped = Math.max(0, Math.round(total));
     this.state = {
@@ -260,6 +317,7 @@ class StateStore {
         ? { ...this.state.activeScenario, budget: clamped }
         : null,
     };
+    this.recalculateOptimizationAndAdvice();
     this.notify();
   }
 
@@ -300,79 +358,50 @@ class StateStore {
       initialStates[fid] = { state: 'FAILED', load: 0 };
     });
 
-    // Build timeline of cascading events for this scenario
-    const newEvents: SimulationEvent[] = [];
-    scenario.failures.forEach((fid) => {
-      newEvents.push({
-        time: 0,
-        event: 'asset_failed',
-        asset_id: fid,
-        cause: `initial_shock:${scenario.name}`,
-      });
+    // Dynamically generate cascading failure timeline based on graph dependencies & interventions
+    const dynamicEvents = CascadeEngine.generateCascadeEvents(
+      this.state.network,
+      scenario.failures,
+      this.state.appliedInterventions,
+      this.state.interventionsCatalog,
+      scenario.duration || 24
+    );
 
-      // Downstream dependency propagation
-      const outgoing = this.state.network?.edges.filter((e) => e.from === fid) || [];
-      outgoing.forEach((edge, idx) => {
-        newEvents.push({
-          time: Math.round((0.5 + 0.3 * idx) * 10) / 10,
-          event: 'dependency_lost',
-          edge_id: edge.id,
-          cause: 'upstream_shock',
-        });
-        const target = this.state.network?.nodes.find((n) => n.id === edge.to);
-        if (target && !scenario.failures.includes(target.id)) {
-          if (target.backup_duration && target.backup_duration > 0) {
-            newEvents.push({
-              time: Math.round((1.0 + 0.4 * idx) * 10) / 10,
-              event: 'asset_backup',
-              asset_id: target.id,
-              cause: 'main_power_lost',
-            });
-            newEvents.push({
-              time: Math.round((1.0 + target.backup_duration) * 10) / 10,
-              event: 'asset_critical',
-              asset_id: target.id,
-              cause: 'backup_reserve_depleted',
-            });
-            newEvents.push({
-              time: Math.round((2.0 + target.backup_duration) * 10) / 10,
-              event: 'asset_failed',
-              asset_id: target.id,
-              cause: 'reserve_exhausted_shutdown',
-            });
-          } else {
-            newEvents.push({
-              time: Math.round((0.8 + 0.3 * idx) * 10) / 10,
-              event: 'asset_degraded',
-              asset_id: target.id,
-              cause: 'supply_compromised',
-            });
-          }
-        }
-      });
-    });
+    // Track 3 integration: Compute real human impact & Monte Carlo uncertainty
+    const simInput: SimStateInput = {
+      scenario_id: scenario.id,
+      time: 0,
+      assets: initialStates,
+      failed_nodes: [...scenario.failures],
+      degraded_nodes: [],
+      backup_nodes: [],
+      critical_nodes: [],
+      affected_edges: [],
+    };
 
-    newEvents.sort((a, b) => a.time - b.time);
+    const dynamicImpact = ImpactEngine.calculateHumanImpact(
+      simInput,
+      this.state.network,
+      scenario.id,
+      scenario.duration || 6.1
+    );
 
-    // Compute dynamic scenario impact & uncertainty values based on scenario specifications
-    const popAffected = scenario.populationAffected || scenario.failures.length * 12000;
-    const hospDisrupted =
-      scenario.hospitalDisruptions ??
-      (scenario.failures.some((f) => f.includes('hospital') || f.includes('substation') || f.includes('power'))
-        ? 1
-        : 0);
-    const emgDelay =
-      scenario.emergencyDelayMinutes ??
-      (scenario.failures.some((f) => f.includes('road') || f.includes('jvlr') || f.includes('bridge'))
-        ? 18
-        : 6);
-    const dynamicImpactScore =
-      scenario.impactScore ?? Math.min(0.95, Math.max(0.15, scenario.failures.length * 0.22));
+    const dynamicUncertainty = ImpactEngine.runMonteCarlo(
+      simInput,
+      this.state.network,
+      scenario.id,
+      500,
+      42
+    );
+
+    const dynamicCriticality = this.state.network
+      ? CriticalityEngine.calculateCriticality(this.state.network, scenario.id, simInput)
+      : this.state.criticality;
 
     this.state = {
       ...this.state,
       activeScenario: scenario,
-      events: newEvents,
+      events: dynamicEvents,
       assetStates: initialStates,
       failedNodes: [...scenario.failures],
       degradedNodes: [],
@@ -380,33 +409,162 @@ class StateStore {
       criticalNodes: [],
       affectedEdges: [],
       simulationTime: 0,
-      impact: {
-        scenario_id: scenario.id,
-        duration_hours: scenario.duration || 24,
-        impact_score: dynamicImpactScore,
-        population_affected: popAffected,
-        hospital_disruptions: hospDisrupted,
-        school_disruptions: scenario.failures.filter((f) => f.includes('school')).length,
-        emergency_response_delay_minutes: emgDelay,
-        water_service_disruptions: scenario.failures.filter((f) => f.includes('water')).length,
-        power_service_disruptions: scenario.failures.filter((f) => f.includes('power') || f.includes('substation')).length,
-      },
-      uncertainty: {
-        scenario_id: scenario.id,
-        iterations: 1000,
-        population_affected: {
-          mean: popAffected,
-          median: popAffected,
-          p05: Math.round(popAffected * 0.65),
-          p95: Math.round(popAffected * 1.5),
-        },
-        hospital_failure_probability: hospDisrupted > 0 ? 0.65 : 0.05,
-        hospital_failure_time_hours: {
-          median: 4.5,
-          p05: 2.1,
-          p95: 7.8,
-        },
-      },
+      impact: dynamicImpact,
+      uncertainty: dynamicUncertainty,
+      criticality: dynamicCriticality,
+      showSimulationBar: true,
+      selectedAssetId: scenario.failures.length > 0 ? scenario.failures[0] : null,
+      activeTab: 'explore',
+    };
+
+    this.setSimulationTime(0);
+    this.notify();
+  }
+
+  public setHazardOverlayVisible(visible: boolean): void {
+    this.state = {
+      ...this.state,
+      hazardOverlayVisible: visible,
+    };
+    this.notify();
+  }
+
+  public previewHazard(hazard: HazardDefinition): HazardPreviewSummary | null {
+    if (!this.state.network) return null;
+    const summary = calculateHazardPreview(hazard, this.state.network);
+    this.state = {
+      ...this.state,
+      activeHazard: hazard,
+      hazardPreview: summary,
+      hazardOverlayVisible: true,
+    };
+    this.notify();
+    return summary;
+  }
+
+  public loadDisasterScenario(disaster: DisasterScenario): void {
+    if (!this.state.network) return;
+
+    const hazard = disaster.hazards[0];
+    const failedNodes: string[] = [];
+    const degradedNodes: string[] = [];
+    const backupNodes: string[] = [];
+    const criticalNodes: string[] = [];
+    const initialStates: Record<string, SimulationAssetStatus> = {};
+
+    this.state.network.nodes.forEach((n) => {
+      const exp = calculateAssetExposure(n, hazard, this.state.network!);
+      let stateStr: InfrastructureState = 'OPERATIONAL';
+      if (exp.expected_effect === 'failed') {
+        failedNodes.push(n.id);
+        stateStr = 'FAILED';
+      } else if (exp.expected_effect === 'critical') {
+        criticalNodes.push(n.id);
+        stateStr = 'CRITICAL';
+      } else if (exp.expected_effect === 'backup') {
+        backupNodes.push(n.id);
+        stateStr = 'BACKUP';
+      } else if (exp.expected_effect === 'degraded') {
+        degradedNodes.push(n.id);
+        stateStr = 'DEGRADED';
+      }
+      initialStates[n.id] = {
+        state: stateStr,
+        load: n.load ?? 0,
+      };
+    });
+
+    const initialFailures =
+      failedNodes.length > 0
+        ? failedNodes
+        : criticalNodes.length > 0
+        ? criticalNodes
+        : degradedNodes.length > 0
+        ? [degradedNodes[0]]
+        : [];
+
+    const dynamicEvents = CascadeEngine.generateCascadeEvents(
+      this.state.network,
+      initialFailures,
+      this.state.appliedInterventions,
+      this.state.interventionsCatalog,
+      disaster.duration_hours || 6
+    );
+
+    const simInput: SimStateInput = {
+      scenario_id: disaster.id,
+      time: 0,
+      assets: initialStates,
+      failed_nodes: [...failedNodes],
+      degraded_nodes: [...degradedNodes],
+      backup_nodes: [...backupNodes],
+      critical_nodes: [...criticalNodes],
+      affected_edges: [],
+    };
+
+    const dynamicImpact = ImpactEngine.calculateHumanImpact(
+      simInput,
+      this.state.network,
+      disaster.id,
+      disaster.duration_hours || 6
+    );
+
+    const dynamicUncertainty = ImpactEngine.runMonteCarlo(
+      simInput,
+      this.state.network,
+      disaster.id,
+      500,
+      disaster.random_seed || 42
+    );
+
+    const dynamicCriticality = CriticalityEngine.calculateCriticality(
+      this.state.network,
+      disaster.id,
+      simInput
+    );
+
+    const preview = calculateHazardPreview(hazard, this.state.network);
+
+    const scenarioWrapper: Scenario = {
+      id: disaster.id,
+      name: disaster.name,
+      description: disaster.description,
+      category:
+        hazard.hazard_type === 'URBAN_FLOOD' || hazard.hazard_type === 'EXTREME_RAINFALL'
+          ? 'flood'
+          : 'custom',
+      failures: initialFailures,
+      interventions: [],
+      budget: disaster.budget || 2000000,
+      duration: disaster.duration_hours || 6,
+      random_seed: disaster.random_seed || 42,
+      impactScore: dynamicImpact.impact_score,
+      populationAffected: dynamicImpact.population_affected,
+      hospitalDisruptions: dynamicImpact.hospital_disruptions,
+      emergencyDelayMinutes: dynamicImpact.emergency_response_delay_minutes,
+    };
+
+    this.state = {
+      ...this.state,
+      activeHazard: hazard,
+      activeDisasterScenario: disaster,
+      hazardPreview: preview,
+      hazardOverlayVisible: true,
+      activeScenario: scenarioWrapper,
+      events: dynamicEvents,
+      assetStates: initialStates,
+      failedNodes: [...failedNodes],
+      degradedNodes: [...degradedNodes],
+      backupNodes: [...backupNodes],
+      criticalNodes: [...criticalNodes],
+      affectedEdges: [],
+      simulationTime: 0,
+      impact: dynamicImpact,
+      uncertainty: dynamicUncertainty,
+      criticality: dynamicCriticality,
+      showSimulationBar: true,
+      selectedAssetId: initialFailures.length > 0 ? initialFailures[0] : null,
+      activeTab: 'explore',
     };
 
     this.setSimulationTime(0);
@@ -420,6 +578,35 @@ class StateStore {
     budget: number
   ): Scenario {
     const id = `custom_${Date.now()}`;
+
+    const initialStates: Record<string, SimulationAssetStatus> = {};
+    if (this.state.network) {
+      this.state.network.nodes.forEach((n) => {
+        initialStates[n.id] = {
+          state: failures.includes(n.id) ? 'FAILED' : 'OPERATIONAL',
+          load: n.load ?? 0,
+        };
+      });
+    }
+
+    const simInput: SimStateInput = {
+      scenario_id: id,
+      time: 0,
+      assets: initialStates,
+      failed_nodes: [...failures],
+      degraded_nodes: [],
+      backup_nodes: [],
+      critical_nodes: [],
+      affected_edges: [],
+    };
+
+    const realImpact = ImpactEngine.calculateHumanImpact(
+      simInput,
+      this.state.network,
+      id,
+      24
+    );
+
     const newScenario: Scenario = {
       id,
       name,
@@ -429,10 +616,10 @@ class StateStore {
       interventions: [],
       budget,
       duration: 24,
-      impactScore: Math.min(0.95, Math.max(0.3, failures.length * 0.22)),
-      populationAffected: Math.min(65000, failures.length * 15000),
-      hospitalDisruptions: failures.some((f) => f.includes('hospital') || f.includes('substation')) ? 1 : 0,
-      emergencyDelayMinutes: failures.some((f) => f.includes('road')) ? 24 : 12,
+      impactScore: realImpact.impact_score,
+      populationAffected: realImpact.population_affected,
+      hospitalDisruptions: realImpact.hospital_disruptions,
+      emergencyDelayMinutes: realImpact.emergency_response_delay_minutes,
     };
 
     this.state = {
@@ -519,6 +706,10 @@ class StateStore {
       });
     }
 
+    const dynamicCriticality = this.state.network
+      ? CriticalityEngine.calculateCriticality(this.state.network, 'scenario_01')
+      : null;
+
     this.state = {
       ...this.state,
       activeScenario: null,
@@ -532,9 +723,11 @@ class StateStore {
       simulationTime: 0,
       impact: null,
       uncertainty: null,
+      criticality: dynamicCriticality,
       appliedInterventions: [],
       budgetSpent: 0,
     };
+    this.recalculateOptimizationAndAdvice();
     this.notify();
   }
 
@@ -604,79 +797,139 @@ class StateStore {
       }
     }
 
+    const failedArr = Array.from(failedNodes);
+    const degradedArr = Array.from(degradedNodes);
+    const backupArr = Array.from(backupNodes);
+    const criticalArr = Array.from(criticalNodes);
+    const affectedEdgesArr = Array.from(affectedEdges);
+
+    const hasStateChanged =
+      failedArr.length !== this.state.failedNodes.length ||
+      degradedArr.length !== this.state.degradedNodes.length ||
+      backupArr.length !== this.state.backupNodes.length ||
+      criticalArr.length !== this.state.criticalNodes.length ||
+      affectedEdgesArr.length !== this.state.affectedEdges.length ||
+      failedArr.some((id) => !this.state.failedNodes.includes(id)) ||
+      degradedArr.some((id) => !this.state.degradedNodes.includes(id)) ||
+      backupArr.some((id) => !this.state.backupNodes.includes(id));
+
+    // Fast-path: When time advances but no new failures/degradations occurred, advance time smoothly with zero lag
+    if (!hasStateChanged && this.state.impact !== null) {
+      this.state = {
+        ...this.state,
+        simulationTime: clampedTime,
+      };
+      this.notify();
+      return;
+    }
+
+    const hasActiveFailures = failedArr.length > 0 || degradedArr.length > 0 || backupArr.length > 0 || criticalArr.length > 0;
+
+    let dynamicImpact: ImpactResult | null = this.state.impact;
+    let dynamicUncertainty: UncertaintyResult | null = this.state.uncertainty;
+
+    const simInput: SimStateInput = {
+      scenario_id: this.state.activeScenario?.id ?? 'live_simulation',
+      time: clampedTime,
+      assets: newStates,
+      failed_nodes: failedArr,
+      degraded_nodes: degradedArr,
+      backup_nodes: backupArr,
+      critical_nodes: criticalArr,
+      affected_edges: affectedEdgesArr,
+    };
+
+    if (hasActiveFailures || clampedTime > 0) {
+      dynamicImpact = ImpactEngine.calculateHumanImpact(
+        simInput,
+        this.state.network,
+        this.state.activeScenario?.id ?? 'live_simulation',
+        clampedTime > 0 ? clampedTime : (this.state.activeScenario?.duration ?? 6.1)
+      );
+
+      dynamicUncertainty = ImpactEngine.runMonteCarlo(
+        simInput,
+        this.state.network,
+        this.state.activeScenario?.id ?? 'live_simulation',
+        500,
+        42
+      );
+    }
+
+    const dynamicCriticality = this.state.network
+      ? CriticalityEngine.calculateCriticality(
+          this.state.network,
+          this.state.activeScenario?.id ?? 'live_simulation',
+          simInput
+        )
+      : this.state.criticality;
+
     this.state = {
       ...this.state,
       simulationTime: clampedTime,
       assetStates: newStates,
-      failedNodes: Array.from(failedNodes),
-      degradedNodes: Array.from(degradedNodes),
-      backupNodes: Array.from(backupNodes),
-      criticalNodes: Array.from(criticalNodes),
-      affectedEdges: Array.from(affectedEdges),
+      failedNodes: failedArr,
+      degradedNodes: degradedArr,
+      backupNodes: backupArr,
+      criticalNodes: criticalArr,
+      affectedEdges: affectedEdgesArr,
+      impact: dynamicImpact,
+      uncertainty: dynamicUncertainty,
+      criticality: dynamicCriticality,
     };
 
+    this.recalculateOptimizationAndAdvice();
     this.notify();
   }
 
-  public triggerManualFailure(assetId: string): void {
-    const currentTime = this.state.simulationTime;
-    const failureEvent: SimulationEvent = {
-      time: Math.round(currentTime * 10) / 10,
-      event: 'asset_failed',
-      asset_id: assetId,
-      cause: 'user_initiated_break',
-    };
-
-    // Cascade to immediate downstream dependencies
-    const downstreamEvents: SimulationEvent[] = [];
-    if (this.state.network) {
-      const outgoingEdges = this.state.network.edges.filter((e) => e.from === assetId);
-      outgoingEdges.forEach((edge, idx) => {
-        downstreamEvents.push({
-          time: Math.round((currentTime + 0.1 * (idx + 1)) * 10) / 10,
-          event: 'dependency_lost',
-          edge_id: edge.id,
-          cause: 'upstream_asset_break',
-        });
-        const targetNode = this.state.network?.nodes.find((n) => n.id === edge.to);
-        if (targetNode) {
-          if (targetNode.backup_duration && targetNode.backup_duration > 0) {
-            downstreamEvents.push({
-              time: Math.round((currentTime + 0.2 * (idx + 1)) * 10) / 10,
-              event: 'asset_backup',
-              asset_id: targetNode.id,
-              cause: 'main_feed_loss',
-            });
-          } else {
-            downstreamEvents.push({
-              time: Math.round((currentTime + 0.2 * (idx + 1)) * 10) / 10,
-              event: 'asset_degraded',
-              asset_id: targetNode.id,
-              cause: 'upstream_feed_loss',
-            });
-          }
-        }
-      });
+  private syncDynamicEvents(): void {
+    if (!this.state.network) return;
+    const initialBroken = this.state.activeScenario
+      ? this.state.activeScenario.failures
+      : this.state.failedNodes;
+    if (initialBroken.length > 0) {
+      this.state.events = CascadeEngine.generateCascadeEvents(
+        this.state.network,
+        initialBroken,
+        this.state.appliedInterventions,
+        this.state.interventionsCatalog,
+        this.state.activeScenario?.duration || 24
+      );
     }
+  }
 
-    const updatedEvents = [...this.state.events, failureEvent, ...downstreamEvents].sort(
-      (a, b) => a.time - b.time
+  public triggerManualFailure(assetId: string): void {
+    if (!this.state.network) return;
+    const currentBroken = Array.from(new Set([...this.state.failedNodes, assetId]));
+    const dynamicEvents = CascadeEngine.generateCascadeEvents(
+      this.state.network,
+      currentBroken,
+      this.state.appliedInterventions,
+      this.state.interventionsCatalog,
+      24
     );
 
     this.state = {
       ...this.state,
-      events: updatedEvents,
+      events: dynamicEvents,
+      showSimulationBar: true,
     };
-    this.setSimulationTime(currentTime);
+    this.setSimulationTime(this.state.simulationTime);
   }
 
   public repairAsset(assetId: string): void {
-    const updatedEvents = this.state.events.filter(
-      (ev) => !(ev.asset_id === assetId && (ev.event === 'asset_failed' || ev.event === 'asset_degraded'))
+    if (!this.state.network) return;
+    const remainingBroken = this.state.failedNodes.filter((id) => id !== assetId);
+    const dynamicEvents = CascadeEngine.generateCascadeEvents(
+      this.state.network,
+      remainingBroken,
+      this.state.appliedInterventions,
+      this.state.interventionsCatalog,
+      24
     );
     this.state = {
       ...this.state,
-      events: updatedEvents,
+      events: dynamicEvents,
     };
     this.setSimulationTime(this.state.simulationTime);
   }
@@ -701,9 +954,95 @@ class StateStore {
       budgetSpent: this.state.budgetSpent + item.cost,
     };
 
+    this.syncDynamicEvents();
     simulationClient.applyIntervention(req);
+    this.recalculateOptimizationAndAdvice();
     this.notify();
     return true;
+  }
+
+  public removeIntervention(index: number): void {
+    if (index < 0 || index >= this.state.appliedInterventions.length) return;
+    const removed = this.state.appliedInterventions[index];
+    const catItem = this.state.interventionsCatalog.find((i) => i.id === removed.intervention_id);
+    const cost = catItem ? catItem.cost : 0;
+    const updated = [...this.state.appliedInterventions];
+    updated.splice(index, 1);
+    this.state = {
+      ...this.state,
+      appliedInterventions: updated,
+      budgetSpent: Math.max(0, this.state.budgetSpent - cost),
+    };
+    this.syncDynamicEvents();
+    this.recalculateOptimizationAndAdvice();
+    this.notify();
+  }
+
+  public clearInterventions(): void {
+    this.state = {
+      ...this.state,
+      appliedInterventions: [],
+      budgetSpent: 0,
+    };
+    this.syncDynamicEvents();
+    this.recalculateOptimizationAndAdvice();
+    this.notify();
+  }
+
+  public recalculateOptimizationAndAdvice(): void {
+    if (!this.state.network || !this.state.interventionsCatalog || this.state.interventionsCatalog.length === 0) return;
+
+    const currentScenarioId = this.state.activeScenario?.id || 'scenario_01';
+
+    const baseSimInput: SimStateInput = {
+      scenario_id: currentScenarioId,
+      time: this.state.simulationTime,
+      assets: this.state.assetStates,
+      failed_nodes: this.state.failedNodes,
+      degraded_nodes: this.state.degradedNodes,
+      backup_nodes: this.state.backupNodes,
+      critical_nodes: this.state.criticalNodes,
+      affected_edges: this.state.affectedEdges,
+    };
+
+    const selected: SelectedIntervention[] = this.state.appliedInterventions.map((app) => {
+      const item = this.state.interventionsCatalog.find((i) => i.id === app.intervention_id);
+      return {
+        intervention_id: app.intervention_id,
+        target_asset_id: app.target_asset_id,
+        cost: item?.cost || 0,
+      };
+    });
+
+    const userPlan = OptimizerEngine.evaluateUserPlan(
+      this.state.network,
+      baseSimInput,
+      this.state.budgetTotal,
+      selected,
+      this.state.interventionsCatalog,
+      currentScenarioId
+    );
+
+    const optimalPlan = OptimizerEngine.optimizeBudget(
+      this.state.network,
+      baseSimInput,
+      this.state.budgetTotal,
+      this.state.interventionsCatalog,
+      currentScenarioId
+    );
+
+    const advisor = AdvisorEngine.generateAdvice(
+      userPlan,
+      optimalPlan,
+      this.state.criticality,
+      this.state.network
+    );
+
+    this.state = {
+      ...this.state,
+      optimization: optimalPlan,
+      advisor,
+    };
   }
 }
 

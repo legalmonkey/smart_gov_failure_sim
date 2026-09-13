@@ -15,6 +15,7 @@ import { AdvisorModal } from './components/Advisor/AdvisorModal';
 import { SimsAdvisorPopup } from './components/Dashboard/SimsAdvisorPopup';
 import { FloatingSimulationDock } from './components/SimulationControls/FloatingSimulationDock';
 import { SimulateTriggerButton } from './components/SimulationControls/SimulateTriggerButton';
+import { MapControls } from './components/MapControls/MapControls';
 import { OsmAttribution } from './components/Dashboard/OsmAttribution';
 
 export const App: React.FC = () => {
@@ -68,6 +69,21 @@ export const App: React.FC = () => {
           onFlyTo={(lat, lon) => {
             sceneManagerRef.current?.focusCoordinates(lat, lon);
           }}
+        />
+      )}
+
+      {/* Floating 3D Map Navigation & View Controls */}
+      {state.showMapControls && (
+        <MapControls
+          onZoomIn={() => sceneManagerRef.current?.zoomIn()}
+          onZoomOut={() => sceneManagerRef.current?.zoomOut()}
+          onRotateLeft={() => sceneManagerRef.current?.rotateLeft()}
+          onRotateRight={() => sceneManagerRef.current?.rotateRight()}
+          onResetView={() => sceneManagerRef.current?.resetCamera()}
+          onToggle2D3D={() => sceneManagerRef.current?.toggle2D3D()}
+          onNavigate={(dx, dz) => sceneManagerRef.current?.navigate(dx, dz)}
+          onFocusCoordinates={(lat, lon) => sceneManagerRef.current?.focusCoordinates(lat, lon)}
+          onClose={() => appState.toggleMapControls(false)}
         />
       )}
 

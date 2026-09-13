@@ -1,0 +1,17 @@
+{
+  "scenario_id": "scenario_01",
+  "iterations": 1000,
+  "random_seed": 42,
+  "population_affected": {
+    "mean": 228827.5,
+    "median": 228592.0,
+    "p05": 204122.5,
+    "p95": 255214.3
+  },
+  "hospital_failure_probability": 0.05,
+  "hospital_failure_time_hours": {
+    "median": 6.31,
+    "p05": 5.15,
+    "p95": 7.41
+  }
+}

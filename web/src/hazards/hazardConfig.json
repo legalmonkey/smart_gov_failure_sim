@@ -1,0 +1,386 @@
+{
+  "schema_version": "1.0",
+  "provenance": {
+    "geography": "REAL (OpenStreetMap and MCGM Ward S Bounding System)",
+    "hazard_physics": "SIMULATED (Engineered Urban Disaster Model)",
+    "vulnerability": "SIMULATED (Standard Infrastructure Resilience Rating)",
+    "exposure": "DERIVED (Spatial Centroid and Proximity Intersection)"
+  },
+  "hazard_types": {
+    "EXTREME_RAINFALL": {
+      "id": "EXTREME_RAINFALL",
+      "name": "Extreme Rainfall",
+      "badge": "RAINFALL",
+      "description": "Monsoonal downpour causing drainage overload, localized ponding, and road surface degradation.",
+      "potential_effects": [
+        "drainage overload",
+        "water accumulation",
+        "road degradation",
+        "underpass flooding",
+        "bridge access restrictions",
+        "electrical infrastructure exposure",
+        "emergency response delays"
+      ],
+      "default_parameters": {
+        "rainfall_intensity_mm_per_hour": 120,
+        "peak_time_hours": 4,
+        "drainage_capacity_factor": 0.65
+      },
+      "visual_layer": "precipitation_curtain",
+      "color": "#38bdf8"
+    },
+    "URBAN_FLOOD": {
+      "id": "URBAN_FLOOD",
+      "name": "Urban Flooding",
+      "badge": "FLOOD",
+      "description": "Powai lake surge and catchment overflow causing inundation across low-lying roads and electrical substations.",
+      "potential_effects": [
+        "roads becoming inaccessible",
+        "bridges/underpasses becoming restricted",
+        "buildings becoming inaccessible",
+        "electrical infrastructure exposure",
+        "water infrastructure disruption",
+        "emergency vehicle delays",
+        "population isolation"
+      ],
+      "default_parameters": {
+        "flood_depth_m": 1.35,
+        "peak_time_hours": 5,
+        "recession_hours": 12
+      },
+      "visual_layer": "flood_polygon",
+      "color": "#0284c7"
+    },
+    "SEVERE_STORM": {
+      "id": "SEVERE_STORM",
+      "name": "Severe Storm",
+      "badge": "STORM",
+      "description": "High cyclonic gusts and squalls producing tree falls, grid feeder severance, and transmission trips.",
+      "potential_effects": [
+        "power infrastructure damage",
+        "fallen trees/obstructions",
+        "road closures",
+        "communication disruption",
+        "building damage",
+        "localized flooding",
+        "emergency response delays"
+      ],
+      "default_parameters": {
+        "wind_speed_kmh": 95,
+        "gust_factor": 1.4,
+        "duration_hours": 8
+      },
+      "visual_layer": "storm_vortex",
+      "color": "#a855f7"
+    },
+    "EARTHQUAKE": {
+      "id": "EARTHQUAKE",
+      "name": "Earthquake",
+      "badge": "QUAKE",
+      "description": "Regional fault ground-motion producing seismic acceleration, pipe stress, and bridge inspection holds.",
+      "potential_effects": [
+        "building damage",
+        "bridge damage",
+        "road obstruction",
+        "power failures",
+        "water-pipeline failures",
+        "hospital demand increase",
+        "emergency response delays"
+      ],
+      "default_parameters": {
+        "magnitude": 5.8,
+        "epicenter": [
+          72.905,
+          19.112
+        ],
+        "depth_km": 10
+      },
+      "visual_layer": "seismic_rings",
+      "color": "#f97316"
+    },
+    "URBAN_FIRE": {
+      "id": "URBAN_FIRE",
+      "name": "Urban Fire",
+      "badge": "FIRE",
+      "description": "Commercial/industrial corridor blaze triggering building evacuation and emergency access restrictions.",
+      "potential_effects": [
+        "building evacuation",
+        "road closure",
+        "emergency corridor restrictions",
+        "increased emergency-service demand",
+        "nearby infrastructure disruption",
+        "temporary population displacement"
+      ],
+      "default_parameters": {
+        "spread_rate_m_per_hour": 45,
+        "thermal_radius_m": 350
+      },
+      "visual_layer": "fire_glow",
+      "color": "#ef4444"
+    }
+  },
+  "intensity_levels": {
+    "low": {
+      "label": "Low",
+      "value": 0.35,
+      "description": "Manageable operational strain within nominal safety margins"
+    },
+    "moderate": {
+      "label": "Moderate",
+      "value": 0.6,
+      "description": "Significant stress approaching asset disruption thresholds"
+    },
+    "severe": {
+      "label": "Severe",
+      "value": 0.82,
+      "description": "Critical infrastructure threshold breach with immediate tripping"
+    },
+    "extreme": {
+      "label": "Extreme",
+      "value": 0.98,
+      "description": "Catastrophic event exceeding standard engineering ratings"
+    }
+  },
+  "predefined_zones": [
+    {
+      "zone_id": "powai_lake_embankment",
+      "name": "Powai Lake Southern Embankment",
+      "center": [
+        72.9035,
+        19.1195
+      ],
+      "radius_m": 650,
+      "coordinates": [
+        [
+          72.898,
+          19.118
+        ],
+        [
+          72.908,
+          19.118
+        ],
+        [
+          72.909,
+          19.123
+        ],
+        [
+          72.897,
+          19.122
+        ],
+        [
+          72.898,
+          19.118
+        ]
+      ]
+    },
+    {
+      "zone_id": "hiranandani_core",
+      "name": "Hiranandani Gardens Commercial Core",
+      "center": [
+        72.9125,
+        19.1185
+      ],
+      "radius_m": 550,
+      "coordinates": [
+        [
+          72.908,
+          19.114
+        ],
+        [
+          72.918,
+          19.114
+        ],
+        [
+          72.918,
+          19.123
+        ],
+        [
+          72.908,
+          19.123
+        ],
+        [
+          72.908,
+          19.114
+        ]
+      ]
+    },
+    {
+      "zone_id": "jvlr_transport_corridor",
+      "name": "JVLR Arterial Transport Corridor",
+      "center": [
+        72.9095,
+        19.1265
+      ],
+      "radius_m": 750,
+      "coordinates": [
+        [
+          72.899,
+          19.124
+        ],
+        [
+          72.92,
+          19.124
+        ],
+        [
+          72.92,
+          19.13
+        ],
+        [
+          72.899,
+          19.13
+        ],
+        [
+          72.899,
+          19.124
+        ]
+      ]
+    },
+    {
+      "zone_id": "rambaug_lowlands",
+      "name": "Rambaug Lowland Basin",
+      "center": [
+        72.9015,
+        19.1145
+      ],
+      "radius_m": 480,
+      "coordinates": [
+        [
+          72.897,
+          19.111
+        ],
+        [
+          72.906,
+          19.111
+        ],
+        [
+          72.906,
+          19.118
+        ],
+        [
+          72.897,
+          19.118
+        ],
+        [
+          72.897,
+          19.111
+        ]
+      ]
+    },
+    {
+      "zone_id": "iit_bombay_sector",
+      "name": "IIT Bombay Academic Sector",
+      "center": [
+        72.9155,
+        19.131
+      ],
+      "radius_m": 800,
+      "coordinates": [
+        [
+          72.907,
+          19.126
+        ],
+        [
+          72.924,
+          19.126
+        ],
+        [
+          72.924,
+          19.136
+        ],
+        [
+          72.907,
+          19.136
+        ],
+        [
+          72.907,
+          19.126
+        ]
+      ]
+    }
+  ],
+  "asset_type_vulnerability": {
+    "substation": {
+      "EXTREME_RAINFALL": 0.65,
+      "URBAN_FLOOD": 0.88,
+      "SEVERE_STORM": 0.75,
+      "EARTHQUAKE": 0.55,
+      "URBAN_FIRE": 0.4
+    },
+    "power_station": {
+      "EXTREME_RAINFALL": 0.45,
+      "URBAN_FLOOD": 0.75,
+      "SEVERE_STORM": 0.8,
+      "EARTHQUAKE": 0.6,
+      "URBAN_FIRE": 0.5
+    },
+    "hospital": {
+      "EXTREME_RAINFALL": 0.25,
+      "URBAN_FLOOD": 0.35,
+      "SEVERE_STORM": 0.3,
+      "EARTHQUAKE": 0.5,
+      "URBAN_FIRE": 0.65
+    },
+    "water_pump": {
+      "EXTREME_RAINFALL": 0.6,
+      "URBAN_FLOOD": 0.9,
+      "SEVERE_STORM": 0.4,
+      "EARTHQUAKE": 0.55,
+      "URBAN_FIRE": 0.35
+    },
+    "road": {
+      "EXTREME_RAINFALL": 0.75,
+      "URBAN_FLOOD": 0.92,
+      "SEVERE_STORM": 0.6,
+      "EARTHQUAKE": 0.65,
+      "URBAN_FIRE": 0.7
+    },
+    "bridge": {
+      "EXTREME_RAINFALL": 0.55,
+      "URBAN_FLOOD": 0.75,
+      "SEVERE_STORM": 0.5,
+      "EARTHQUAKE": 0.85,
+      "URBAN_FIRE": 0.3
+    },
+    "school": {
+      "EXTREME_RAINFALL": 0.35,
+      "URBAN_FLOOD": 0.5,
+      "SEVERE_STORM": 0.45,
+      "EARTHQUAKE": 0.6,
+      "URBAN_FIRE": 0.6
+    },
+    "commercial": {
+      "EXTREME_RAINFALL": 0.3,
+      "URBAN_FLOOD": 0.45,
+      "SEVERE_STORM": 0.4,
+      "EARTHQUAKE": 0.5,
+      "URBAN_FIRE": 0.85
+    },
+    "population": {
+      "EXTREME_RAINFALL": 0.4,
+      "URBAN_FLOOD": 0.7,
+      "SEVERE_STORM": 0.5,
+      "EARTHQUAKE": 0.65,
+      "URBAN_FIRE": 0.75
+    },
+    "hotel": {
+      "EXTREME_RAINFALL": 0.25,
+      "URBAN_FLOOD": 0.4,
+      "SEVERE_STORM": 0.35,
+      "EARTHQUAKE": 0.5,
+      "URBAN_FIRE": 0.6
+    },
+    "default": {
+      "EXTREME_RAINFALL": 0.4,
+      "URBAN_FLOOD": 0.5,
+      "SEVERE_STORM": 0.5,
+      "EARTHQUAKE": 0.5,
+      "URBAN_FIRE": 0.5
+    }
+  },
+  "disruption_thresholds": {
+    "failed": 0.7,
+    "critical": 0.5,
+    "backup": 0.35,
+    "degraded": 0.2
+  }
+}

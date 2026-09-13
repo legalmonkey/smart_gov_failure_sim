@@ -4,7 +4,7 @@ import { appState } from '../../state/applicationState';
 interface LandmarkItem {
   id: string;
   name: string;
-  category: 'hospital' | 'school' | 'power' | 'water' | 'tower' | 'lake' | 'road';
+  category: 'hospital' | 'school' | 'power' | 'water' | 'tower' | 'lake' | 'road' | 'commercial' | 'hotel';
   tag: string;
   lat: number;
   lon: number;
@@ -41,7 +41,7 @@ const LANDMARKS: LandmarkItem[] = [
   },
   {
     id: 'hosp_nirali',
-    name: 'Nirali A M Naik Health Center',
+    name: 'Nirali A M Naik Healthcare',
     category: 'hospital',
     tag: 'HOSP',
     lat: 19.117200,
@@ -73,8 +73,8 @@ const LANDMARKS: LandmarkItem[] = [
     name: 'S.M. Shetty High School & College',
     category: 'school',
     tag: 'SCHL',
-    lat: 19.121800,
-    lon: 72.903800,
+    lat: 19.115800,
+    lon: 72.905800,
     networkAssetId: 'sm_shetty_institute_01',
   },
   {
@@ -129,30 +129,59 @@ const LANDMARKS: LandmarkItem[] = [
     name: 'Powai Lake Water Pumping Works',
     category: 'water',
     tag: 'WTR',
-    lat: 19.123500,
-    lon: 72.904500,
+    lat: 19.119000,
+    lon: 72.901500,
     networkAssetId: 'water_pump_01',
   },
 
-  // Major Landmark Towers
+  // Hotels & Commercial Hubs
   {
-    id: 'tower_galleria',
-    name: 'Galleria Commercial Mall',
-    category: 'tower',
-    tag: 'TWNR',
-    lat: 19.118300,
-    lon: 72.909500,
+    id: 'hotel_westin',
+    name: 'The Westin Mumbai Powai Lake Convention Center',
+    category: 'hotel',
+    tag: 'HOTEL',
+    lat: 19.134800,
+    lon: 72.901500,
+    networkAssetId: 'westin_powai_01',
+  },
+  {
+    id: 'comm_kensington',
+    name: 'Kensington Business Park SEZ',
+    category: 'commercial',
+    tag: 'COMM',
+    lat: 19.107400,
+    lon: 72.897800,
+    networkAssetId: 'kensington_sez_01',
+  },
+  {
+    id: 'comm_galleria',
+    name: 'Galleria Commercial Mall & Retail Center',
+    category: 'commercial',
+    tag: 'COMM',
+    lat: 19.107000,
+    lon: 72.897200,
     networkAssetId: 'galleria_complex_01',
   },
   {
-    id: 'tower_kensington',
-    name: 'Kensington Business Park SEZ',
-    category: 'tower',
-    tag: 'TWNR',
-    lat: 19.120000,
-    lon: 72.912000,
-    networkAssetId: 'kensington_sez_01',
+    id: 'comm_crisil',
+    name: 'Crisil House Financial Intelligence Center',
+    category: 'commercial',
+    tag: 'COMM',
+    lat: 19.116900,
+    lon: 72.910800,
+    networkAssetId: 'crisil_house_01',
   },
+  {
+    id: 'comm_bayer',
+    name: 'Bayer Life Sciences Regional Headquarters',
+    category: 'commercial',
+    tag: 'COMM',
+    lat: 19.119000,
+    lon: 72.912300,
+    networkAssetId: 'bayer_headquarters_01',
+  },
+
+  // Major Landmark Towers
   {
     id: 'tower_somerset',
     name: 'Somerset Tower Hiranandani',
@@ -170,24 +199,6 @@ const LANDMARKS: LandmarkItem[] = [
     lat: 19.115600,
     lon: 72.903100,
     networkAssetId: 'panchvati_residence_01',
-  },
-  {
-    id: 'tower_westin',
-    name: 'The Westin Powai Lake Resort',
-    category: 'tower',
-    tag: 'TWNR',
-    lat: 19.134800,
-    lon: 72.901500,
-    networkAssetId: 'westin_powai_01',
-  },
-  {
-    id: 'tower_crisil',
-    name: 'Crisil House Intelligence Center',
-    category: 'tower',
-    tag: 'TWNR',
-    lat: 19.116900,
-    lon: 72.910800,
-    networkAssetId: 'crisil_house_01',
   },
   {
     id: 'tower_lake_castle',
@@ -258,7 +269,6 @@ export const MapIndex: React.FC<Props> = ({ onFlyTo }) => {
     <aside className="map-index-panel emerging-panel glass-panel">
       <div className="panel-top-bar">
         <div className="title-with-pill">
-          <span className="node-icon-box">[IDX]</span>
           <h2 className="panel-main-title">LANDMARK INDEX</h2>
           <span className="status-pill pill-secondary font-mono">2KM RADIUS</span>
         </div>
@@ -273,7 +283,7 @@ export const MapIndex: React.FC<Props> = ({ onFlyTo }) => {
 
       {/* Category Filter Bar */}
       <div className="index-filter-bar">
-        {['all', 'hospital', 'school', 'power', 'water', 'tower', 'road'].map((cat) => (
+        {['all', 'hospital', 'school', 'hotel', 'commercial', 'power', 'water', 'tower', 'road'].map((cat) => (
           <button
             key={cat}
             className={`filter-pill font-mono ${filter === cat ? 'active' : ''}`}
@@ -289,6 +299,10 @@ export const MapIndex: React.FC<Props> = ({ onFlyTo }) => {
               ? 'TOWERS'
               : cat === 'road'
               ? 'ROADS'
+              : cat === 'hotel'
+              ? 'HOTELS'
+              : cat === 'commercial'
+              ? 'BUSINESS'
               : cat.toUpperCase()}
           </button>
         ))}

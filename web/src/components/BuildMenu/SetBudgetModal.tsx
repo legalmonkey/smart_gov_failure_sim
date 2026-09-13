@@ -45,7 +45,6 @@ export const SetBudgetModal: React.FC<Props> = ({ onClose }) => {
       <div className="modal-container glass-panel budget-modal">
         <div className="modal-header">
           <div className="modal-title-group">
-            <span className="modal-code-tag font-mono">[CAPEX]</span>
             <div>
               <h2 className="modal-title">SET RESILIENCE BUDGET</h2>
               <span className="modal-sub">

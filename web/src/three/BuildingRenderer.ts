@@ -609,66 +609,41 @@ export class BuildingRenderer {
       center: center,
     };
   }
+  public get allBuildingMeshes(): THREE.Mesh[] {
+    return this.buildingMeshes;
+  }
 
   /**
    * Links real-world OSM building meshes to breakable infrastructure assets.
-   * Enables direct hovering, selection, and breaking on buildings throughout the entire map.
+   * Only links exact OSM ID matches or exact name matches.
+   * Never uses proximity heuristics which hijack non-clickable buildings.
    */
   public linkAssets(assets: Asset[]): void {
     if (!assets || assets.length === 0 || this.buildingMeshes.length === 0) return;
 
     this.selectableObjects = [];
 
-    const assetPositions = assets.map((a) => ({
-      asset: a,
-      pos: latLonToWorld(a.location.latitude, a.location.longitude, 0),
-    }));
-
     this.buildingMeshes.forEach((mesh) => {
-      const featName = (mesh.userData.name || '').toLowerCase();
+      // Reset any previous link
+      delete mesh.userData.assetId;
+      mesh.userData.isSelectable = false;
+
+      const featName = (mesh.userData.name || '').trim().toLowerCase();
       const featOsmId = mesh.userData.osm_id || '';
-      const bCenter = mesh.userData.center as THREE.Vector3;
 
       let matchedAsset: Asset | undefined = undefined;
 
-      // 1. Direct OSM ID match
-      matchedAsset = assets.find((a) => a.osm_id && a.osm_id === featOsmId);
-
-      // 2. Keyword matching across real building names
-      if (!matchedAsset && featName) {
-        matchedAsset = assets.find((a) => {
-          const aName = a.name.toLowerCase();
-          if (featName.includes('kensington') && aName.includes('kensington')) return true;
-          if (featName.includes('galleria') && aName.includes('galleria')) return true;
-          if (featName.includes('westin') && aName.includes('westin')) return true;
-          if (featName.includes('crisil') && aName.includes('crisil')) return true;
-          if (featName.includes('bayer') && aName.includes('bayer')) return true;
-          if (featName.includes('mtnl') && aName.includes('mtnl')) return true;
-          if (featName.includes('somerset') && aName.includes('somerset')) return true;
-          if (featName.includes('panchvati') && aName.includes('panchvati')) return true;
-          if (featName.includes('shetty') && aName.includes('shetty')) return true;
-          if (featName.includes('nilekani') && aName.includes('nilekani')) return true;
-          if (
-            featName.includes('kresit') ||
-            featName.includes('cresit') ||
-            featName.includes('computer science')
-          ) {
-            if (aName.includes('computer science') || aName.includes('kresit')) return true;
-          }
-          if (featName.includes('nitie') && aName.includes('nitie')) return true;
-          if (featName.includes('hotel 13') && aName.includes('hotel 13')) return true;
-          if (featName.includes('hiranandani hospital') && aName.includes('hiranandani hospital')) return true;
-          if (featName.includes('heritage') && aName.includes('heritage')) return true;
-          return false;
-        });
+      // 1. Direct explicit OSM ID match (highest priority, 100% exact)
+      if (featOsmId) {
+        matchedAsset = assets.find((a) => a.osm_id && a.osm_id === featOsmId);
       }
 
-      // 3. Proximity matching (< 45 meters from real asset coordinate)
-      if (!matchedAsset && bCenter) {
-        matchedAsset = assetPositions.find((ap) => {
-          const d = Math.hypot(ap.pos.x - bCenter.x, ap.pos.z - bCenter.z);
-          return d < 45;
-        })?.asset;
+      // 2. Exact full name matching for known infrastructure buildings
+      if (!matchedAsset && featName && featName !== 'building') {
+        matchedAsset = assets.find((a) => {
+          const aName = a.name.trim().toLowerCase();
+          return aName === featName;
+        });
       }
 
       if (matchedAsset) {

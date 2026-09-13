@@ -17,27 +17,20 @@ export const AdvisorModal: React.FC<Props> = ({ onClose, onHighlightOptimalAsset
   const advisor = state.advisor;
   if (!advisor) return null;
 
-  let calculatedReduction = 0;
-  state.appliedInterventions.forEach((req) => {
-    if (req.intervention_id === 'redundant_power_line') calculatedReduction += 22;
-    else if (req.intervention_id === 'backup_generator') calculatedReduction += 16;
-    else if (req.intervention_id === 'water_storage_buffer') calculatedReduction += 12;
-    else if (req.intervention_id === 'reinforced_bridge') calculatedReduction += 10;
-    else if (req.intervention_id === 'alternate_emergency_route') calculatedReduction += 8;
-    else calculatedReduction += 6;
-  });
-  const userReduction = calculatedReduction;
-  const optimalReduction = Math.round(advisor.optimal_plan.impact_reduction * 100);
+  const userReduction = Math.round((advisor.user_plan?.impact_reduction ?? 0) * 100);
+  const optimalReduction = Math.round((advisor.optimal_plan?.impact_reduction ?? 0) * 100);
 
   const handleShowOptimalPlan = () => {
     const optimalAssetIds = advisor.optimal_plan.selected_interventions?.map(
       (i) => i.target_asset_id
-    ) || ['substation_01', 'hospital_01', 'water_pump_01'];
+    ) || [];
 
-    if (onHighlightOptimalAssets) {
-      onHighlightOptimalAssets(optimalAssetIds);
+    if (optimalAssetIds.length > 0) {
+      if (onHighlightOptimalAssets) {
+        onHighlightOptimalAssets(optimalAssetIds);
+      }
+      appState.setSelectedAssetId(optimalAssetIds[0]);
     }
-    appState.setSelectedAssetId(optimalAssetIds[0]);
     onClose();
   };
 
@@ -46,7 +39,6 @@ export const AdvisorModal: React.FC<Props> = ({ onClose, onHighlightOptimalAsset
       <div className="modal-container glass-panel advisor-modal">
         <div className="modal-header">
           <div className="modal-title-group">
-            <span className="modal-code-tag font-mono">[OPTIMIZER]</span>
             <div>
               <h2 className="modal-title">RESILIENCE DECISION ADVISOR</h2>
               <span className="modal-sub">AI Infrastructure Optimization &amp; Explanation (Track 4)</span>

@@ -173,7 +173,15 @@ def convert():
                     levels = 18
 
                 if not name:
-                    if levels >= 18:
+                    c_lat = sum(c[1] for c in coords) / len(coords)
+                    c_lon = sum(c[0] for c in coords) / len(coords)
+                    if c_lat >= 19.124 and c_lon >= 72.909:
+                        name = "IIT Bombay High-Rise Complex" if levels >= 18 else "IIT Bombay Campus Residence"
+                    elif c_lat >= 19.128 and c_lon <= 72.905:
+                        name = "Powai Vihar Residential Complex"
+                    elif c_lon < 72.902:
+                        name = "Lake Homes & Chandivali Residence"
+                    elif levels >= 18:
                         name = hiranandani_tower_names[tower_name_idx % len(hiranandani_tower_names)]
                         tower_name_idx += 1
                     else:
@@ -207,12 +215,12 @@ def convert():
         {"name": "Nirali A M Naik Health-Care Facility", "type": "hospital", "lat": 19.117200, "lon": 72.919800, "id": "node/959572919"},
         {"name": "Hiranandani Foundation School (ICSE)", "type": "school", "lat": 19.117982, "lon": 72.907575, "id": "way/353173681"},
         {"name": "Kendriya Vidyalaya IIT Powai", "type": "school", "lat": 19.125200, "lon": 72.913500, "id": "way/723512525"},
-        {"name": "S.M. Shetty High School & Junior College", "type": "school", "lat": 19.121800, "lon": 72.903800, "id": "node/11697877354"},
+        {"name": "S.M. Shetty High School & Junior College", "type": "school", "lat": 19.115800, "lon": 72.905800, "id": "node/11697877354"},
         {"name": "Shailesh J Mehta School of Management (SJMSOM)", "type": "school", "lat": 19.131500, "lon": 72.915200, "id": "node/668494244"},
         {"name": "National Institute of Industrial Engineering (NITIE / IIM)", "type": "school", "lat": 19.135000, "lon": 72.898000, "id": "node/222338978"},
         {"name": "Powai Central 220kV Electrical Substation", "type": "substation", "lat": 19.122500, "lon": 72.912500, "id": "way/900102"},
         {"name": "IIT Bombay High-Voltage Power Plant", "type": "power_station", "lat": 19.126500, "lon": 72.918000, "id": "way/900101"},
-        {"name": "Powai Lake Water Pumping & Treatment Works", "type": "water_pump", "lat": 19.123500, "lon": 72.904500, "id": "node/123457"}
+        {"name": "Powai Lake Water Pumping & Treatment Works", "type": "water_pump", "lat": 19.119000, "lon": 72.901500, "id": "node/123457"}
     ]
 
     for fac in real_facilities:

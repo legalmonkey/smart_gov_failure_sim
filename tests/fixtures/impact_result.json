@@ -1,0 +1,11 @@
+{
+  "scenario_id": "scenario_01",
+  "population_affected": 278250,
+  "duration_hours": 4.5,
+  "emergency_response_delay_minutes": 5,
+  "hospital_disruptions": 1,
+  "school_disruptions": 1,
+  "water_service_disruptions": 1,
+  "power_service_disruptions": 1,
+  "impact_score": 0.65
+}

@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
       {/* Brand Section */}
       <div className="dock-brand-group">
         <div className="brand-logo-line">
-          <span className="brand-title font-mono">CASCADECITY</span>
+          <span className="brand-title font-mono">RESILIO</span>
           <span className="brand-code-badge font-mono">MUM-01</span>
         </div>
         <span className="brand-tagline">Powai Lake &amp; Hiranandani · Infrastructure Resilience</span>
@@ -41,19 +41,19 @@ export const Header: React.FC = () => {
         </button>
 
         <button
+          className={`dock-tab-btn ${state.activeTab === 'compare' ? 'active' : ''}`}
+          onClick={() => appState.setActiveTab('compare')}
+          title="Toggle Scenario Library & Disaster Hub"
+        >
+          Scenarios
+        </button>
+
+        <button
           className={`dock-tab-btn ${state.activeTab === 'interventions' ? 'active' : ''}`}
           onClick={() => appState.setActiveTab('interventions')}
           title="Toggle Hardening & Interventions"
         >
           Interventions
-        </button>
-
-        <button
-          className={`dock-tab-btn ${state.activeTab === 'compare' ? 'active' : ''}`}
-          onClick={() => appState.setActiveTab('compare')}
-          title="Toggle Scenario Library & Comparison"
-        >
-          Scenarios
         </button>
 
         <button
@@ -95,14 +95,22 @@ export const Header: React.FC = () => {
           <span className="bell-badge-dot"></span>
         </button>
 
-        {/* Profile Badge matching reference image */}
-        <div className="user-profile-badge">
-          <div className="profile-avatar font-mono">VR</div>
-          <div className="profile-info">
-            <span className="profile-name">Dr. V. Rao</span>
-            <span className="profile-role font-mono">RESILIENCE DIR.</span>
-          </div>
-        </div>
+        {/* Map Controls Toggle Button */}
+        <button
+          className={`map-controls-toggle-btn ${state.showMapControls ? 'active' : ''}`}
+          onClick={() => appState.toggleMapControls()}
+          title="Toggle 3D Map Navigation & Controls"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+            <line x1="8" y1="2" x2="8" y2="18"></line>
+            <line x1="16" y1="6" x2="16" y2="22"></line>
+          </svg>
+          <span className="toggle-label font-mono">MAP CONTROLS</span>
+          <span className={`toggle-pill font-mono ${state.showMapControls ? 'on' : 'off'}`}>
+            {state.showMapControls ? 'ON' : 'OFF'}
+          </span>
+        </button>
       </div>
     </header>
   );

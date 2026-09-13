@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { ApplicationState } from '../../state/applicationState';
 import { appState } from '../../state/applicationState';
+import { getAssetDescriptor } from '../../infrastructure/assetRegistry';
 
 interface Props {
   onFocusAsset?: (assetId: string) => void;
@@ -77,7 +78,7 @@ export const AssetDetailPanel: React.FC<Props> = ({ onFocusAsset }) => {
             <span className="meta-tag">NODE ID: {asset.id.toUpperCase()}</span>
             <span className="meta-divider">•</span>
             <span className="meta-tag">
-              {asset.type === 'hospital' ? 'CRITICAL CARE LEVEL 1' : `${asset.type.toUpperCase().replace(/_/g, ' ')} INFRASTRUCTURE`}
+              {getAssetDescriptor(asset.type).displayName.toUpperCase()}
             </span>
             {critScore !== null && (
               <>

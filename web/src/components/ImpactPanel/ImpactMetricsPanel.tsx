@@ -19,7 +19,6 @@ export const ImpactMetricsPanel: React.FC = () => {
     <div className="impact-dock-inner">
       <div className="dashboard-header">
         <div className="dash-title-group">
-          <span className="dash-icon font-mono">[METRICS]</span>
           <div>
             <h2 className="dash-title">RESILIENCE METRICS</h2>
             <span className="dash-sub">Powai Lake & Hiranandani Urban Consequences</span>
@@ -42,7 +41,7 @@ export const ImpactMetricsPanel: React.FC = () => {
 
       <div className="metrics-summary-grid">
         <div className="metric-tile">
-          <span className="tile-icon font-mono">[POP]</span>
+          <span className="tile-icon font-mono">POP</span>
           <div className="tile-content">
             <span className="tile-label">POPULATION AFFECTED</span>
             <span className="tile-val font-mono">
@@ -52,7 +51,7 @@ export const ImpactMetricsPanel: React.FC = () => {
         </div>
 
         <div className="metric-tile">
-          <span className="tile-icon font-mono">[HOSP]</span>
+          <span className="tile-icon font-mono">HOSP</span>
           <div className="tile-content">
             <span className="tile-label">HOSPITALS DISRUPTED</span>
             <span className="tile-val font-mono text-danger">
@@ -62,7 +61,7 @@ export const ImpactMetricsPanel: React.FC = () => {
         </div>
 
         <div className="metric-tile">
-          <span className="tile-icon font-mono">[SCHL]</span>
+          <span className="tile-icon font-mono">SCHL</span>
           <div className="tile-content">
             <span className="tile-label">SCHOOLS DISRUPTED</span>
             <span className="tile-val font-mono">
@@ -72,7 +71,7 @@ export const ImpactMetricsPanel: React.FC = () => {
         </div>
 
         <div className="metric-tile">
-          <span className="tile-icon font-mono">[EMS]</span>
+          <span className="tile-icon font-mono">EMS</span>
           <div className="tile-content">
             <span className="tile-label">EMERGENCY DELAY</span>
             <span className="tile-val font-mono text-warning">
@@ -82,7 +81,7 @@ export const ImpactMetricsPanel: React.FC = () => {
         </div>
 
         <div className="metric-tile">
-          <span className="tile-icon font-mono">[WTR]</span>
+          <span className="tile-icon font-mono">WTR</span>
           <div className="tile-content">
             <span className="tile-label">WATER SERVICE CUT</span>
             <span className="tile-val font-mono">
@@ -92,7 +91,7 @@ export const ImpactMetricsPanel: React.FC = () => {
         </div>
 
         <div className="metric-tile">
-          <span className="tile-icon font-mono">[ELEC]</span>
+          <span className="tile-icon font-mono">ELEC</span>
           <div className="tile-content">
             <span className="tile-label">POWER FEEDER LOSS</span>
             <span className="tile-val font-mono text-danger">

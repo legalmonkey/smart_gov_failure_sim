@@ -58,8 +58,8 @@
       "name": "Powai Lake Water Pumping & Treatment Works",
       "osm_id": "node/123457",
       "location": {
-        "latitude": 19.1235,
-        "longitude": 72.9045
+        "latitude": 19.119,
+        "longitude": 72.9015
       },
       "capacity": 450,
       "load": 310,
@@ -139,7 +139,7 @@
     },
     {
       "id": "kensington_sez_01",
-      "type": "substation",
+      "type": "commercial",
       "name": "Kensington Business Park SEZ (IT & Tech Hub)",
       "osm_id": "way/900301",
       "location": {
@@ -156,7 +156,7 @@
     },
     {
       "id": "galleria_complex_01",
-      "type": "population",
+      "type": "commercial",
       "name": "Galleria Commercial Mall & Retail Center",
       "osm_id": "way/900302",
       "location": {
@@ -177,8 +177,8 @@
       "name": "S.M. Shetty High School & Management College",
       "osm_id": "node/11697877354",
       "location": {
-        "latitude": 19.1215,
-        "longitude": 72.9035
+        "latitude": 19.1158,
+        "longitude": 72.9058
       },
       "capacity": 110,
       "load": 75,
@@ -258,7 +258,7 @@
     },
     {
       "id": "westin_powai_01",
-      "type": "hospital",
+      "type": "hotel",
       "name": "The Westin Mumbai Powai Lake Convention Center",
       "osm_id": "way/900401",
       "location": {
@@ -326,7 +326,7 @@
     },
     {
       "id": "iit_cse_center_01",
-      "type": "substation",
+      "type": "school",
       "name": "KReSIT Computer Science & Supercomputer Centre",
       "osm_id": "way/52511387",
       "location": {
@@ -360,7 +360,7 @@
     },
     {
       "id": "crisil_house_01",
-      "type": "population",
+      "type": "commercial",
       "name": "Crisil House Financial Intelligence Center",
       "osm_id": "way/900501",
       "location": {
@@ -394,7 +394,7 @@
     },
     {
       "id": "bayer_headquarters_01",
-      "type": "population",
+      "type": "commercial",
       "name": "Bayer Life Sciences Regional Headquarters",
       "osm_id": "way/900503",
       "location": {

@@ -42,11 +42,17 @@ export const HoverActionCard: React.FC = () => {
   let posX = hoverPos.x + 18;
   let posY = hoverPos.y - 25;
 
-  if (posX + cardWidth > window.innerWidth - 10) {
+  const rightMargin = (state.selectedAssetId || state.showCascadePanel) ? 415 : 10;
+  if (posX + cardWidth > window.innerWidth - rightMargin) {
     posX = hoverPos.x - cardWidth - 18;
   }
-  if (posY + cardHeight > window.innerHeight - 10) {
-    posY = window.innerHeight - cardHeight - 15;
+  if (posX < 10) {
+    posX = 10;
+  }
+
+  const bottomLimit = state.showSimulationBar ? window.innerHeight - 145 : window.innerHeight - 10;
+  if (posY + cardHeight > bottomLimit) {
+    posY = bottomLimit - cardHeight;
   }
   if (posY < 10) {
     posY = 10;

@@ -44,7 +44,7 @@ export const TimelineBar: React.FC = () => {
           onClick={() => appState.stepForward(0.5)}
           title="Step forward 30 minutes in simulation time"
         >
-          ⏭ +30m
+          +30m
         </button>
 
         <button

@@ -14,61 +14,6 @@ export const ResilienceOverviewPanel: React.FC = () => {
     state.degradedNodes.length > 0 ||
     state.backupNodes.length > 0;
 
-  // Live dynamic calculation directly from active network asset states
-  let livePopAffected = 0;
-  let hospitalDisrupted = 0;
-  let hospitalInBackup = 0;
-  let schoolsImpacted = 0;
-  let waterIntakeDisrupted = 0;
-  let feedersTripped = 0;
-  let roadDelayMinutes = 0;
-
-  if (state.network) {
-    for (const node of state.network.nodes) {
-      const status = state.assetStates[node.id]?.state || 'OPERATIONAL';
-      const pop = node.population_served || 0;
-
-      if (status === 'FAILED') {
-        livePopAffected += pop;
-        if (node.type === 'hospital') hospitalDisrupted++;
-        else if (node.type === 'school') schoolsImpacted++;
-        else if (node.type === 'water_pump' || node.type === 'water_treatment') waterIntakeDisrupted++;
-        else if (node.type === 'power_substation' || node.type === 'power_station') feedersTripped++;
-        else if (node.type === 'road_segment' || node.type === 'bridge') roadDelayMinutes += 8;
-      } else if (status === 'DEGRADED') {
-        livePopAffected += Math.round(pop * 0.4);
-        if (node.type === 'hospital') hospitalDisrupted++;
-        else if (node.type === 'school') schoolsImpacted++;
-        else if (node.type === 'water_pump' || node.type === 'water_treatment') waterIntakeDisrupted++;
-        else if (node.type === 'power_substation' || node.type === 'power_station') feedersTripped++;
-        else if (node.type === 'road_segment' || node.type === 'bridge') roadDelayMinutes += 4;
-      } else if (status === 'BACKUP') {
-        if (node.type === 'hospital') {
-          hospitalDisrupted++;
-          hospitalInBackup++;
-        }
-      }
-    }
-  }
-
-  // Account for severed corridor edges
-  if (state.affectedEdges && state.affectedEdges.length > 0) {
-    roadDelayMinutes = Math.min(45, Math.max(roadDelayMinutes, state.affectedEdges.length * 6));
-  } else {
-    roadDelayMinutes = Math.min(45, roadDelayMinutes);
-  }
-
-  // Dynamic Impact Score (0.00 when nominal)
-  let liveImpactScore = 0.0;
-  if (isCascadeActive) {
-    const popRatio = Math.min(1, livePopAffected / 120000);
-    const hospRatio = hospitalDisrupted > 0 ? 0.3 : 0;
-    const delayRatio = Math.min(1, roadDelayMinutes / 45) * 0.2;
-    const infraRatio = Math.min(1, (waterIntakeDisrupted + feedersTripped) / 8) * 0.2;
-    liveImpactScore = Math.min(1.0, Math.max(0.08, popRatio * 0.4 + hospRatio + delayRatio + infraRatio));
-    liveImpactScore = Math.round(liveImpactScore * 100) / 100;
-  }
-
   // Dynamic identification of active corridor disruption
   const impactedRoad = state.network?.nodes.find(
     (n) =>
@@ -77,30 +22,25 @@ export const ResilienceOverviewPanel: React.FC = () => {
   );
   const impactedRoadName = impactedRoad ? impactedRoad.name : null;
 
-  // Blending with scenario-level data if an active scenario is loaded
-  const impactScore = state.impact ? state.impact.impact_score : liveImpactScore;
-  const popAffected = state.impact ? state.impact.population_affected : livePopAffected;
-  const hospitals = state.impact ? state.impact.hospital_disruptions : hospitalDisrupted;
-  const schools = state.impact ? state.impact.school_disruptions : schoolsImpacted;
-  const delay = state.impact ? state.impact.emergency_response_delay_minutes : roadDelayMinutes;
-  const water = state.impact ? state.impact.water_service_disruptions : waterIntakeDisrupted;
-  const power = state.impact ? state.impact.power_service_disruptions : feedersTripped;
+  const hospitalInBackup = state.backupNodes.filter((id) => {
+    const n = state.network?.nodes.find((node) => node.id === id);
+    return n?.type === 'hospital';
+  }).length;
 
-  // Monte Carlo uncertainty bounds (strictly 0 when nominal)
+  // Single source of truth: Dynamic Track 3 Engine outputs
+  const impactScore = state.impact?.impact_score ?? 0.0;
+  const popAffected = state.impact?.population_affected ?? 0;
+  const hospitals = state.impact?.hospital_disruptions ?? 0;
+  const schools = state.impact?.school_disruptions ?? 0;
+  const delay = state.impact?.emergency_response_delay_minutes ?? 0;
+  const water = state.impact?.water_service_disruptions ?? 0;
+  const power = state.impact?.power_service_disruptions ?? 0;
+
+  // Monte Carlo uncertainty bounds directly from Track 3 stochastic distributions
   const medianPop = state.uncertainty?.population_affected?.median ?? popAffected;
-  const p05Pop =
-    state.uncertainty?.population_affected?.p05 ??
-    (popAffected > 0 ? Math.round(popAffected * 0.65) : 0);
-  const p95Pop =
-    state.uncertainty?.population_affected?.p95 ??
-    (popAffected > 0 ? Math.round(popAffected * 1.55) : 0);
-  const hospitalProb =
-    popAffected > 0
-      ? Math.round(
-          (state.uncertainty?.hospital_failure_probability ??
-            (hospitals > 0 ? Math.min(0.95, impactScore * 1.2) : 0.05)) * 100
-        )
-      : 0;
+  const p05Pop = state.uncertainty?.population_affected?.p05 ?? popAffected;
+  const p95Pop = state.uncertainty?.population_affected?.p95 ?? popAffected;
+  const hospitalProb = Math.round((state.uncertainty?.hospital_failure_probability ?? 0) * 100);
 
   const rateIndicator = isCascadeActive
     ? `+${(impactScore * 0.25).toFixed(2)} in 30m`

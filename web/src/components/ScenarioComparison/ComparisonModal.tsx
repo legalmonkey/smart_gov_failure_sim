@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import type { ApplicationState } from '../../state/applicationState';
 import { appState } from '../../state/applicationState';
 import type { Scenario } from '../../types/scenario';
+import { HazardWizard } from './HazardWizard';
 
 interface Props {
   onClose: () => void;
 }
 
-type ModalTab = 'matrix' | 'library' | 'create';
+type ModalTab = 'hazards' | 'library' | 'create' | 'matrix';
 
 export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
   const [app, setApp] = useState<ApplicationState>(appState.getState());
-  const [activeTab, setActiveTab] = useState<ModalTab>('matrix');
+  const [activeTab, setActiveTab] = useState<ModalTab>('hazards');
   const [customName, setCustomName] = useState('');
   const [selectedShocks, setSelectedShocks] = useState<string[]>(['substation_01', 'road_jvlr_01']);
   const [customBudget, setCustomBudget] = useState(2000000);
@@ -22,90 +23,77 @@ export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
   }, []);
 
   const currentSc = app.activeScenario;
-  const isCascadeActive =
-    app.failedNodes.length > 0 || app.degradedNodes.length > 0 || app.backupNodes.length > 0;
+  const benchmarkSc = currentSc || app.scenariosList[0];
+  const isPreview = !currentSc;
 
-  // Baseline Disruption metrics: dynamically pulled from activeScenario, or live simulation impact, or strictly 0 when nominal
+  // Baseline Disruption metrics: dynamically pulled from activeScenario, live Track 3 impact, or benchmark preview
   const baselineScore = currentSc
-    ? (currentSc.impactScore ?? 0.72)
-    : (app.impact?.impact_score ?? (isCascadeActive ? 0.45 : 0.0));
+    ? (currentSc.impactScore ?? app.impact?.impact_score ?? 0.85)
+    : (benchmarkSc?.impactScore ?? 0.85);
   const baselinePop = currentSc
-    ? (currentSc.populationAffected ?? 18200)
-    : (app.impact?.population_affected ?? (isCascadeActive ? 12000 : 0));
+    ? (currentSc.populationAffected ?? app.impact?.population_affected ?? 48000)
+    : (benchmarkSc?.populationAffected ?? 48000);
   const baselineHospitals = currentSc
-    ? (currentSc.hospitalDisruptions ?? 2)
-    : (app.impact?.hospital_disruptions ?? (isCascadeActive ? 1 : 0));
+    ? (currentSc.hospitalDisruptions ?? app.impact?.hospital_disruptions ?? 2)
+    : (benchmarkSc?.hospitalDisruptions ?? 2);
   const baselineDelay = currentSc
-    ? (currentSc.emergencyDelayMinutes ?? 22)
-    : (app.impact?.emergency_response_delay_minutes ?? (isCascadeActive ? 18 : 0));
+    ? (currentSc.emergencyDelayMinutes ?? app.impact?.emergency_response_delay_minutes ?? 18)
+    : (benchmarkSc?.emergencyDelayMinutes ?? 18);
 
-  // Dynamically calculate User Plan resilience metrics based on actual applied interventions
-  let userReduction = 0;
+  // User Plan metrics: read directly from dynamic Track 4 evaluation
+  const userScore = app.advisor?.user_plan
+    ? app.advisor.user_plan.impact
+    : (app.appliedInterventions.length > 0
+        ? Math.max(0.05, baselineScore * (1 - app.appliedInterventions.length * 0.18))
+        : baselineScore);
+  const userReduction = app.advisor?.user_plan?.impact_reduction ?? Math.max(0, (baselineScore - userScore) / (baselineScore || 1));
+  const userPop = baselinePop > 0
+    ? (baselineScore > 0 ? Math.round(baselinePop * (userScore / baselineScore)) : 0)
+    : 0;
+
+  // Check which critical sectors the user protected
   let hospitalProtected = false;
   let roadProtected = false;
-
   app.appliedInterventions.forEach((req) => {
-    if (req.intervention_id === 'backup_generator') {
-      userReduction += 0.16;
-      hospitalProtected = true;
-    } else if (req.intervention_id === 'redundant_power_line') {
-      userReduction += 0.22;
-      hospitalProtected = true;
-    } else if (req.intervention_id === 'water_storage_buffer') {
-      userReduction += 0.12;
-    } else if (req.intervention_id === 'reinforced_bridge') {
-      userReduction += 0.1;
-      roadProtected = true;
-    } else if (req.intervention_id === 'alternate_emergency_route') {
-      userReduction += 0.08;
-      roadProtected = true;
-    } else {
-      userReduction += 0.06;
-    }
+    const item = app.interventionsCatalog.find((i) => i.id === req.intervention_id);
+    if (item?.target_types.includes('hospital')) hospitalProtected = true;
+    if (item?.target_types.includes('road')) roadProtected = true;
   });
 
-  const userScore = baselineScore > 0 ? Math.max(0.0, Math.round((baselineScore - userReduction) * 100) / 100) : 0.0;
-  const userPop = baselinePop > 0 ? Math.round(baselinePop * (userScore / (baselineScore || 1))) : 0;
-  const userHospitalDisruptions = hospitalProtected ? 0 : baselineHospitals;
-  const userDelay = baselineDelay > 0 ? (roadProtected ? Math.min(baselineDelay, 4) : userReduction > 0.2 ? Math.round(baselineDelay * 0.5) : baselineDelay) : 0;
+  const userHospitalDisruptions = hospitalProtected ? 0 : (userReduction > 0.4 ? Math.max(0, baselineHospitals - 1) : baselineHospitals);
+  const userDelay = baselineDelay > 0
+    ? (roadProtected ? Math.min(baselineDelay, 4) : userReduction > 0.1 ? Math.round(baselineDelay * 0.6) : baselineDelay)
+    : 0;
 
-  // AI Mathematically Optimized Plan metrics
-  const optimalScore = app.optimization
-    ? app.optimization.optimized_impact
-    : (baselineScore > 0 ? Math.max(0.08, Math.round(baselineScore * 0.38 * 100) / 100) : 0.0);
-  const optimalPop = baselinePop > 0 ? Math.round(baselinePop * (optimalScore / (baselineScore || 1))) : 0;
-  const optimalHospitals = optimalScore < 0.4 ? 0 : Math.max(0, baselineHospitals - 1);
-  const optimalDelay = baselineDelay > 0 ? (optimalScore < 0.4 ? Math.min(baselineDelay, 4) : Math.round(baselineDelay * 0.4)) : 0;
-  const optimalCost = app.optimization?.total_cost ?? Math.min(app.budgetTotal, 1600000);
-
-  // Dynamic optimal interventions list from Track 4 solver or top catalog
-  const optimalInterventions = app.optimization?.selected_interventions?.length
-    ? app.optimization.selected_interventions
-    : (app.interventionsCatalog?.length
-      ? app.interventionsCatalog.slice(0, 3).map((item) => ({
-          intervention_id: item.id,
-          target_asset_id: item.target_types[0] === 'hospital' ? 'hospital_01' : item.target_types[0] === 'water_pump' ? 'water_pump_01' : 'substation_01',
-          cost: item.cost,
-        }))
-      : []);
+  // AI Mathematically Optimized Plan metrics: read directly from Track 4 solver
+  const optimalScore = app.advisor?.optimal_plan
+    ? app.advisor.optimal_plan.impact
+    : (app.optimization ? app.optimization.optimized_impact : 0.22);
+  const optimalPop = baselinePop > 0
+    ? (baselineScore > 0 ? Math.round(baselinePop * (optimalScore / baselineScore)) : 0)
+    : 0;
+  const optimalHospitals = optimalScore < 0.35 ? 0 : Math.max(0, baselineHospitals - 1);
+  const optimalDelay = baselineDelay > 0
+    ? (optimalScore < 0.35 ? Math.min(baselineDelay, 4) : Math.round(baselineDelay * 0.4))
+    : 0;
+  const optimalCost = app.optimization?.total_cost ?? 0;
+  const optimalInterventions = app.optimization?.selected_interventions ?? [];
 
   const handleApplyAiPlan = () => {
     if (optimalInterventions.length > 0) {
+      appState.clearInterventions();
       optimalInterventions.forEach((optItem) => {
         appState.applyIntervention(optItem.intervention_id, optItem.target_asset_id);
       });
       setFeedbackMsg('AI Recommended Interventions successfully deployed to your active plan!');
     } else {
-      setFeedbackMsg('No interventions to deploy.');
+      setFeedbackMsg('No optimal interventions available.');
     }
     setTimeout(() => setFeedbackMsg(null), 3000);
   };
 
   const handleResetToBaseline = () => {
-    // Reset interventions
-    app.appliedInterventions.forEach(() => {
-      // Re-initialize scenario
-    });
+    appState.clearInterventions();
     if (app.activeScenario) {
       appState.loadScenario(app.activeScenario.id);
     }
@@ -115,17 +103,14 @@ export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
 
   const handleLoadScenario = (sc: Scenario) => {
     appState.loadScenario(sc.id);
-    setFeedbackMsg(`Loaded scenario "${sc.name}" onto 3D map!`);
-    setTimeout(() => setFeedbackMsg(null), 3000);
+    onClose();
   };
 
   const handleSaveCurrentState = () => {
     const name = customName.trim() || `What-If Trial #${app.scenariosList.length + 1}`;
-    const newSc = appState.saveCurrentAsScenario(name);
+    appState.saveCurrentAsScenario(name);
     setCustomName('');
-    setActiveTab('library');
-    setFeedbackMsg(`Created and activated scenario "${newSc.name}"!`);
-    setTimeout(() => setFeedbackMsg(null), 3500);
+    onClose();
   };
 
   const handleCreateCustomScenario = () => {
@@ -138,9 +123,7 @@ export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
     const newSc = appState.createCustomScenario(name, desc, selectedShocks, customBudget);
     appState.loadScenario(newSc.id);
     setCustomName('');
-    setActiveTab('library');
-    setFeedbackMsg(`Scenario "${newSc.name}" created and loaded into simulator!`);
-    setTimeout(() => setFeedbackMsg(null), 3500);
+    onClose();
   };
 
   const toggleShock = (id: string) => {
@@ -157,7 +140,6 @@ export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
         {/* Modal Header */}
         <div className="modal-header">
           <div className="modal-title-group">
-            <span className="modal-code-tag font-mono">[SCENARIOS]</span>
             <div>
               <h2 className="modal-title">INFRASTRUCTURE RESILIENCE SCENARIO ENGINE</h2>
               <span className="modal-sub">
@@ -173,10 +155,10 @@ export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
         {/* Modal Sub-Navigation Tabs */}
         <div className="scenario-modal-nav">
           <button
-            className={`scenario-nav-btn ${activeTab === 'matrix' ? 'active' : ''}`}
-            onClick={() => setActiveTab('matrix')}
+            className={`scenario-nav-btn ${activeTab === 'hazards' ? 'active' : ''}`}
+            onClick={() => setActiveTab('hazards')}
           >
-            Plan Comparison Matrix
+            Natural Disaster Hazards (6-Step Simulation)
           </button>
           <button
             className={`scenario-nav-btn ${activeTab === 'library' ? 'active' : ''}`}
@@ -190,6 +172,12 @@ export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
           >
             Create What-If Scenario
           </button>
+          <button
+            className={`scenario-nav-btn ${activeTab === 'matrix' ? 'active' : ''}`}
+            onClick={() => setActiveTab('matrix')}
+          >
+            Plan Comparison Matrix (A / B / C)
+          </button>
         </div>
 
         {feedbackMsg && (
@@ -199,9 +187,53 @@ export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
         )}
 
         <div className="modal-body scenario-modal-body">
-          {/* TAB 1: SIDE-BY-SIDE PLAN COMPARISON MATRIX */}
+          {/* TAB 0: NATURAL DISASTER HAZARDS (6-STEP WORKFLOW) */}
+          {activeTab === 'hazards' && (
+            <HazardWizard
+              onClose={onClose}
+              onSuccessMessage={(msg) => {
+                setFeedbackMsg(msg);
+                setTimeout(() => setFeedbackMsg(null), 4000);
+              }}
+            />
+          )}
+
+          {/* TAB: SIDE-BY-SIDE PLAN COMPARISON MATRIX */}
           {activeTab === 'matrix' && (
             <div className="comparison-view-content">
+              {/* Purpose & Context Banner */}
+              <div className="matrix-purpose-banner glass-card">
+                <div className="matrix-purpose-header">
+                  <div className="matrix-purpose-title-group">
+                    <span className="matrix-purpose-tag font-mono">[DECISION SUPPORT]</span>
+                    <h4 className="matrix-purpose-title">INFRASTRUCTURE RESILIENCE PLAN COMPARISON MATRIX</h4>
+                  </div>
+                  {currentSc ? (
+                    <span className="matrix-active-badge font-mono">
+                      BENCHMARK: {currentSc.name.toUpperCase()}
+                    </span>
+                  ) : (
+                    <span className="matrix-active-badge font-mono">
+                      PREVIEWING: {benchmarkSc?.name.toUpperCase() || 'MONSOON FLOODING'}
+                    </span>
+                  )}
+                </div>
+                <p className="matrix-purpose-desc">
+                  This decision-support matrix quantifies mitigation ROI under disaster shocks across three strategies:
+                  <strong> Scenario A</strong> measures the unmitigated baseline destruction with zero defenses;
+                  <strong> Scenario B</strong> measures the live damage reduction achieved by your manually deployed interventions;
+                  <strong> Scenario C</strong> shows the AI knapsack optimizer's mathematically optimal upgrade allocation for the same budget.
+                </p>
+                {isPreview && (
+                  <div className="matrix-empty-cta-box">
+                    <span>Currently in nominal explore mode. You can load this benchmark shock or choose another disaster from the Library:</span>
+                    <button className="matrix-cta-btn font-mono" onClick={() => setActiveTab('library')}>
+                      BROWSE SCENARIOS LIBRARY ({app.scenariosList.length})
+                    </button>
+                  </div>
+                )}
+              </div>
+
               <div className="comparison-grid-three">
                 {/* 1. Unmitigated Baseline */}
                 <div className="scenario-col glass-card scenario-col-baseline">
@@ -210,11 +242,13 @@ export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
                       <span className="col-scenario-letter font-mono">SCENARIO A</span>
                       <span className="col-tag badge-danger font-mono">UNMITIGATED BENCHMARK</span>
                     </div>
-                    <h3 className="col-name">{currentSc ? currentSc.name : 'Baseline Disruption'}</h3>
+                    <h3 className="col-name">
+                      {currentSc ? currentSc.name : `${benchmarkSc?.name || 'Monsoon Flooding'} (Benchmark)`}
+                    </h3>
                     <p className="col-desc">
                       {currentSc
                         ? currentSc.description
-                        : 'Zero interventions deployed. Grid and road failure propagates unrestricted through Powai infrastructure.'}
+                        : `Unmitigated baseline damage if ${benchmarkSc?.name || 'Monsoon Flooding'} strikes with zero defenses.`}
                     </p>
                   </div>
 
@@ -258,12 +292,21 @@ export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
                   </div>
 
                   <div className="col-action-wrapper">
-                    <button
-                      className="col-btn btn-secondary font-mono"
-                      onClick={handleResetToBaseline}
-                    >
-                      TEST BASELINE STATE
-                    </button>
+                    {isPreview && benchmarkSc ? (
+                      <button
+                        className="col-btn btn-primary font-mono"
+                        onClick={() => handleLoadScenario(benchmarkSc)}
+                      >
+                        LOAD BENCHMARK SCENARIO
+                      </button>
+                    ) : (
+                      <button
+                        className="col-btn btn-secondary font-mono"
+                        onClick={handleResetToBaseline}
+                      >
+                        TEST BASELINE STATE
+                      </button>
+                    )}
                   </div>
                 </div>
 
@@ -408,7 +451,21 @@ export const ComparisonModal: React.FC<Props> = ({ onClose }) => {
                     <span className="col-subheading">Deployed Hardening:</span>
                     <div className="interventions-pill-wrap">
                       {optimalInterventions.length === 0 ? (
-                        <span className="interventions-empty-text">No interventions required</span>
+                        isPreview ? (
+                          <>
+                            <span className="active-intervention-chip chip-optimal font-mono">
+                              Substation Flood Barriers (Hiranandani 220kV)
+                            </span>
+                            <span className="active-intervention-chip chip-optimal font-mono">
+                              Aux Generator 250kVA (Dr L H Hiranandani Hospital)
+                            </span>
+                            <span className="active-intervention-chip chip-optimal font-mono">
+                              Pump Submersible Seals (Powai Pumping Station)
+                            </span>
+                          </>
+                        ) : (
+                          <span className="interventions-empty-text">No interventions required</span>
+                        )
                       ) : (
                         optimalInterventions.map((optItem, idx) => {
                           const catItem = app.interventionsCatalog.find((c) => c.id === optItem.intervention_id);

@@ -7,6 +7,7 @@ import type { Intervention, InterventionRequest } from '../types/intervention';
 import type { OptimizationResult } from '../types/optimization';
 import type { AdvisorResult } from '../types/advisor';
 import type { GeoJsonFeatureCollection } from '../geo/geojsonTypes';
+import { CriticalityEngine } from '../criticality/criticalityEngine';
 
 /**
  * Section 4.18 Frontend Client Interface Boundary.
@@ -50,7 +51,26 @@ export class MockSimulationClient implements SimulationClient {
 
   public async getNetwork(): Promise<Network> {
     if (!this.cachedNetwork) {
-      this.cachedNetwork = await this.fetchJson<Network>('mock-network.json');
+      const net = await this.fetchJson<Network>('mock-network.json');
+      net.nodes.forEach((node) => {
+        if (node.attributes) {
+          node.capacity = node.capacity ?? node.attributes.capacity;
+          node.load = node.load ?? node.attributes.load;
+          node.population_served = node.population_served ?? node.attributes.population_served;
+          node.backup_duration = node.backup_duration ?? node.attributes.backup_duration_hours;
+          node.failure_threshold = node.failure_threshold ?? node.attributes.failure_threshold;
+          node.recovery_time = node.recovery_time ?? node.attributes.recovery_time_hours;
+        }
+      });
+      net.edges.forEach((edge) => {
+        if (edge.attributes) {
+          edge.capacity = edge.capacity ?? edge.attributes.capacity;
+          edge.load = edge.load ?? edge.attributes.load;
+          edge.dependency_strength = edge.dependency_strength ?? edge.attributes.dependency_strength;
+          edge.failure_probability = edge.failure_probability ?? edge.attributes.failure_probability;
+        }
+      });
+      this.cachedNetwork = net;
     }
     return JSON.parse(JSON.stringify(this.cachedNetwork));
   }
@@ -107,7 +127,10 @@ export class MockSimulationClient implements SimulationClient {
     return await this.fetchJson<UncertaintyResult>('mock-uncertainty-result.json');
   }
 
-  public async getCriticalityResult(_scenarioId: string): Promise<CriticalityResult> {
+  public async getCriticalityResult(scenarioId: string): Promise<CriticalityResult> {
+    if (this.cachedNetwork) {
+      return CriticalityEngine.calculateCriticality(this.cachedNetwork, scenarioId);
+    }
     return await this.fetchJson<CriticalityResult>('mock-criticality-result.json');
   }
 

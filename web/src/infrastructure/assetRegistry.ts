@@ -234,6 +234,102 @@ function createPopulationMesh(_asset: Asset): THREE.Group {
   return group;
 }
 
+function createHotelMesh(_asset: Asset): THREE.Group {
+  const group = new THREE.Group();
+
+  // Luxury hotel podium / grand lobby atrium
+  const podiumMat = new THREE.MeshStandardMaterial({
+    color: 0xf8fafc,
+    roughness: 0.25,
+    metalness: 0.15,
+  });
+  const podium = new THREE.Mesh(new THREE.BoxGeometry(26, 8, 22), podiumMat);
+  podium.position.y = 4;
+  podium.castShadow = true;
+  podium.receiveShadow = true;
+  group.add(podium);
+
+  // Curved glass curtain hotel tower
+  const towerMat = new THREE.MeshStandardMaterial({
+    color: 0x0284c7,
+    roughness: 0.1,
+    metalness: 0.8,
+  });
+  const tower = new THREE.Mesh(new THREE.BoxGeometry(18, 20, 14), towerMat);
+  tower.position.y = 18;
+  tower.castShadow = true;
+  group.add(tower);
+
+  // Luxury rooftop leisure deck with pool
+  const poolMat = new THREE.MeshStandardMaterial({
+    color: 0x06b6d4,
+    roughness: 0.05,
+    metalness: 0.3,
+    emissive: 0x0284c7,
+    emissiveIntensity: 0.2,
+  });
+  const pool = new THREE.Mesh(new THREE.BoxGeometry(10, 0.4, 6), poolMat);
+  pool.position.y = 28.2;
+  group.add(pool);
+
+  // Grand entrance portico canopy
+  const canopyMat = new THREE.MeshStandardMaterial({
+    color: 0x0ea5e9,
+    metalness: 0.5,
+    roughness: 0.3,
+  });
+  const canopy = new THREE.Mesh(new THREE.BoxGeometry(12, 1.2, 8), canopyMat);
+  canopy.position.set(0, 5, 14);
+  group.add(canopy);
+
+  return group;
+}
+
+function createCommercialMesh(_asset: Asset): THREE.Group {
+  const group = new THREE.Group();
+
+  // Primary corporate glass tower
+  const towerMat = new THREE.MeshStandardMaterial({
+    color: 0x1e3a8a,
+    roughness: 0.2,
+    metalness: 0.7,
+  });
+  const towerA = new THREE.Mesh(new THREE.BoxGeometry(16, 30, 16), towerMat);
+  towerA.position.y = 15;
+  towerA.castShadow = true;
+  towerA.receiveShadow = true;
+  group.add(towerA);
+
+  // Secondary offset wing
+  const wingMat = new THREE.MeshStandardMaterial({
+    color: 0x3b82f6,
+    roughness: 0.3,
+    metalness: 0.5,
+  });
+  const towerB = new THREE.Mesh(new THREE.BoxGeometry(12, 22, 12), wingMat);
+  towerB.position.set(10, 11, -4);
+  towerB.castShadow = true;
+  group.add(towerB);
+
+  // Skybridge connection
+  const bridgeMat = new THREE.MeshStandardMaterial({
+    color: 0x93c5fd,
+    transparent: true,
+    opacity: 0.8,
+  });
+  const bridge = new THREE.Mesh(new THREE.BoxGeometry(6, 4, 8), bridgeMat);
+  bridge.position.set(6, 16, -2);
+  group.add(bridge);
+
+  // Rooftop communications mast / spire
+  const spireMat = new THREE.MeshStandardMaterial({ color: 0x64748b });
+  const spire = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.8, 10, 8), spireMat);
+  spire.position.set(0, 35, 0);
+  group.add(spire);
+
+  return group;
+}
+
 function createRoadMesh(_asset: Asset): THREE.Group {
   const group = new THREE.Group();
   // Road node marker - small traffic beacon
@@ -335,6 +431,26 @@ export const ASSET_REGISTRY: Record<string, AssetVisualDescriptor> = {
     height: 7,
     radius: 6,
     createMesh: createRoadMesh,
+  },
+  hotel: {
+    type: 'hotel',
+    displayName: 'Hotel & Convention Center',
+    icon: 'HOTEL',
+    baseColor: 0x0ea5e9,
+    secondaryColor: 0xf8fafc,
+    height: 28,
+    radius: 14,
+    createMesh: createHotelMesh,
+  },
+  commercial: {
+    type: 'commercial',
+    displayName: 'Commercial Business Center',
+    icon: 'COMM',
+    baseColor: 0x0284c7,
+    secondaryColor: 0x93c5fd,
+    height: 32,
+    radius: 14,
+    createMesh: createCommercialMesh,
   },
 };
 

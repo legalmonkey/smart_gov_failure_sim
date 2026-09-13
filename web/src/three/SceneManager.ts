@@ -5,6 +5,7 @@ import { GeoJSONRenderer } from './GeoJSONRenderer';
 import { AssetRenderer } from './AssetRenderer';
 import { DependencyRenderer } from './DependencyRenderer';
 import { CascadeEffects } from './CascadeEffects';
+import { HazardOverlayRenderer } from './HazardOverlayRenderer';
 import type { ApplicationState } from '../state/applicationState';
 import { appState } from '../state/applicationState';
 import { latLonToWorld } from '../geo/coordinateTransform';
@@ -19,12 +20,14 @@ export class SceneManager {
   public assetRenderer: AssetRenderer;
   public dependencyRenderer: DependencyRenderer;
   public cascadeEffects: CascadeEffects;
+  public hazardOverlayRenderer: HazardOverlayRenderer;
 
   private container: HTMLElement;
   private animationFrameId: number | null = null;
   private lastTime: number = performance.now();
   private unsubscribeState: (() => void) | null = null;
   private previousFailedNodes: Set<string> = new Set();
+  private renderedHazardId: string | null = null;
   private geoJsonRendered: boolean = false;
   private assetsRendered: boolean = false;
 
@@ -59,11 +62,13 @@ export class SceneManager {
     this.assetRenderer = new AssetRenderer();
     this.dependencyRenderer = new DependencyRenderer();
     this.cascadeEffects = new CascadeEffects();
+    this.hazardOverlayRenderer = new HazardOverlayRenderer();
 
     this.scene.add(this.geoJsonRenderer.group);
     this.scene.add(this.assetRenderer.group);
     this.scene.add(this.dependencyRenderer.group);
     this.scene.add(this.cascadeEffects.group);
+    this.scene.add(this.hazardOverlayRenderer.group);
 
     // 6. Raycast Manager
     this.raycastManager = new RaycastManager(
@@ -72,7 +77,8 @@ export class SceneManager {
       () => [
         ...this.assetRenderer.selectableObjects,
         ...this.geoJsonRenderer.selectableObjects,
-      ]
+      ],
+      () => this.geoJsonRenderer.buildingRenderer.allBuildingMeshes
     );
 
     // 7. State subscription
@@ -173,6 +179,13 @@ export class SceneManager {
       });
       this.previousFailedNodes = new Set(state.failedNodes);
     }
+
+    this.hazardOverlayRenderer.setVisible(state.hazardOverlayVisible !== false);
+    const currentHId = state.activeHazard?.hazard_id || null;
+    if (currentHId !== this.renderedHazardId) {
+      this.hazardOverlayRenderer.setHazard(state.activeHazard);
+      this.renderedHazardId = currentHId;
+    }
   };
 
   public focusAsset(assetId: string): void {
@@ -189,6 +202,34 @@ export class SceneManager {
 
   public resetCamera(): void {
     this.cameraManager.resetView();
+  }
+
+  public zoomIn(): void {
+    this.cameraManager.zoomIn();
+  }
+
+  public zoomOut(): void {
+    this.cameraManager.zoomOut();
+  }
+
+  public rotateLeft(): void {
+    this.cameraManager.rotateHorizontally(Math.PI / 8);
+  }
+
+  public rotateRight(): void {
+    this.cameraManager.rotateHorizontally(-Math.PI / 8);
+  }
+
+  public toggle2D3D(): boolean {
+    return this.cameraManager.toggleViewMode();
+  }
+
+  public getIsTopDown(): boolean {
+    return this.cameraManager.getIsTopDown();
+  }
+
+  public navigate(dx: number, dz: number): void {
+    this.cameraManager.navigate(dx, dz);
   }
 
   private onResize = () => {
@@ -212,6 +253,7 @@ export class SceneManager {
     this.assetRenderer.update(deltaTime, state.hoveredAssetId, state.selectedAssetId);
     this.dependencyRenderer.update(deltaTime, state.affectedEdges);
     this.cascadeEffects.update(deltaTime);
+    this.hazardOverlayRenderer.update(deltaTime);
 
     this.renderer.render(this.scene, this.cameraManager.camera);
   };

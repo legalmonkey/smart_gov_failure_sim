@@ -53,7 +53,6 @@ export const InterventionModal: React.FC<Props> = ({ onClose }) => {
       <div className="modal-container glass-panel build-modal">
         <div className="modal-header">
           <div className="modal-title-group">
-            <span className="modal-code-tag font-mono">[HARDENING]</span>
             <div>
               <h2 className="modal-title">INFRASTRUCTURE INTERVENTION & HARDENING</h2>
               <span className="modal-sub">Deploy resilience upgrades to prevent cascading breakdown</span>
@@ -183,9 +182,27 @@ export const InterventionModal: React.FC<Props> = ({ onClose }) => {
                 const node = state.network?.nodes.find((n) => n.id === app.target_asset_id);
                 return (
                   <div key={idx} className="applied-chip font-mono">
-                    <span className="chip-code">[UPGRADE]</span>
+                    <span className="chip-code">UPGRADE</span>
                     <span className="chip-name">{item?.name || app.intervention_id}</span>
                     <span className="chip-target">&rarr; {node?.name || app.target_asset_id}</span>
+                    <button
+                      className="chip-remove-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        appState.removeIntervention(idx);
+                      }}
+                      title="Remove Upgrade"
+                      style={{
+                        marginLeft: '8px',
+                        background: 'transparent',
+                        border: 'none',
+                        color: 'var(--text-muted, #888)',
+                        cursor: 'pointer',
+                        fontWeight: 'bold',
+                      }}
+                    >
+                      ✕
+                    </button>
                   </div>
                 );
               })}

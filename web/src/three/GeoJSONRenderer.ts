@@ -207,12 +207,10 @@ export class GeoJSONRenderer {
         group.add(lawn);
       }
 
-      const assetId = isHospital ? 'hospital_01' : 'school_01';
       group.userData = {
         osm_id: feat.properties.osm_id,
         name: feat.properties.name,
         type: feat.properties.feature_type,
-        assetId: assetId,
       };
 
       group.traverse((child) => {
@@ -221,10 +219,8 @@ export class GeoJSONRenderer {
             osm_id: feat.properties.osm_id,
             name: feat.properties.name,
             type: feat.properties.feature_type,
-            assetId: assetId,
-            isSelectable: true,
+            isSelectable: false,
           };
-          this.facilitySelectableObjects.push(child);
         }
       });
 
