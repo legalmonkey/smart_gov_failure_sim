@@ -1,0 +1,15 @@
+{
+  "impact_weights": {
+    "population": 0.4,
+    "duration": 0.15,
+    "vulnerability": 0.15,
+    "response_delay": 0.1,
+    "critical_services": 0.2
+  },
+  "max_normalization_values": {
+    "max_population": 50000,
+    "max_duration_hours": 72,
+    "max_delay_minutes": 60,
+    "max_critical_services": 20
+  }
+}
